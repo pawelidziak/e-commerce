@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { AppComponent } from './app.component';
 import { AngularFireModule } from 'angularfire2';
 import {HttpModule} from '@angular/http';
@@ -21,7 +21,8 @@ export const firebaseConfig = {
   imports: [
     BrowserModule,
     HttpModule,
-    AngularFireModule.initializeApp(firebaseConfig),
+    BrowserAnimationsModule,
+    AngularFireModule.initializeApp(firebaseConfig)
   ],
   providers: [],
   bootstrap: [AppComponent]
