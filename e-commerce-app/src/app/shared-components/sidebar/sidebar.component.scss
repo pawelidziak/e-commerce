@@ -1,0 +1,36 @@
+@import "../../_helpers/variables";
+
+mat-sidenav-container {
+  min-height: 100vh;
+
+  mat-sidenav {
+    width: 250px;
+    display: flex;
+    flex-direction: column;
+    @include box_shadow();
+    border-right: 1px solid $border_color;
+  }
+
+  .sidenav-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 64px;
+    border-bottom: 1px solid $border_color;
+  }
+
+  .sidenav-content {
+    padding: 20px
+  }
+  .sidenav-footer {
+    display: flex;
+    justify-content: center;
+    button {
+      color: $my_grey;
+    }
+  }
+}
+
+.content {
+  padding: 50px;
+}

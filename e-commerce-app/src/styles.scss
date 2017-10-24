@@ -1,1 +1,29 @@
 /* You can add global styles to this file, and also import other style files */
+@import '~@angular/material/prebuilt-themes/indigo-pink.css';
+@import 'assets/bootstrap-grid.css';
+
+.text-center{
+  text-align: center;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.text-left {
+  text-align: left;
+}
+
+html, body {
+  margin: 0;
+  height:100%;
+  min-height:100vh;
+}
+
+.spacer-horizontally {
+  flex: 1 1 auto;
+}
+
+.spacer-vertically{
+  flex: 1;
+}

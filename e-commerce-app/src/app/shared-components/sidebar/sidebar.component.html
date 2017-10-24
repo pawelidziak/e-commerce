@@ -1,0 +1,41 @@
+<mat-sidenav-container fxLayout="column" fxFill>
+
+  <mat-sidenav mode="side" [opened]="!hideSidenav" #sidenav>
+
+    <div class="sidenav-header">
+      <span>Sidenav</span>
+    </div>
+
+    <div class="sidenav-content">
+      <p>1</p>
+      <p>2</p>
+      <p>3</p>
+    </div>
+
+    <span class="spacer-vertically"></span>
+
+    <div class="sidenav-footer">
+      <button mat-button>
+        <mat-icon>phone</mat-icon>
+        <span>Contact</span>
+      </button>
+
+      <button mat-button>
+        <mat-icon>info</mat-icon>
+        <span>Info</span>
+      </button>
+    </div>
+
+  </mat-sidenav>
+
+  <app-header [sidenav]="sidenav"></app-header>
+
+  <div class="content" fxLayout="column">
+    <span>Foo</span>
+    <span>Foo</span>
+    <span>Foo</span>
+    <span>Foo</span>
+  </div>
+
+
+</mat-sidenav-container>
