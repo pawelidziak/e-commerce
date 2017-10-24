@@ -1,4 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
+import {CardService} from '../../_services/card.service';
 
 @Component({
   selector: 'app-header',
@@ -8,9 +9,10 @@ import {Component, Input, OnInit} from '@angular/core';
 export class HeaderComponent implements OnInit {
 
   @Input('sidenav') sidenav: any;
+  items: Array<String>;
 
-  items = ['Item 1', 'Item 2', 'Item 3'];
-  constructor() {
+  constructor(private _cardService: CardService) {
+    this.items = _cardService.items;
   }
 
   ngOnInit() {

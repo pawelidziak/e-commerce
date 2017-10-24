@@ -8,6 +8,7 @@ import {SharedComponentsModule} from './shared-components/shared-components.modu
 import {MaterialModule} from './material.module';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {FlexLayoutModule} from '@angular/flex-layout';
+import {CardService} from './_services/card.service';
 
 export const firebaseConfig = {
   apiKey: 'AIzaSyCxYvJHE-K5jZd5A5l2fy5olS9HA1tMq-I',
@@ -33,7 +34,7 @@ export const firebaseConfig = {
     ReactiveFormsModule,
     FlexLayoutModule
   ],
-  providers: [],
+  providers: [CardService],
   bootstrap: [AppComponent]
 })
 export class AppModule {
