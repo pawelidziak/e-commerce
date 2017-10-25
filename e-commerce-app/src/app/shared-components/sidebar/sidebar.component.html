@@ -1,6 +1,6 @@
-<mat-sidenav-container fxLayout="column" fxFill>
+<mat-sidenav-container>
 
-  <mat-sidenav mode="side" [opened]="!hideSidenav" #sidenav>
+  <mat-sidenav mode="side" [opened]="!hideSidenav" #sideNav>
 
     <div class="sidenav-header">
       <span>Sidenav</span>
@@ -28,12 +28,24 @@
 
   </mat-sidenav>
 
-  <app-header [sidenav]="sidenav" [cardNav]="cardNav"></app-header>
+  <app-header [sideNav]="sideNav" [cardNav]="cardNav"></app-header>
 
-  <div class="content" fxLayout="column">
-    <!--<app-swiper></app-swiper>-->
+  <div class="content">
     <app-products-list></app-products-list>
   </div>
 
-
+  <mat-sidenav #cardNav position="end" class="card-nav">
+    <div class="cardNav-header">
+      <mat-icon (click)="cardNav.close()">clear</mat-icon>
+      <span>Shopping Card</span>
+    </div>
+    <div class="cardNav-content">
+      <app-card-list></app-card-list>
+    </div>
+  </mat-sidenav>
 </mat-sidenav-container>
+
+
+
+
+

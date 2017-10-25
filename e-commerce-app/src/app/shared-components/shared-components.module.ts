@@ -12,7 +12,6 @@ import {CoreComponentsModule} from '../core-components/core-components.module';
 import {AuthDialogComponent} from '../core-components/auth-dialog/auth-dialog.component';
 import {ProductComponent} from './card-list/card-item/card-item.component';
 import {CardComponent} from './card-list/card-list.component';
-import { CardNavComponent } from './card-nav/card-nav.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +20,6 @@ import { CardNavComponent } from './card-nav/card-nav.component';
     SwiperComponent,
     CardComponent,
     ProductComponent,
-    CardNavComponent
   ],
   imports: [
     CommonModule,

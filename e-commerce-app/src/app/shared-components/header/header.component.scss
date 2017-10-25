@@ -1,6 +1,8 @@
 @import "../../_helpers/variables";
 
 .my-toolbar {
+  font-family: 'Roboto', sans-serif;
+
   &:first-child {
     padding-left: 0;
   }
@@ -57,18 +59,22 @@ input[type=search]:focus {
 }
 
 ::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  font-size: 14px;
   color: transparent !important;
 }
 
 ::-moz-placeholder { /* Firefox 19+ */
+  font-size: 14px;
   color: transparent !important;
 }
 
 :-ms-input-placeholder { /* IE 10+ */
+  font-size: 14px;
   color: transparent !important;
 }
 
 :-moz-placeholder { /* Firefox 18- */
+  font-size: 14px;
   color: transparent !important;
 }
 
@@ -90,11 +96,3 @@ input[type=search]:focus {
   }
 
 }
-
-//.card {
-//  width: 500px;
-//}
-
-//.mat-menu-panel .my-menu {
-//  max-width: 500px;
-//}

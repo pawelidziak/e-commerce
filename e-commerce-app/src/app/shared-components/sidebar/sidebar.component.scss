@@ -23,6 +23,8 @@ mat-sidenav-container {
     padding: 20px
   }
   .sidenav-footer {
+    position: fixed;
+    bottom: 0;
     display: flex;
     justify-content: center;
     button {
@@ -33,7 +35,34 @@ mat-sidenav-container {
 
 .content {
   padding: 20px;
-  //@media #{$gt-sm_size} {
-  //  padding: 50px;
-  //}
 }
+
+.card-nav {
+  width: 90vw;
+  @media #{$gt_xs_size} {
+    width: 50vw;
+  }
+  @media #{$gt_sm_size} {
+    width: 40vw;
+  }
+  @media #{$gt_md_size} {
+    width: 30vw;
+  }
+  .cardNav-header {
+    background: $material_green;
+    padding: 20px;
+    @include box_shadow;
+    font-size: 1.2rem;
+    color: $primary_white;
+    display: flex;
+    justify-content: space-between;
+    mat-icon {
+      cursor: pointer;
+    }
+  }
+
+  .cardNav-content {
+    padding: 20px 0;
+  }
+}
+
