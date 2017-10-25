@@ -21,6 +21,10 @@
     <span fxHide.xs="true">Login</span>
   </button>
 
+  <button mat-button (click)="openCardNav()">
+    <span>CARD</span>
+  </button>
+
   <button mat-button [matMenuTriggerFor]="userSettings" *ngIf="_authService.currentUser !== null">
     <mat-icon>account_circle</mat-icon>
     <span fxHide.xs="true">Paweł Idziak</span>
@@ -47,11 +51,8 @@
   </button>
 </mat-menu>
 
-<mat-menu #card="matMenu">
-  <mat-list (click)="$event.stopPropagation()" class="purchase">
-    <mat-list-item *ngIf="products.length === 0">No products.</mat-list-item>
-    <mat-list-item *ngFor="let item of products"> {{item}}</mat-list-item>
-  </mat-list>
+<mat-menu #card="matMenu" class="my-menu">
+  <app-card-list (click)="$event.stopPropagation()"></app-card-list>
 </mat-menu>
 
 

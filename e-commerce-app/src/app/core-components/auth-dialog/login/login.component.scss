@@ -6,7 +6,7 @@
   flex-direction: column;
 
   padding: 30px 20px;
-  @media (min-width: 1280px){
+  @media #{$gt-md_size} {
     padding: 30px 40px;
     flex-direction: row;
   }
@@ -26,7 +26,7 @@
   .right{
     flex: 50%;
     flex-direction: column;
-    @media (min-width: 1280px) {
+    @media #{$gt-md_size} {
       padding-left: 50px;
     }
     mat-form-field {

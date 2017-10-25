@@ -6,12 +6,16 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MaterialModule} from '../material.module';
 import { LoginComponent } from './auth-dialog/login/login.component';
 import { RegisterComponent } from './auth-dialog/register/register.component';
+import { ProductsListComponent } from './products-list/products-list.component';
+import { ProductComponent } from './products-list/product/product.component';
 
 @NgModule({
   declarations: [
     AuthDialogComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    ProductsListComponent,
+    ProductComponent
   ],
   imports: [
     CommonModule,
@@ -22,6 +26,7 @@ import { RegisterComponent } from './auth-dialog/register/register.component';
   ],
   exports: [
     // LoginDialogComponent
+    ProductsListComponent
   ],
   providers: [],
 

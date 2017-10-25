@@ -8,8 +8,9 @@ import {DomSanitizer} from '@angular/platform-browser';
   styleUrls: ['./sidebar.component.scss']
 })
 export class SidebarComponent implements OnInit {
-  @ViewChild('sidenav') input;
+
   public hideSidenav = false;
+  @ViewChild('cardNav') cardNav: any;
 
   constructor(iconRegistry: MatIconRegistry, sanitizer: DomSanitizer) {
     iconRegistry.addSvgIcon('menu', sanitizer.bypassSecurityTrustResourceUrl('assets/icons/menu.svg'));
@@ -18,7 +19,6 @@ export class SidebarComponent implements OnInit {
 
     if (window.innerWidth < 960) {
       this.hideSidenav = true;
-      console.log(this.hideSidenav);
     }
   }
 

@@ -1,23 +1,27 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input, OnInit, ViewChild, ViewEncapsulation} from '@angular/core';
 import {CardService} from '../../_services/card.service';
 import {AuthService} from '../../_services/auth.service';
 import {MatDialog} from '@angular/material';
 import {AuthDialogComponent} from '../../core-components/auth-dialog/auth-dialog.component';
+import {IOrder} from '../../_models/IOrder';
+import {CardNavComponent} from '../card-nav/card-nav.component';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
-  styleUrls: ['./header.component.scss']
+  styleUrls: ['./header.component.scss'],
+  encapsulation: ViewEncapsulation.None
 })
 export class HeaderComponent implements OnInit {
 
   @Input('sidenav') sidenav: any;
-  products: Array<String>;
+  @Input('cardNav') cardNav: any;
+  products: Array<IOrder>;
   user: any;
 
 
   constructor(public _authService: AuthService, private _cardService: CardService, public _dialog: MatDialog) {
-    this.products = _cardService.products;
+    this.products = _cardService.orders;
   }
 
   ngOnInit() {
@@ -32,6 +36,11 @@ export class HeaderComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       // this.user = result;
     });
+  }
+
+  openCardNav() {
+    const cos = new CardNavComponent();
+    this.cardNav.open();
   }
 
   logout() {

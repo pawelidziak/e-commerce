@@ -32,5 +32,8 @@ mat-sidenav-container {
 }
 
 .content {
-  padding: 50px;
+  padding: 20px;
+  //@media #{$gt-sm_size} {
+  //  padding: 50px;
+  //}
 }

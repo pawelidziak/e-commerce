@@ -1,0 +1,10 @@
+<div *ngIf="_cardService.orders.length === 0" class="no-products">
+  <span>No products</span>
+</div>
+
+<div *ngIf="_cardService.orders.length > 0">
+  <div *ngFor="let order of _cardService.orders">
+    <app-product [order]="order"></app-product>
+  </div>
+</div>
+

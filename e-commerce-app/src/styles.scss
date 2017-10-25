@@ -1,6 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
 @import '~@angular/material/prebuilt-themes/indigo-pink.css';
-@import 'assets/bootstrap-grid.css';
 @import 'app/_helpers/variables';
 
 html, body {
@@ -33,7 +32,7 @@ html, body {
 }
 
 // messages
-@mixin msg-box{
+@mixin msg-box {
   padding: 15px;
   color: $primary_white;
   @include box_shadow();
@@ -48,7 +47,15 @@ html, body {
   @include msg-box;
 }
 
-.error-msg{
+.error-msg {
   background: $material_red;
   @include msg-box;
+}
+
+.fail-color {
+  color: $material_red;
+}
+
+.success-color {
+  color: $material_green;
 }

@@ -1,0 +1,36 @@
+@import '../../../_helpers/variables';
+
+.product {
+  padding: 10px;
+
+  &:hover {
+    background: $border_color;
+  }
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  .avatar, .info, .quantity {
+    padding: 10px;
+  }
+
+  .info {
+    display: flex;
+    flex-direction: column;
+    padding: 0 20px;
+  }
+
+  .quantity {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    .quantity-product {
+      padding: 0 10px;
+    }
+    mat-icon {
+      cursor: pointer;
+    }
+  }
+
+}

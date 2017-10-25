@@ -1,6 +1,8 @@
+@import '../../_helpers/variables';
+
 .my-dialog {
   .mat-dialog-container {
-    @media (min-width: 599px) {
+    @media #{$gt_xs_size} {
       max-width: 50vw;
     }
     padding: 0;

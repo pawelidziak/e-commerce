@@ -26,7 +26,7 @@ input[type=search] {
   -webkit-box-sizing: content-box;
   padding: 9px 10px 9px 35px;
   width: 0;
-  @media (min-width: 599px) {
+  @media #{$gt_xs_size} {
     width: 60px;
   }
   background: transparent url("../../../assets/icons/search-white.svg") no-repeat 9px center;
@@ -47,7 +47,7 @@ input[type=search]:focus {
   z-index: 9999;
   padding: 0 0 0 35px;
   color: #000;
-  @media (min-width: 599px) {
+  @media #{$gt_xs_size} {
     position: relative;
     width: 200px;
     padding: 9px 10px 9px 35px;
@@ -72,7 +72,7 @@ input[type=search]:focus {
   color: transparent !important;
 }
 
-@media (min-width: 599px) {
+@media #{$gt_xs_size} {
   ::-webkit-input-placeholder { /* Chrome/Opera/Safari */
     color: $primary_white !important;
   }
@@ -90,3 +90,11 @@ input[type=search]:focus {
   }
 
 }
+
+//.card {
+//  width: 500px;
+//}
+
+//.mat-menu-panel .my-menu {
+//  max-width: 500px;
+//}
