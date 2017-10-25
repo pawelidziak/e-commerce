@@ -1,0 +1,17 @@
+.my-dialog {
+  .mat-dialog-container {
+    @media (min-width: 599px){
+      max-width: 50vw;
+    }
+    padding: 0;
+
+    .mat-tab-label, .mat-tab-link{
+      font-size: 15px;
+    }
+
+  }
+
+    .mat-tab-label {
+      min-width: 50%;
+  }
+}

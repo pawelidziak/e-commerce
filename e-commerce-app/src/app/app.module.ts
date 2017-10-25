@@ -9,6 +9,9 @@ import {MaterialModule} from './material.module';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {FlexLayoutModule} from '@angular/flex-layout';
 import {CardService} from './_services/card.service';
+import {AuthService} from './_services/auth.service';
+import {AngularFireDatabase} from 'angularfire2/database';
+import {AngularFireAuth} from 'angularfire2/auth';
 
 export const firebaseConfig = {
   apiKey: 'AIzaSyCxYvJHE-K5jZd5A5l2fy5olS9HA1tMq-I',
@@ -34,7 +37,10 @@ export const firebaseConfig = {
     ReactiveFormsModule,
     FlexLayoutModule
   ],
-  providers: [CardService],
+  providers: [
+    AngularFireAuth,
+    AngularFireDatabase,
+    AuthService, CardService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

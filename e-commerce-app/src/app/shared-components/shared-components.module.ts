@@ -6,11 +6,16 @@ import {MaterialModule} from '../material.module';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import {FlexLayoutModule} from '@angular/flex-layout';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { SwiperComponent } from './swiper/swiper.component';
+import { SwiperModule } from 'angular2-useful-swiper';
+import {CoreComponentsModule} from '../core-components/core-components.module';
+import {AuthDialogComponent} from '../core-components/auth-dialog/auth-dialog.component';
 
 @NgModule({
   declarations: [
     HeaderComponent,
-    SidebarComponent
+    SidebarComponent,
+    SwiperComponent
   ],
   imports: [
     CommonModule,
@@ -18,13 +23,17 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
     MaterialModule,
     FlexLayoutModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    SwiperModule,
+    CoreComponentsModule
   ],
   exports: [
     HeaderComponent,
     SidebarComponent
   ],
-  providers: []
+  providers: [],
+  entryComponents: [AuthDialogComponent],
+
 })
 export class SharedComponentsModule {
 }

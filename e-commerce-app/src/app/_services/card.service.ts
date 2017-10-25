@@ -4,22 +4,22 @@ import {Injectable} from '@angular/core';
 @Injectable()
 export class CardService {
 
-  private _items: Array<String> = [];
+  private _products: Array<String> = [];
 
   constructor(private http: Http) {
-    this._items = ['Item 1', 'Item 2', 'Item 3'];
+    this._products = [];
   }
 
   public addItem(item: String) {
-    this._items.push(item);
+    this._products.push(item);
   }
 
-  get items(): Array<String> {
-    return this._items;
+  get products(): Array<String> {
+    return this._products;
   }
 
-  set items(value: Array<String>) {
-    this._items = value;
+  set products(value: Array<String>) {
+    this._products = value;
   }
 
 
