@@ -1,12 +1,10 @@
 @import "../../_helpers/variables";
 
 mat-sidenav-container {
-  min-height: 100vh;
+  height: 100vh;
 
   mat-sidenav {
     width: 250px;
-    display: flex;
-    flex-direction: column;
     @include box_shadow();
     border-right: 1px solid $border_color;
   }
@@ -15,18 +13,18 @@ mat-sidenav-container {
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 64px;
+    height: 63px;
     border-bottom: 1px solid $border_color;
   }
 
   .sidenav-content {
     padding: 20px
   }
-  .sidenav-footer {
-    position: fixed;
-    bottom: 0;
+  .sidenav-info {
     display: flex;
     justify-content: center;
+    position: absolute;
+    bottom: 0;
     button {
       color: $my_grey;
     }
@@ -34,13 +32,14 @@ mat-sidenav-container {
 }
 
 .content {
-  padding: 20px 0;
+  padding: 100px 0 20px 0;
   @media #{$gt_xs_size} {
-    padding: 20px;
+    padding: 100px 20px 20px 20px;
   }
 }
 
 .card-nav {
+  height: 100vh;
   width: 90vw;
   @media #{$gt_xs_size} {
     width: 50vw;

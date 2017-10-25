@@ -1,20 +1,12 @@
 <mat-sidenav-container>
 
-  <mat-sidenav mode="side" [opened]="!hideSidenav" #sideNav>
+  <mat-sidenav #sideNav  position="start" [mode]="hideSidenav ? 'over' : 'side'" [opened]="!hideSidenav">
 
     <div class="sidenav-header">
       <span>Sidenav</span>
     </div>
 
-    <div class="sidenav-content">
-      <p>1</p>
-      <p>2</p>
-      <p>3</p>
-    </div>
-
-    <span class="spacer-vertically"></span>
-
-    <div class="sidenav-footer">
+    <div class="sidenav-info">
       <button mat-button>
         <mat-icon>phone</mat-icon>
         <span>Contact</span>
@@ -24,6 +16,12 @@
         <mat-icon>info</mat-icon>
         <span>Info</span>
       </button>
+    </div>
+
+    <div class="sidenav-content">
+      <p>1</p>
+      <p>2</p>
+      <p>3</p>
     </div>
 
   </mat-sidenav>
@@ -43,6 +41,7 @@
       <app-card-list></app-card-list>
     </div>
   </mat-sidenav>
+
 </mat-sidenav-container>
 
 

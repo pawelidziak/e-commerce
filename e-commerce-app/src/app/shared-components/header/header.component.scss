@@ -1,8 +1,13 @@
 @import "../../_helpers/variables";
 
 .my-toolbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 2;
   font-family: 'Roboto', sans-serif;
-
+  //background: #00796B;
+  //color: $primary_white;
   &:first-child {
     padding-left: 0;
   }
@@ -95,4 +100,22 @@ input[type=search]:focus {
     color: $primary_white !important;
   }
 
+}
+
+.cos{
+  position: fixed;
+  top: 56px;
+  left: 0;
+  z-index: 2;
+  width: 100%;
+  background-color: $material_green;
+  padding: 5px 10px;
+  color: $primary_white;
+  @media #{$gt-xs_size} {
+    top: 64px;
+  }
+  @media #{$gt-sm_size} {
+    left: 250px;
+  }
+  @include box_shadow();
 }

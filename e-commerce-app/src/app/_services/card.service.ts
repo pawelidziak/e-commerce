@@ -13,16 +13,17 @@ export class CardService {
     this._orders = [];
   }
 
-  public addOrder(product: Product, quantity: number) {
+  public addOrder(product: Product) {
+    const foundedOrder = this._orders.find(x => x.product === product);
 
-    if (this._orders.some(x => x.product === product)) {
-      console.log('zawiera');
-      this._orders.find(x => x.product === product).quantity++;
+    if (foundedOrder) {
+      if (foundedOrder.quantity < product.quantity) {
+        foundedOrder.quantity++;
+      }
     } else {
-      console.log('nie zawiera');
       const order: IOrder = {
         product: product,
-        quantity: quantity
+        quantity: 1
       };
       this._orders.push(order);
     }
