@@ -3,8 +3,18 @@
 </div>
 
 <div *ngIf="_cardService.orders.length > 0">
+
   <div *ngFor="let order of _cardService.orders">
     <app-product [order]="order"></app-product>
   </div>
-</div>
 
+  <div class="check-out">
+    <div class="price">
+      <span>Total price: </span>
+      <span><strong>{{_cardService.totalPrice}}</strong></span>
+    </div>
+    <button mat-raised-button color="primary">CHECK OUT</button>
+  </div>
+
+
+</div>

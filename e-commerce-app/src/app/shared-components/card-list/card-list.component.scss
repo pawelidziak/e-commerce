@@ -1,3 +1,22 @@
-.no-products{
+@import '../../_helpers/variables';
+
+.no-products {
   padding: 20px;
+}
+
+.check-out {
+  margin-top: 20px;
+  border-top: 1px solid $border_color;
+  padding: 10px 20px 20px 20px;
+
+  .price {
+    display: flex;
+    justify-content: space-between;
+    font-size: 20px;
+    padding: 20px 0;
+  }
+
+  button {
+    width: 100%;
+  }
 }

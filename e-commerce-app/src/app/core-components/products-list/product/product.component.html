@@ -3,11 +3,23 @@
     <div class="product-image">
     <img class="" mat-card-image src="http://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
     </div>
-    <mat-card-content class="text-center">
-      <p class="product-name">{{product.name}}</p>
-      <p class="product-desc">{{product.desc}}</p>
-      <p class="product-price"><strong>Price: </strong>{{product.price}}</p>
-      <p class="product-stock">Quantity: {{product.quantity}}</p>
+    <mat-card-content>
+
+      <div class="info-container">
+
+        <div class="left">
+          <span class="product-name">{{product.name}}</span>
+          <span class="product-desc">{{product.desc}} asd dasd dsa sdsa dasds asd sdasad asdsad sad </span>
+        </div>
+
+        <div class="right">
+          <span class="product-price"><strong>{{product.price | currency: 'USD' : true}}</strong></span>
+          <span class="product-stock">In stock: {{product.quantity}}0</span>
+        </div>
+
+      </div>
+
+
     </mat-card-content>
     <mat-card-actions class="text-center">
       <button mat-button (click)="addProductToCard()">

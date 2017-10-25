@@ -18,7 +18,7 @@ export class SidebarComponent implements OnInit {
     iconRegistry.addSvgIcon('close', sanitizer.bypassSecurityTrustResourceUrl('assets/icons/close.svg'));
     iconRegistry.addSvgIcon('account-circle', sanitizer.bypassSecurityTrustResourceUrl('assets/icons/account-circle.svg'));
 
-    if (window.innerWidth < 960) {
+    if (window.innerWidth < 959) {
       this.hideSidenav = true;
     }
   }
@@ -28,7 +28,7 @@ export class SidebarComponent implements OnInit {
 
   @HostListener('window:resize', ['$event'])
   onResize(event: any) {
-    this.hideSidenav = event.target.innerWidth <= 960;
+    this.hideSidenav = event.target.innerWidth <= 959;
   }
 
 }

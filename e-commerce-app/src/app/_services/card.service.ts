@@ -7,6 +7,7 @@ import {Product} from '../_models/Product';
 export class CardService {
 
   private _orders: Array<IOrder> = [];
+  private _totalPrice = 0;
 
   constructor(private http: Http) {
     this._orders = [];
@@ -25,6 +26,7 @@ export class CardService {
       };
       this._orders.push(order);
     }
+    this.calculateTotalPrice();
   }
 
   public removeOrder(order: IOrder): void {
@@ -39,5 +41,20 @@ export class CardService {
     this._orders = value;
   }
 
+  get totalPrice(): number {
+    return this._totalPrice;
+  }
 
+
+  set totalPrice(value: number) {
+    this._totalPrice = value;
+  }
+
+  calculateTotalPrice() {
+    this.totalPrice = 0;
+    for (const order of this.orders) {
+      this._totalPrice += (order.product.price * order.quantity);
+    }
+    console.log(this._totalPrice);
+  }
 }

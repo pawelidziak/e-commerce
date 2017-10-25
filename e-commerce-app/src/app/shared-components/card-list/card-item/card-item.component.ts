@@ -20,12 +20,14 @@ export class ProductComponent implements OnInit {
   increaseQuantity() {
     if (this.order.quantity < this.order.product.quantity) {
       this.order.quantity++;
+      this._cardService.calculateTotalPrice();
     }
   }
 
   decreaseQuantity() {
     // if (this.order.quantity > 0) {
     this.order.quantity--;
+    this._cardService.calculateTotalPrice();
 
     if (this.order.quantity === 0) {
       this._cardService.removeOrder(this.order);

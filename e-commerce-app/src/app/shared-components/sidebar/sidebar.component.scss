@@ -34,7 +34,10 @@ mat-sidenav-container {
 }
 
 .content {
-  padding: 20px;
+  padding: 20px 0;
+  @media #{$gt_xs_size} {
+    padding: 20px;
+  }
 }
 
 .card-nav {
