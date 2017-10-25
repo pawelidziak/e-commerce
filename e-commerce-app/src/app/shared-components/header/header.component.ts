@@ -16,7 +16,7 @@ export class HeaderComponent implements OnInit {
   user: any;
 
 
-  constructor(private _authService: AuthService, private _cardService: CardService, public _dialog: MatDialog) {
+  constructor(public _authService: AuthService, private _cardService: CardService, public _dialog: MatDialog) {
     this.products = _cardService.products;
   }
 
@@ -30,7 +30,7 @@ export class HeaderComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`);
+      // this.user = result;
     });
   }
 

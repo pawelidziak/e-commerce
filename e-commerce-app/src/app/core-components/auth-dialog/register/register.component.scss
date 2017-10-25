@@ -5,9 +5,9 @@
   align-items: center;
   flex-direction: column;
 
-  padding: 50px 20px;
-  @media (min-width: 960px){
-    padding: 50px;
+  padding: 30px 20px;
+  @media (min-width: 1280px){
+    padding: 30px 40px;
     flex-direction: row;
   }
 
@@ -26,7 +26,7 @@
   .right{
     flex: 50%;
     flex-direction: column;
-    @media (min-width: 960px) {
+    @media (min-width: 1280px) {
       padding-left: 50px;
     }
     mat-form-field {

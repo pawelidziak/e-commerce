@@ -1,8 +1,17 @@
 /* You can add global styles to this file, and also import other style files */
 @import '~@angular/material/prebuilt-themes/indigo-pink.css';
 @import 'assets/bootstrap-grid.css';
+@import 'app/_helpers/variables';
 
-.text-center{
+html, body {
+  margin: 0;
+  height: 100%;
+  min-height: 100vh;
+  font-family: 'Roboto', sans-serif;
+}
+
+// align text
+.text-center {
   text-align: center;
 }
 
@@ -14,20 +23,32 @@
   text-align: left;
 }
 
-html, body {
-  margin: 0;
-  height:100%;
-  min-height:100vh;
-}
-
+// spacers
 .spacer-horizontally {
   flex: 1 1 auto;
 }
 
-.spacer-vertically{
+.spacer-vertically {
   flex: 1;
 }
 
-.full-width {
-  width: 100%;
+// messages
+@mixin msg-box{
+  padding: 15px;
+  color: $primary_white;
+  @include box_shadow();
+  text-align: center;
+  margin: 10px 0;
+  border-radius: 2px;
+  font-size: 90%;
+}
+
+.success-msg {
+  background: $material_green;
+  @include msg-box;
+}
+
+.error-msg{
+  background: $material_red;
+  @include msg-box;
 }

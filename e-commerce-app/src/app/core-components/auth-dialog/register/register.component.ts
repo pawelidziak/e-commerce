@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {FormControl, FormGroup, ValidationErrors, Validator, Validators} from '@angular/forms';
+import {FormControl, Validators} from '@angular/forms';
+import {AuthService} from '../../../_services/auth.service';
 
 
 @Component({
@@ -17,13 +18,13 @@ export class RegisterComponent implements OnInit {
 
   hidePassword = true;
 
+  error: string;
+  response: string;
 
-  constructor() {
+  constructor(private _authService: AuthService) {
   }
 
-
   ngOnInit() {
-
   }
 
   getNameErrorMsg(): string {
@@ -39,9 +40,20 @@ export class RegisterComponent implements OnInit {
     return this.password.hasError('required') ? 'You must enter a value' : '';
   }
 
-
   register(): void {
-    if (this.name.valid && this.email.valid && this.password.valid && this.confirmPassword.valid && this.password.value === this.confirmPassword.value) {
+    if (this.name.valid && this.email.valid && this.password.valid && this.confirmPassword.valid &&
+      this.password.value === this.confirmPassword.value) {
+
+      this._authService.emailSignUp(this.name.value, this.email.value, this.password.value)
+        .then(() => {
+          this.response = 'You have been registered! You can log in now.';
+          this.error = '';
+        })
+        .catch((error: any) => {
+          this.error = error;
+          this.response = '';
+        });
+
 
     } else {
       this.name.markAsTouched();

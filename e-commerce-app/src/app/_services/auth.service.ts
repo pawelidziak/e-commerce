@@ -80,6 +80,7 @@ export class AuthService {
       .then((user) => {
         this.user = user;
         // this.router.navigate(['/home']);
+        console.log(this.user);
         this.loading = false;
       })
       .catch((error: any) => {
