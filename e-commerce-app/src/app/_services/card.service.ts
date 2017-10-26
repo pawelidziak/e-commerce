@@ -11,19 +11,18 @@ export class CardService {
 
   constructor(private http: Http) {
     this._orders = [];
-    console.log(JSON.parse(localStorage.getItem('orders')));
     this.parseOrdersFromLocalStorage(JSON.parse(localStorage.getItem('orders')));
   }
 
   // methods
-
   private parseOrdersFromLocalStorage(lists: any[]) {
     for (const list of lists) {
       switch (list.name) {
         case 'orders':
           for (const order of list.list) {
             const tmpOrder: IOrder = {
-              product: new Product(order.product._name, order.product._desc, order.product._price, order.product._quantity),
+              product: new Product(order.product._id, order.product._name, order.product._desc, order.product._price,
+                order.product._quantity),
               quantity: order.quantity
             };
             this.orders.push(tmpOrder);
@@ -34,8 +33,7 @@ export class CardService {
   }
 
   public addProductToOrderList(product: Product) {
-    const foundedOrder = this._orders.find(x => x.product === product);
-
+    const foundedOrder = this._orders.find(x => x.product.id === product.id);
     if (foundedOrder) {
       if (foundedOrder.quantity < product.quantity) {
         foundedOrder.quantity++;
@@ -71,7 +69,7 @@ export class CardService {
     localStorage.setItem('orders', JSON.stringify(orderList));
   }
 
-  removeOrderListFromLocalStorage() {
+  private removeOrderListFromLocalStorage() {
     localStorage.removeItem('orders');
   }
 
