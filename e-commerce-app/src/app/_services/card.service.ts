@@ -11,9 +11,29 @@ export class CardService {
 
   constructor(private http: Http) {
     this._orders = [];
+    console.log(JSON.parse(localStorage.getItem('orders')));
+    this.parseOrdersFromLocalStorage(JSON.parse(localStorage.getItem('orders')));
   }
 
-  public addOrder(product: Product) {
+  // methods
+
+  private parseOrdersFromLocalStorage(lists: any[]) {
+    for (const list of lists) {
+      switch (list.name) {
+        case 'orders':
+          for (const order of list.list) {
+            const tmpOrder: IOrder = {
+              product: new Product(order.product._name, order.product._desc, order.product._price, order.product._quantity),
+              quantity: order.quantity
+            };
+            this.orders.push(tmpOrder);
+          }
+          break;
+      }
+    }
+  }
+
+  public addProductToOrderList(product: Product) {
     const foundedOrder = this._orders.find(x => x.product === product);
 
     if (foundedOrder) {
@@ -25,15 +45,38 @@ export class CardService {
         product: product,
         quantity: 1
       };
-      this._orders.push(order);
+      this.orders.push(order);
+      this.saveOrderListInLocalStorage();
     }
     this.calculateTotalPrice();
   }
 
   public removeOrder(order: IOrder): void {
     this._orders = this._orders.filter(obj => obj !== order);
+    this.saveOrderListInLocalStorage();
   }
 
+
+  // helpers
+  calculateTotalPrice() {
+    this.totalPrice = 0;
+    for (const order of this.orders) {
+      this._totalPrice += (order.product.price * order.quantity);
+    }
+  }
+
+  saveOrderListInLocalStorage(): void {
+    const orderList = [{name: 'orders', list: this.orders}];
+    this.removeOrderListFromLocalStorage();
+    localStorage.setItem('orders', JSON.stringify(orderList));
+  }
+
+  removeOrderListFromLocalStorage() {
+    localStorage.removeItem('orders');
+  }
+
+
+  // getters & setters
   get orders(): Array<IOrder> {
     return this._orders;
   }
@@ -49,13 +92,5 @@ export class CardService {
 
   set totalPrice(value: number) {
     this._totalPrice = value;
-  }
-
-  calculateTotalPrice() {
-    this.totalPrice = 0;
-    for (const order of this.orders) {
-      this._totalPrice += (order.product.price * order.quantity);
-    }
-    console.log(this._totalPrice);
   }
 }

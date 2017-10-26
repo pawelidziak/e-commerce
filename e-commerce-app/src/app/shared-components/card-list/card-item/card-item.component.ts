@@ -21,16 +21,19 @@ export class ProductComponent implements OnInit {
     if (this.order.quantity < this.order.product.quantity) {
       this.order.quantity++;
       this._cardService.calculateTotalPrice();
+      this._cardService.saveOrderListInLocalStorage();
     }
   }
 
   decreaseQuantity() {
-    // if (this.order.quantity > 0) {
-    this.order.quantity--;
-    this._cardService.calculateTotalPrice();
+    if (this.order.quantity > 0) {
+      this.order.quantity--;
+      this._cardService.calculateTotalPrice();
 
-    if (this.order.quantity === 0) {
-      this._cardService.removeOrder(this.order);
+      if (this.order.quantity === 0) {
+        this._cardService.removeOrder(this.order);
+      }
+      this._cardService.saveOrderListInLocalStorage();
     }
   }
 

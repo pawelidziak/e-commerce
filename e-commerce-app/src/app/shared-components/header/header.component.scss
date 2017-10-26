@@ -6,14 +6,16 @@
   left: 0;
   z-index: 2;
   font-family: 'Roboto', sans-serif;
-  //background: #00796B;
-  //color: $primary_white;
+  padding-right: 20px !important;
+  .title {
+    @media #{$gt-sm_size} {
+      padding-left: 270px;
+    }
+  }
   &:first-child {
-    padding-left: 0;
+    padding: 0;
   }
-  &:last-child {
-    padding-right: 0;
-  }
+
   @include box_shadow();
 }
 
@@ -111,11 +113,5 @@ input[type=search]:focus {
   background-color: $material_green;
   padding: 5px 10px;
   color: $primary_white;
-  @media #{$gt-xs_size} {
-    top: 64px;
-  }
-  @media #{$gt-sm_size} {
-    left: 250px;
-  }
   @include box_shadow();
 }
