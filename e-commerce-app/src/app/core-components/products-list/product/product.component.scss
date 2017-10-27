@@ -42,9 +42,17 @@
   }
 }
 mat-card-actions {
-
   button {
     padding: 0;
     margin: 0
   }
+}
+
+.inStock{
+  color: $material_green;
+  font-weight: 700;
+}
+.notInStock{
+  color: $material_red;
+  font-weight: 700;
 }

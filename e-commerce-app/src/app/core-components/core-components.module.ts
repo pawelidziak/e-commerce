@@ -8,6 +8,8 @@ import { LoginComponent } from './auth-dialog/login/login.component';
 import { RegisterComponent } from './auth-dialog/register/register.component';
 import { ProductsListComponent } from './products-list/products-list.component';
 import { ProductComponent } from './products-list/product/product.component';
+import {FlexLayoutModule} from '@angular/flex-layout';
+import {SearchFilterPipe} from '../_helpers/SearchFilterPipe';
 
 @NgModule({
   declarations: [
@@ -15,14 +17,16 @@ import { ProductComponent } from './products-list/product/product.component';
     LoginComponent,
     RegisterComponent,
     ProductsListComponent,
-    ProductComponent
+    ProductComponent,
+    SearchFilterPipe
   ],
   imports: [
     CommonModule,
     RouterModule,
     FormsModule,
     ReactiveFormsModule,
-    MaterialModule
+    MaterialModule,
+    FlexLayoutModule
   ],
   exports: [
     // LoginDialogComponent

@@ -3,6 +3,8 @@ import {CardService} from '../../_services/card.service';
 import {AuthService} from '../../_services/auth.service';
 import {MatDialog} from '@angular/material';
 import {AuthDialogComponent} from '../../core-components/auth-dialog/auth-dialog.component';
+import {SearchService} from '../../_services/search.service';
+
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -16,7 +18,7 @@ export class HeaderComponent implements OnInit {
   user: any;
 
 
-  constructor(public _authService: AuthService, public _cardService: CardService, public _dialog: MatDialog) {
+  constructor(public _authService: AuthService, public _cardService: CardService, public _dialog: MatDialog, public _searchService: SearchService) {
   }
 
   ngOnInit() {

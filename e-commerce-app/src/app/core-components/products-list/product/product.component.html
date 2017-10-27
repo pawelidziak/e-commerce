@@ -10,19 +10,23 @@
 
         <div class="left">
           <span class="product-name">{{product.name}}</span>
-          <span class="product-desc">{{product.desc}} asd dasd dsa sdsa dasds asd sdasad asdsad sad </span>
+          <span class="product-desc">{{product.desc}}</span>
         </div>
 
         <div class="right">
           <span class="product-price"><strong>{{product.price | currency: 'USD' : true}}</strong></span>
-          <span class="product-stock">In stock: {{product.quantity}}0</span>
+          <span class="product-stock">In stock:
+            <span [ngClass]="{'inStock' : product.quantity > 0, 'notInStock': product.quantity === 0}">
+              {{product.quantity}}
+            </span>
+          </span>
         </div>
 
       </div>
     </mat-card-content>
 
     <mat-card-actions class="text-center">
-      <button mat-button (click)="addProductToCard()">
+      <button mat-button (click)="addProductToCard()" [disabled]="product.quantity === 0">
         <mat-icon>add_shopping_cart</mat-icon>
         <span>Add</span>
       </button>

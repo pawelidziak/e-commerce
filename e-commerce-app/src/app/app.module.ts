@@ -12,6 +12,7 @@ import {CardService} from './_services/card.service';
 import {AuthService} from './_services/auth.service';
 import {AngularFireDatabase} from 'angularfire2/database';
 import {AngularFireAuth} from 'angularfire2/auth';
+import {SearchService} from './_services/search.service';
 
 export const firebaseConfig = {
   apiKey: 'AIzaSyCxYvJHE-K5jZd5A5l2fy5olS9HA1tMq-I',
@@ -40,7 +41,10 @@ export const firebaseConfig = {
   providers: [
     AngularFireAuth,
     AngularFireDatabase,
-    AuthService, CardService],
+    AuthService,
+    CardService,
+    SearchService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {

@@ -9,7 +9,7 @@
   <span class="spacer-horizontally"></span>
 
   <div class="search">
-    <input type="search" placeholder="Search">
+    <input type="search" placeholder="Search" [(ngModel)]="_searchService.queryString">
   </div>
 
   <button mat-button (click)="cardNav.toggle()">

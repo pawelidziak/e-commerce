@@ -4,6 +4,16 @@
   padding: 20px;
 }
 
+.card-header {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  mat-icon {
+    color: $material_red;
+    cursor: pointer;
+  }
+}
+
 .check-out {
   margin-top: 20px;
   padding: 10px 20px 20px 20px;
