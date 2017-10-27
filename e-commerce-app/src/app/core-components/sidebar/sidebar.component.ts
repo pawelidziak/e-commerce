@@ -11,12 +11,8 @@ import {DomSanitizer} from '@angular/platform-browser';
 export class SidebarComponent implements OnInit {
 
   public hideSidenav = false;
-  @ViewChild('cardNav') cardNav: any;
 
-  constructor(iconRegistry: MatIconRegistry, sanitizer: DomSanitizer) {
-    iconRegistry.addSvgIcon('menu', sanitizer.bypassSecurityTrustResourceUrl('assets/icons/menu.svg'));
-    iconRegistry.addSvgIcon('close', sanitizer.bypassSecurityTrustResourceUrl('assets/icons/close.svg'));
-    iconRegistry.addSvgIcon('account-circle', sanitizer.bypassSecurityTrustResourceUrl('assets/icons/account-circle.svg'));
+  constructor() {
 
     if (window.innerWidth < 959) {
       this.hideSidenav = true;

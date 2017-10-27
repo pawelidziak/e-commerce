@@ -33,12 +33,9 @@ mat-sidenav-container {
 
 .content {
   padding: 65px 0 20px 0;
-  //@media #{$gt_xs_size} {
-  //  padding: 65px 20px 20px 20px;
-  //}
 }
 
-.card-nav {
+.cart-nav {
   height: 100vh;
   width: 90vw;
   @media #{$gt_xs_size} {
@@ -50,7 +47,7 @@ mat-sidenav-container {
   @media #{$gt_md_size} {
     width: 30vw;
   }
-  .cardNav-header {
+  .cart-nav-header {
     background: $material_green;
     padding: 20px;
     @include box_shadow;

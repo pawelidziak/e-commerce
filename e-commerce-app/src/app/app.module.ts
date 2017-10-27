@@ -4,7 +4,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {AppComponent} from './app.component';
 import {AngularFireModule} from 'angularfire2';
 import {HttpModule} from '@angular/http';
-import {SharedComponentsModule} from './shared-components/shared-components.module';
+// import {SharedComponentsModule} from './shared-components/shared-components.module';
 import {MaterialModule} from './material.module';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {FlexLayoutModule} from '@angular/flex-layout';
@@ -13,6 +13,7 @@ import {AuthService} from './_services/auth.service';
 import {AngularFireDatabase} from 'angularfire2/database';
 import {AngularFireAuth} from 'angularfire2/auth';
 import {SearchService} from './_services/search.service';
+import {CoreComponentsModule} from "./core-components/core-components.module";
 
 export const firebaseConfig = {
   apiKey: 'AIzaSyCxYvJHE-K5jZd5A5l2fy5olS9HA1tMq-I',
@@ -33,10 +34,11 @@ export const firebaseConfig = {
     MaterialModule,
     BrowserAnimationsModule,
     AngularFireModule.initializeApp(firebaseConfig),
-    SharedComponentsModule,
+    // SharedComponentsModule,
     FormsModule,
     ReactiveFormsModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    CoreComponentsModule
   ],
   providers: [
     AngularFireAuth,

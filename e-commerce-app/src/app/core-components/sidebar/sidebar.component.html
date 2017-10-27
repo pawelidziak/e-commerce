@@ -32,13 +32,13 @@
     <app-products-list></app-products-list>
   </div>
 
-  <mat-sidenav #cardNav position="end" class="card-nav">
-    <div class="cardNav-header">
+  <mat-sidenav #cardNav position="end" class="cart-nav">
+    <div class="cart-nav-header">
       <mat-icon (click)="cardNav.close()">clear</mat-icon>
-      <span>Shopping Card</span>
+      <span>Shopping Cart</span>
     </div>
-    <div class="cardNav-content">
-      <app-card-list></app-card-list>
+    <div class="card-nav-content">
+      <app-shopping-cart></app-shopping-cart>
     </div>
   </mat-sidenav>
 

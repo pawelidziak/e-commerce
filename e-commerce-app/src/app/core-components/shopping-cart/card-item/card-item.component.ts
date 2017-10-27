@@ -3,11 +3,11 @@ import {IOrder} from '../../../_models/IOrder';
 import {CardService} from '../../../_services/card.service';
 
 @Component({
-  selector: 'app-product',
+  selector: 'app-card-item',
   templateUrl: './card-item.component.html',
   styleUrls: ['./card-item.component.scss']
 })
-export class ProductComponent implements OnInit {
+export class CardItemComponent implements OnInit {
 
   @Input('order') order: IOrder;
 

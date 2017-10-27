@@ -1,6 +1,6 @@
 <div class="product-list-header">
   <mat-form-field floatPlaceholder="never">
-    <mat-select placeholder="Sort" [(ngModel)]="sortSelectedValue" name="food">
+    <mat-select placeholder="Sort">
       <mat-option *ngFor="let sort of sortTypes" [value]="sort.value" (click)="sortProducts(sort.value)">
         {{sort.viewValue}}
       </mat-option>

@@ -6,11 +6,11 @@ import {DataSource} from '@angular/cdk/collections';
 import {IOrder} from '../../_models/IOrder';
 
 @Component({
-  selector: 'app-card-list',
-  templateUrl: './card-list.component.html',
-  styleUrls: ['./card-list.component.scss']
+  selector: 'app-shopping-cart',
+  templateUrl: './shopping-cart.component.html',
+  styleUrls: ['./shopping-cart.component.scss']
 })
-export class CardComponent implements OnInit {
+export class ShoppingCartComponent implements OnInit {
 
 
   constructor(public _cardService: CardService) {
