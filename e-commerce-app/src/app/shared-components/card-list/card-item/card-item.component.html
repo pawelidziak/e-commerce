@@ -2,17 +2,18 @@
 
   <div class="avatar">IMG</div>
 
-  <div class="info">
-    <span>{{order.product.name}}</span>
-    <span><strong>{{order.product.price}}</strong></span>
+  <div class="name">
+    <span>{{order.product.name}} das das dsad sad sdas sad asd sad as</span>
+  </div>
+
+  <div class="price">
+    <span><strong>{{order.product.price | currency: 'USD' : true}}</strong></span>
   </div>
 
   <div class="quantity">
-
     <mat-icon class="fail-color" (click)="decreaseQuantity()">remove</mat-icon>
     <span class="quantity-product">{{order.quantity}}</span>
     <mat-icon class="success-color" (click)="increaseQuantity()">add</mat-icon>
-
   </div>
 
 </div>

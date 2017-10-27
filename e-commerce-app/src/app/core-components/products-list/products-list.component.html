@@ -1,32 +1,72 @@
-<div class="product-list">
+<div class="product-list-header">
+  <mat-form-field floatPlaceholder="never">
+    <mat-select placeholder="Sort" [(ngModel)]="sortSelectedValue" name="food">
+      <mat-option *ngFor="let sort of sortTypes" [value]="sort.value">
+        {{sort.viewValue}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
 
-  <app-product *ngFor="let product of products" [product]="product"></app-product>
-
+  <mat-icon [ngClass]="{'active': !displayList}" (click)="displayList = false">view_module</mat-icon>
+  <mat-icon [ngClass]="{'active': displayList}" (click)="displayList = true">list</mat-icon>
 </div>
 
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-sadas
+<div class="product-miniatures" *ngIf="!displayList">
+  <app-product *ngFor="let product of products" [product]="product"></app-product>
+</div>
+
+<div class="product-list" *ngIf="displayList">
+  <div class="example-container mat-elevation-z8">
+    <mat-table #table [dataSource]="dataSource" >
+
+      <!--- Note that these columns can be defined in any order.
+            The actual rendered columns are set as a property on the row definition" -->
+
+      <!-- Position Column -->
+      <ng-container matColumnDef="Image">
+        <mat-header-cell *matHeaderCellDef> Image </mat-header-cell>
+        <mat-cell *matCellDef="let element"> Image </mat-cell>
+      </ng-container>
+
+      <!-- Name Column -->
+      <ng-container matColumnDef="Name">
+        <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>
+      </ng-container>
+
+      <!-- Weight Column -->
+      <ng-container matColumnDef="Description">
+        <mat-header-cell *matHeaderCellDef> Description </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.desc}} </mat-cell>
+      </ng-container>
+
+      <!-- Color Column -->
+      <ng-container matColumnDef="Price">
+        <mat-header-cell *matHeaderCellDef> Price </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.price | currency: 'USD' : true}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="Quantity">
+        <mat-header-cell *matHeaderCellDef> Quantity </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.quantity}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="Actions">
+        <mat-header-cell *matHeaderCellDef> Actions </mat-header-cell>
+        <mat-cell *matCellDef="let element">
+          <button mat-button (click)="addProductToCard(element)">
+            <mat-icon>add_shopping_cart</mat-icon>
+            <span>Add</span>
+          </button>
+          <button mat-button>
+            <mat-icon>more_horiz</mat-icon>
+            <span>More</span>
+          </button>
+        </mat-cell>
+      </ng-container>
+
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+  </div>
+</div>
