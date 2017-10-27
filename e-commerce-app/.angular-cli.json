@@ -19,13 +19,11 @@
       "testTsconfig": "tsconfig.spec.json",
       "prefix": "app",
       "styles": [
-        "styles.scss",
-        "../node_modules/swiper/dist/css/swiper.css"
+        "styles.scss"
 
       ],
       "scripts": [
-        "../node_modules/hammerjs/hammer.min.js",
-        "../node_modules/swiper/dist/js/swiper.js"
+        "../node_modules/hammerjs/hammer.min.js"
       ],
       "environmentSource": "environments/environment.ts",
       "environments": {
