@@ -2,7 +2,7 @@
 
   <mat-sidenav #sideNav  position="start" [mode]="hideSidenav ? 'over' : 'side'" [opened]="!hideSidenav">
 
-    <div class="sidenav-header">
+    <div class="sidenav-header" [routerLink]="['/books', '']" (click)="hideSidenav? sideNav.close() : null">
       <span>Sidenav</span>
     </div>
 
@@ -19,9 +19,19 @@
     </div>
 
     <div class="sidenav-content">
-      <p>1</p>
-      <p>2</p>
-      <p>3</p>
+
+      <div class="category-header">Category:</div>
+
+      <div *ngIf="loading" class="my-spinner">
+        <mat-spinner></mat-spinner>
+      </div>
+
+      <ul *ngIf="!loading">
+        <li *ngFor="let category of _categories" class="list-item" [routerLink]="['/books', category.name]" [routerLinkActive]="['active']"
+            (click)="hideSidenav? sideNav.close() : null">
+          <span>{{category.name}}</span>
+        </li>
+      </ul>
     </div>
 
   </mat-sidenav>
@@ -29,7 +39,12 @@
   <app-header [sideNav]="sideNav" [cardNav]="cardNav"></app-header>
 
   <div class="content">
-    <app-products-list></app-products-list>
+    <router-outlet></router-outlet>
+    <!--<app-arrayBooks-list></app-arrayBooks-list>-->
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    sdsds
+    <br>
   </div>
 
   <mat-sidenav #cardNav position="end" class="cart-nav">

@@ -13,12 +13,50 @@ mat-sidenav-container {
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 63px;
+    height: 55px;
     border-bottom: 1px solid $border_color;
+
+    &:focus {
+      outline: none;
+    }
+    &:hover {
+      cursor: pointer;
+    }
   }
 
   .sidenav-content {
-    padding: 20px
+    .category-header {
+      padding: 20px 10px 10px 10px;
+      color: #212121;
+      font-weight: 700;
+      font-size: 13px;
+    }
+    ul {
+      list-style-type: none;
+      padding: 0;
+      text-transform: uppercase;
+      font-size: 80%;
+    }
+    .list-item {
+      width: calc(100% - 40px);
+      transition: all 0.2s;
+      padding: 20px;
+      //text-align: center;
+      &:hover {
+        background: $border_color;
+        cursor: pointer;
+        font-weight: 700;
+      }
+
+      &:focus {
+        outline: none;
+      }
+    }
+    .active {
+      background-color: $border_color;
+      color: $material_indigo;
+      font-weight: 700;
+    }
   }
   .sidenav-info {
     display: flex;

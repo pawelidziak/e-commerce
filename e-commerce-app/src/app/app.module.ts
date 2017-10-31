@@ -13,7 +13,10 @@ import {AuthService} from './_services/auth.service';
 import {AngularFireDatabase} from 'angularfire2/database';
 import {AngularFireAuth} from 'angularfire2/auth';
 import {SearchService} from './_services/search.service';
-import {CoreComponentsModule} from "./core-components/core-components.module";
+import {CoreComponentsModule} from './core-components/core-components.module';
+import {routing} from './app.routing';
+import {BookService} from './_services/book.service';
+import {CategoryService} from './_services/category.service';
 
 export const firebaseConfig = {
   apiKey: 'AIzaSyCxYvJHE-K5jZd5A5l2fy5olS9HA1tMq-I',
@@ -31,6 +34,7 @@ export const firebaseConfig = {
   imports: [
     BrowserModule,
     HttpModule,
+    routing,
     MaterialModule,
     BrowserAnimationsModule,
     AngularFireModule.initializeApp(firebaseConfig),
@@ -45,7 +49,9 @@ export const firebaseConfig = {
     AngularFireDatabase,
     AuthService,
     CardService,
-    SearchService
+    SearchService,
+    BookService,
+    CategoryService
   ],
   bootstrap: [AppComponent]
 })

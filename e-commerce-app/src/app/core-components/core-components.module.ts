@@ -13,6 +13,7 @@ import {HeaderComponent} from './header/header.component';
 import {ShoppingCartComponent} from './shopping-cart/shopping-cart.component';
 import {CardItemComponent} from './shopping-cart/card-item/card-item.component';
 import {SharedComponentsModule} from '../shared-components/shared-components.module';
+import { AdminPanelComponent } from './admin-panel/admin-panel.component';
 
 @NgModule({
   declarations: [
@@ -23,8 +24,8 @@ import {SharedComponentsModule} from '../shared-components/shared-components.mod
     RegisterComponent,
 
     ShoppingCartComponent,
-    CardItemComponent
-
+    CardItemComponent,
+    AdminPanelComponent
   ],
   imports: [
     CommonModule,
@@ -39,7 +40,9 @@ import {SharedComponentsModule} from '../shared-components/shared-components.mod
     SidebarComponent,
     CardItemComponent,
   ],
-  providers: [],
+  providers: [
+    SearchFilterPipe
+  ],
   entryComponents: [AuthDialogComponent],
 
 })

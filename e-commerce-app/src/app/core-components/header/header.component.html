@@ -1,16 +1,36 @@
-<mat-toolbar color="primary" class="my-toolbar">
+<div class="my-toolbar" [ngClass]="{'my-toolbar-big': hideSidenav, 'my-toolbar-small': !hideSidenav}">
 
-  <button mat-button fxHide fxShow.xs="true" fxShow.sm="true" (click)="sideNav.toggle()">
+  <button mat-button fxHide fxShow.sm="true" (click)="sideNav.toggle()">
     <mat-icon>menu</mat-icon>
   </button>
 
-  <span class="title" fxHide.xs="true">Title</span>
+  <span fxHide.xs="true" class="spacer-vertically"></span>
 
-  <span class="spacer-horizontally"></span>
+  <button mat-button fxHide fxShow.xs="true" (click)="sideNav.toggle()">
+    <mat-icon>menu</mat-icon>
+  </button>
 
-  <div class="search">
-    <input type="search" placeholder="Search" [(ngModel)]="_searchService.queryString">
-  </div>
+  <button mat-button *ngIf="!searchInputFocused" (click)="searchInputFocused = true">
+    <mat-icon>search</mat-icon>
+    <span fxHide.xs="true">Search</span>
+  </button>
+
+  <form class="search-form" *ngIf="searchInputFocused">
+    <mat-form-field class="full-width" floatPlaceholder="never">
+      <input placeholder="Search" matInput [formControl]="myControl" [matAutocomplete]="auto">
+      <mat-autocomplete #auto [displayWith]="displayFn">
+        <div *ngFor="let option of filteredOptions | async; let i=index">
+          <mat-option *ngIf="i<10" [value]="option">
+            {{ option.title }}
+          </mat-option>
+        </div>
+      </mat-autocomplete>
+    </mat-form-field>
+    <button mat-button (click)="searchInputFocused = false" class="close-button">
+      <mat-icon>close</mat-icon>
+    </button>
+  </form>
+
 
   <button mat-button (click)="cardNav.toggle()">
     <mat-icon>shopping_cart</mat-icon>
@@ -25,13 +45,14 @@
   </button>
 
   <button mat-button [matMenuTriggerFor]="userSettings" *ngIf="_authService.currentUser !== null">
-    <mat-icon>account_circle</mat-icon>
+    <mat-icon class="text-right">account_circle</mat-icon>
     <span fxHide.xs="true">Paweł Idziak</span>
     <mat-icon fxShow fxHide.xs="true">keyboard_arrow_down</mat-icon>
   </button>
 
-</mat-toolbar>
+</div>
 
+<!-- menu options -->
 <mat-menu #userSettings="matMenu">
   <div mat-menu-item class="text-center">
     Avatar
@@ -49,7 +70,3 @@
     <span>Logout</span>
   </button>
 </mat-menu>
-
-<!--<div class="cos" fxHide fxShow.xs="true" fxShow.sm="true">-->
-  <!--hehe-->
-<!--</div>-->

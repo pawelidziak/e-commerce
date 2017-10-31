@@ -1,7 +1,7 @@
 import {Http} from '@angular/http';
 import {Injectable} from '@angular/core';
 import {IOrder} from '../_models/IOrder';
-import {Product} from '../_models/Product';
+import {IBook} from '../_models/IBook';
 
 @Injectable()
 export class CardService {
@@ -23,8 +23,14 @@ export class CardService {
         case 'orders':
           for (const order of list.list) {
             const tmpOrder: IOrder = {
-              product: new Product(order.product._id, order.product._name, order.product._desc, order.product._price,
-                order.product._quantity),
+              book: {
+                title: order.book.title,
+                desc: order.book.desc,
+                author: order.book.author,
+                isbn: order.book.isbn,
+                price: order.book.price,
+                quantity: order.book.quantity,
+              },
               quantity: order.quantity
             };
             this.orders.push(tmpOrder);
@@ -35,11 +41,11 @@ export class CardService {
   }
 
 
-  public addProductToOrderList(product: Product) {
-    const foundedOrder = this._orders.find(x => x.product.id === product.id);
-    if (!foundedOrder && product.quantity > 0) {
+  public addBookToOrderList(book: IBook) {
+    const foundedOrder = this._orders.find(x => x.book.isbn === book.isbn);
+    if (!foundedOrder && book.quantity > 0) {
       const order: IOrder = {
-        product: product,
+        book: book,
         quantity: 1
       };
       this.orders.push(order);
@@ -58,7 +64,7 @@ export class CardService {
   calculateTotalPrice() {
     this.totalPrice = 0;
     for (const order of this.orders) {
-      this._totalPrice += (order.product.price * order.quantity);
+      this._totalPrice += (order.book.price * order.quantity);
     }
   }
 

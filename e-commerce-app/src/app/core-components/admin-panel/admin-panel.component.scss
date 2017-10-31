@@ -1,35 +1,32 @@
 @import '../../_helpers/variables';
 
-.product-list-header {
+.categories-container {
   display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  padding: 0 10px;
-  mat-icon {
-    color: darken($border_color, 20%);
-    font-size: 30px;
-    width: 30px;
-    height: 30px;
-    cursor: pointer;
-    transition: all, 0.2s;
-    padding: 0 10px;
-    &:hover {
-      color: $material_teal;
-    }
+  flex-direction: column;
+  @media #{$gt-sm_size} {
+    flex-direction: row;
   }
-  .active {
-    color: $material_teal;
+  justify-content: center;
+}
+
+.panel {
+  padding: 10px;
+  width: calc(100vw - 20px);
+  @media #{$gt-sm_size} {
+    width: calc(33vw - 100px);
   }
 }
 
-.product-miniatures {
+.add-book, .remove-book, .update-book, .add-category, .remove-category, .update-category {
   display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
+  flex-direction: column;
+  align-items: center;
   justify-content: center;
-  @media screen and (min-width: 790px) {
-    justify-content: flex-start;
-  }
+}
+
+.test {
+  display: flex;
+  justify-content: center;
 }
 
 .product-list {

@@ -1,0 +1,13 @@
+<div class="product-list-content" [routerLink]="['/book', book.isbn]">
+  <div class="avatar" fxHide.xs="true">IMAGE</div>
+  <div class="name">{{book.title}}</div>
+  <div class="desc" fxHide.xs="true">{{book.desc}}</div>
+  <div class="price"><strong>{{book.price | currency: 'USD' : true}}</strong></div>
+  <div class="quantity">quan. {{book.quantity}}</div>
+  <div class="actions">
+    <button mat-button (click)="addBookToCard()" [disabled]="book.quantity === 0">
+      <mat-icon>add_shopping_cart</mat-icon>
+      <span>Add</span>
+    </button>
+  </div>
+</div>

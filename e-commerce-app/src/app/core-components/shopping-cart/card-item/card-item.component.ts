@@ -18,7 +18,7 @@ export class CardItemComponent implements OnInit {
   }
 
   increaseQuantity() {
-    if (this.order.quantity < this.order.product.quantity) {
+    if (this.order.quantity < this.order.book.quantity) {
       this.order.quantity++;
       this._cardService.calculateTotalPrice();
       this._cardService.saveOrderListInLocalStorage();

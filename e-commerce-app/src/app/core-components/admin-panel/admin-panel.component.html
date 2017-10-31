@@ -1,0 +1,32 @@
+<mat-tab-group #myTabGroup>
+  <mat-tab label="Books">
+
+    <div class="book-container">
+
+      <!--<app-arrayBooks-list></app-arrayBooks-list>-->
+
+      <app-products-display></app-products-display>
+    </div>
+  </mat-tab>
+
+  <mat-tab label="Categories">
+
+    <div class="categories-container">
+
+        <mat-form-field style="width: 100%">
+          <input matInput placeholder="Search category">
+        </mat-form-field>
+
+    </div>
+
+  </mat-tab>
+
+</mat-tab-group>
+
+<!--<ul>-->
+<!--<li class="text" *ngFor="let item of categories | async">-->
+<!--<p>{{item.name}}</p>-->
+<!--</li>-->
+<!--</ul>-->
+
+<!--<button (click)="addToList()">CLICK</button>-->

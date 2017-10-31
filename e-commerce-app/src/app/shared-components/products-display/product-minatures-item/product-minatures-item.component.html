@@ -9,15 +9,15 @@
       <div class="info-container">
 
         <div class="left">
-          <span class="product-name">{{product.name}}</span>
-          <span class="product-desc">{{product.desc}}</span>
+          <span class="product-name">{{book.title}}</span>
+          <span class="product-desc">{{book.desc}}</span>
         </div>
 
         <div class="right">
-          <span class="product-price"><strong>{{product.price | currency: 'USD' : true}}</strong></span>
+          <span class="product-price"><strong>{{book.price | currency: 'USD' : true}}</strong></span>
           <span class="product-stock">In stock:
-            <span [ngClass]="{'inStock' : product.quantity > 0, 'notInStock': product.quantity === 0}">
-              {{product.quantity}}
+            <span [ngClass]="{'inStock' : book.quantity > 0, 'notInStock': book.quantity === 0}">
+              {{book.quantity}}
             </span>
           </span>
         </div>
@@ -26,11 +26,11 @@
     </mat-card-content>
 
     <mat-card-actions class="text-center">
-      <button mat-button (click)="addProductToCard()" [disabled]="product.quantity === 0">
+      <button mat-button (click)="addProductToCard()" [disabled]="book.quantity === 0">
         <mat-icon>add_shopping_cart</mat-icon>
         <span>Add</span>
       </button>
-      <button mat-button>
+      <button mat-button >
         <mat-icon>more_horiz</mat-icon>
         <span>More</span>
       </button>

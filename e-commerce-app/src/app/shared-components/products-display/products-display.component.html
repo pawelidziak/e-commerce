@@ -1,0 +1,31 @@
+
+<div *ngIf="loading" class="my-spinner">
+  <mat-spinner></mat-spinner>
+</div>
+
+<div *ngIf="!loading">
+  <div class="product-list-header">
+    <mat-form-field floatPlaceholder="never">
+      <mat-select placeholder="Sort">
+        <mat-option *ngFor="let sort of sortTypes" [value]="sort.value" (click)="sortBooks(sort.value)">
+          {{sort.viewValue}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-icon [ngClass]="{'active': !displayList}" (click)="displayList = false">view_module</mat-icon>
+    <mat-icon [ngClass]="{'active': displayList}" (click)="displayList = true">list</mat-icon>
+  </div>
+
+  <!--<mat-card class="no-books" *ngIf="(_arrayBooks | SearchPipe: _searchService.queryString).length === 0">-->
+    <!--Sorry. No search results <span *ngIf="_searchService.queryString ">"{{_searchService.queryString}}"</span> :(-->
+  <!--</mat-card>-->
+
+  <div class="product-miniatures" *ngIf="!displayList">
+    <app-product-miniatures *ngFor="let book of _arrayBooks" [book]="book"></app-product-miniatures>
+  </div>
+
+  <div class="product-list text-center" *ngIf="displayList">
+    <app-product-list *ngFor="let book of _arrayBooks" [book]="book"></app-product-list>
+  </div>
+</div>

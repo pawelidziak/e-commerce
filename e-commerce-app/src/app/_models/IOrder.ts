@@ -1,6 +1,7 @@
 import {Product} from './Product';
+import {IBook} from './IBook';
 
 export interface IOrder {
-  product: Product;
+  book: IBook;
   quantity: number;
 }

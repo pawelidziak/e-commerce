@@ -59,3 +59,14 @@ html, body {
 .success-color {
   color: $material_green;
 }
+
+
+// SPINNER
+.my-spinner {
+  display: flex;
+  -ms-flex-align: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  align-items: center;
+  height: calc(100vh - 150px);
+}

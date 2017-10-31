@@ -1,0 +1,39 @@
+@import '../../../_helpers/variables';
+
+.product-list-content {
+  display: flex;
+  align-items: center;
+  //padding: 0;
+  padding: 20px 0;
+  border-right: 1px solid $border_color;
+  border-top: 1px solid $border_color;
+  border-left: 1px solid $border_color;
+  &:hover {
+    background: $border_color;
+  }
+}
+.avatar {
+  flex: 0.2;
+  @media #{$lt-sm_size} {
+    flex: 0;
+  }
+}
+.name {
+  padding: 10px;
+  flex: 0.4;
+  @media #{$gt-xs_size} {
+    flex: 0.2;
+  }
+}
+.desc {
+  flex: 0.3;
+  @media #{$lt-sm_size} {
+    flex: 0;
+  }
+}
+.price, .quantity, .actions{
+  flex: 0.2;
+  @media #{$gt-xs_size} {
+    flex: 0.1;
+  }
+}

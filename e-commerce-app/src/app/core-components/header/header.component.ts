@@ -1,9 +1,13 @@
-import {Component, Input, OnInit, ViewEncapsulation} from '@angular/core';
+import {Component, HostListener, Input, OnInit, ViewEncapsulation} from '@angular/core';
 import {CardService} from '../../_services/card.service';
 import {AuthService} from '../../_services/auth.service';
 import {MatDialog} from '@angular/material';
 import {AuthDialogComponent} from '../auth-dialog/auth-dialog.component';
 import {SearchService} from '../../_services/search.service';
+import {Observable} from 'rxjs/Observable';
+import {FormControl} from '@angular/forms';
+import {IBook} from '../../_models/IBook';
+import {BookService} from '../../_services/book.service';
 
 @Component({
   selector: 'app-header',
@@ -16,13 +20,55 @@ export class HeaderComponent implements OnInit {
   @Input('sideNav') sideNav: any;
   @Input('cardNav') cardNav: any;
   user: any;
+  public hideSidenav = false;
+
+  public searchInputFocused = false;
+
+  myControl = new FormControl();
+  // options: Array<IBook> = [
+  //   {title: 'title1', desc: 'desc1', author: 'auhtor2', price: 2, isbn: 'isbn1', quantity: 5},
+  //   {title: 'title2', desc: 'desc1', author: 'auhtor2', price: 2, isbn: 'isbn2', quantity: 5},
+  // ];
+  options: Array<IBook>;
+  error: string;
+  filteredOptions: Observable<IBook[]>;
 
 
-  constructor(public _authService: AuthService, public _cardService: CardService, public _dialog: MatDialog, public _searchService: SearchService) {
+  constructor(private _bookService: BookService, public _authService: AuthService,
+              public _cardService: CardService, public _dialog: MatDialog, public _searchService: SearchService) {
+    if (window.innerWidth < 959) {
+      this.hideSidenav = true;
+    }
+  }
+
+  getBooks() {
+    this._bookService.allBooks.subscribe(
+      books => {
+        this.options = books;
+
+        this.filteredOptions = this.myControl.valueChanges
+          .startWith(null)
+          .map(book => book && typeof book === 'object' ? book.title : book)
+          .map(title => title ? this.filter(title) : this.options.slice());
+
+      },
+      error => {
+        this.error = <any>error;
+      });
   }
 
   ngOnInit() {
     this.user = this._authService.currentUser;
+    this.getBooks();
+  }
+
+  filter(name: string): IBook[] {
+    return this.options.filter(option =>
+      option.title.toLowerCase().includes(name.toLowerCase()));
+  }
+
+  displayFn(book: IBook): string {
+    return book ? book.title : '';
   }
 
   openAuthDialog() {
@@ -38,4 +84,11 @@ export class HeaderComponent implements OnInit {
   logout() {
     this._authService.signOut();
   }
+
+  @HostListener('window:resize', ['$event'])
+  onResize(event: any) {
+    this.hideSidenav = event.target.innerWidth <= 959;
+  }
+
+
 }
