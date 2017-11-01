@@ -8,6 +8,7 @@ import {SearchFilterPipe} from '../_helpers/SearchFilterPipe';
 import {ProductDetailComponent} from './products-display/product-detail/product-detail.component';
 import {ProductListItemComponent} from './products-display/product-list-item/product-list-item.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {FlexLayoutModule} from '@angular/flex-layout';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
     RouterModule,
     MaterialModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FlexLayoutModule,
   ],
   exports: [
     ProductsDisplayComponent

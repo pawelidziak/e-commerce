@@ -1,26 +1,22 @@
-<div class="test">
+<div class="book">
+  <div class="avatar" [routerLink]="['/book', order.book.key]">IMG</div>
 
-  <div class="book">
-    <div class="avatar">IMG</div>
-
-    <div class="name">
-      <span class="title">{{order.book.title}}</span>
-      <span class="author">{{order.book.author}}</span>
-    </div>
-
-    <div class="price">
-      <span><strong>{{order.book.price | currency: 'USD' : true}}</strong></span>
-    </div>
-
-
-    <div class="quantity">
-      <span class="quantity-product">{{order.quantity}}</span>
-      <div class="add-remove">
-        <mat-icon class="success-color" (click)="increaseQuantity()">add</mat-icon>
-        <mat-icon class="fail-color" (click)="decreaseQuantity()">remove</mat-icon>
-      </div>
-      <mat-icon class="fail-color" (click)="deleteOrder()">close</mat-icon>
-    </div>
+  <div class="name">
+      <span class="title">
+        <span>{{order.book.title}}</span>
+      </span>
+    <span class="author">{{order.book.author}}</span>
   </div>
 
+
+  <div class="actions">
+    <div class="quantity">
+      <span class="price"><strong>{{order.book.price | currency: 'USD' : true}}</strong></span>
+      <div class="quantity-input">
+        <input type="number" [formControl]="quantityControl" [(value)]="order.quantity" min="1" [max]="order.book.quantity" (change)="setQuantity()">
+        <mat-icon class="fail-color" (click)="deleteOrder()">close</mat-icon>
+      </div>
+    </div>
+  </div>
 </div>
+

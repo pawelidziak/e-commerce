@@ -10,7 +10,7 @@
     <!-- INFO -->
     <mat-card class="info no-border">
       <p class="title">{{book.title}}</p>
-      <span class="my-hr"></span>
+      <span class="my-hr" fxHide.xs="true"></span>
     </mat-card>
 
     <!-- ACTIONS -->
@@ -20,13 +20,15 @@
         <span><strong>{{book.price | currency: 'USD' : true}}</strong></span>
       </div>
 
+      <div class="action-row">
+        <span>In stock:</span>
+        <span><strong>{{book.quantity}}</strong></span>
+      </div>
 
       <div class="action-row">
         <span>Quantity:</span>
         <div class="quantity">
-          <!--<mat-icon class="fail-color" (click)="decreaseQuantity()">remove</mat-icon>-->
-          <input type="number" [formControl]="quantityControl" value="1">
-          <!--<mat-icon class="success-color" (click)="increaseQuantity()">add</mat-icon>-->
+          <input type="number" [formControl]="quantityControl" min="1" [max]="book.quantity" (change)="setQuantity()">
         </div>
       </div>
 
@@ -49,7 +51,6 @@
           </button>
         </div>
       </div>
-
 
     </mat-card>
 

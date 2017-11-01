@@ -50,7 +50,7 @@ export class AdminPanelComponent implements OnInit {
 
 
     // this.db.list('categories').push({
-    //   name: 'test',
+    //   name: 'setQuantity',
     //   categoryId: 4
     // });
 

@@ -46,11 +46,24 @@ export class ProductDetailComponent implements OnInit {
   }
 
   calculateTotalPrice(): number {
-    return this.book.price * parseInt(this.quantityControl.value, 10);
+    if (this.quantityControl.value) {
+      return this.book.price * parseInt(this.quantityControl.value, 10);
+    }
+    return 0;
   }
 
   addProductToCard(): void {
-    this._cardService.addBookToOrderList(this.book);
+    if (this.quantityControl.value) {
+      this._cardService.addBookToOrderList(this.book, this.quantityControl.value);
+    }
   }
 
+  setQuantity() {
+    if (this.quantityControl.value <= 0) {
+      this.quantityControl.setValue('1');
+    }
+    if (this.quantityControl.value > this.book.quantity) {
+      this.quantityControl.setValue(this.book.quantity);
+    }
+  }
 }

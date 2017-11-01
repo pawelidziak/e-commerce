@@ -13,6 +13,7 @@ export class CardService {
     this._orders = [];
     if (localStorage.getItem('orders')) {
       this.parseOrdersFromLocalStorage(JSON.parse(localStorage.getItem('orders')));
+      this.calculateTotalPrice();
     }
   }
 
@@ -42,12 +43,12 @@ export class CardService {
   }
 
 
-  public addBookToOrderList(book: IBook) {
+  public addBookToOrderList(book: IBook, quantity: number = 1) {
     const foundedOrder = this._orders.find(x => x.book.key === book.key);
     if (!foundedOrder && book.quantity > 0) {
       const order: IOrder = {
         book: book,
-        quantity: 1
+        quantity: quantity
       };
       this.orders.push(order);
       this.saveOrderListInLocalStorage();
@@ -55,8 +56,15 @@ export class CardService {
     }
   }
 
+  public setNewQuantity(order: IOrder, quantity: number){
+      order.quantity = quantity;
+    this.calculateTotalPrice();
+    this.saveOrderListInLocalStorage();
+  }
+
   public removeOrder(order: IOrder): void {
     this._orders = this._orders.filter(obj => obj !== order);
+    this.calculateTotalPrice();
     this.saveOrderListInLocalStorage();
   }
 
@@ -69,7 +77,7 @@ export class CardService {
     }
   }
 
-  saveOrderListInLocalStorage(): void {
+  private saveOrderListInLocalStorage(): void {
     const orderList = [{name: 'orders', list: this.orders}];
     this.removeOrderListFromLocalStorage();
     localStorage.setItem('orders', JSON.stringify(orderList));

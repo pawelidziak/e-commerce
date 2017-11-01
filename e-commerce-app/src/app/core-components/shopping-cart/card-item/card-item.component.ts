@@ -1,6 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {IOrder} from '../../../_models/IOrder';
 import {CardService} from '../../../_services/card.service';
+import {FormControl} from '@angular/forms';
 
 @Component({
   selector: 'app-card-item',
@@ -11,26 +12,22 @@ export class CardItemComponent implements OnInit {
 
   @Input('order') order: IOrder;
 
+  quantityControl = new FormControl('1');
+
   constructor(private _cardService: CardService) {
   }
 
   ngOnInit() {
   }
 
-  increaseQuantity() {
-    if (this.order.quantity < this.order.book.quantity) {
-      this.order.quantity++;
-      this._cardService.calculateTotalPrice();
-      this._cardService.saveOrderListInLocalStorage();
+  setQuantity() {
+    if (this.quantityControl.value <= 0) {
+      this.quantityControl.setValue('1');
     }
-  }
-
-  decreaseQuantity() {
-    if (this.order.quantity > 1) {
-      this.order.quantity--;
-      this._cardService.calculateTotalPrice();
-      this._cardService.saveOrderListInLocalStorage();
+    if (this.quantityControl.value > this.order.book.quantity) {
+      this.quantityControl.setValue(this.order.book.quantity);
     }
+    this._cardService.setNewQuantity(this.order, this.quantityControl.value);
   }
 
   deleteOrder() {
