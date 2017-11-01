@@ -7,7 +7,7 @@ import {CommonModule} from '@angular/common';
 import {SearchFilterPipe} from '../_helpers/SearchFilterPipe';
 import {ProductDetailComponent} from './products-display/product-detail/product-detail.component';
 import {ProductListItemComponent} from './products-display/product-list-item/product-list-item.component';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -21,7 +21,8 @@ import {FormsModule} from '@angular/forms';
     CommonModule,
     RouterModule,
     MaterialModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   exports: [
     ProductsDisplayComponent

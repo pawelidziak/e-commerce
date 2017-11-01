@@ -11,7 +11,7 @@ const appRoutes: Routes = [
     component: AdminPanelComponent
   },
   { path: 'books', component: ProductsDisplayComponent },
-  { path: 'book/:isbn', component: ProductDetailComponent },
+  { path: 'book/:key', component: ProductDetailComponent },
   { path: 'books/:category', component: ProductsDisplayComponent },
   {
     path: 'home',

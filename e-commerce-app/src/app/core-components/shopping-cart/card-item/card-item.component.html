@@ -1,19 +1,26 @@
-<div class="book">
+<div class="test">
 
-  <div class="avatar">IMG</div>
+  <div class="book">
+    <div class="avatar">IMG</div>
 
-  <div class="name">
-    <span>{{order.book.title}}</span>
-  </div>
+    <div class="name">
+      <span class="title">{{order.book.title}}</span>
+      <span class="author">{{order.book.author}}</span>
+    </div>
 
-  <div class="price">
-    <span><strong>{{order.book.price | currency: 'USD' : true}}</strong></span>
-  </div>
+    <div class="price">
+      <span><strong>{{order.book.price | currency: 'USD' : true}}</strong></span>
+    </div>
 
-  <div class="quantity">
-    <mat-icon class="fail-color" (click)="decreaseQuantity()">remove</mat-icon>
-    <span class="quantity-product">{{order.quantity}}</span>
-    <mat-icon class="success-color" (click)="increaseQuantity()">add</mat-icon>
+
+    <div class="quantity">
+      <span class="quantity-product">{{order.quantity}}</span>
+      <div class="add-remove">
+        <mat-icon class="success-color" (click)="increaseQuantity()">add</mat-icon>
+        <mat-icon class="fail-color" (click)="decreaseQuantity()">remove</mat-icon>
+      </div>
+      <mat-icon class="fail-color" (click)="deleteOrder()">close</mat-icon>
+    </div>
   </div>
 
 </div>

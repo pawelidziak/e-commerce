@@ -1,8 +1,4 @@
-import {Component, HostListener} from '@angular/core';
-import {MatIconRegistry} from '@angular/material';
-import {DomSanitizer} from '@angular/platform-browser';
-import {FormControl} from '@angular/forms';
-import {Observable} from 'rxjs/Observable';
+import {Component} from '@angular/core';
 import 'rxjs/add/operator/startWith';
 import 'rxjs/add/operator/map';
 

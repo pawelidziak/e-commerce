@@ -24,6 +24,7 @@ export class CardService {
           for (const order of list.list) {
             const tmpOrder: IOrder = {
               book: {
+                key: order.book.key,
                 title: order.book.title,
                 desc: order.book.desc,
                 author: order.book.author,
@@ -42,7 +43,7 @@ export class CardService {
 
 
   public addBookToOrderList(book: IBook) {
-    const foundedOrder = this._orders.find(x => x.book.isbn === book.isbn);
+    const foundedOrder = this._orders.find(x => x.book.key === book.key);
     if (!foundedOrder && book.quantity > 0) {
       const order: IOrder = {
         book: book,

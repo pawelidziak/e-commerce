@@ -1,4 +1,4 @@
-<div class="my-toolbar" [ngClass]="{'my-toolbar-big': hideSidenav, 'my-toolbar-small': !hideSidenav}">
+<div class="my-toolbar" [ngClass]="{'my-toolbar-small-devices': hideSidenav, 'my-toolbar-big-devices': !hideSidenav}">
 
   <button mat-button fxHide fxShow.sm="true" (click)="sideNav.toggle()">
     <mat-icon>menu</mat-icon>
@@ -34,7 +34,7 @@
 
   <button mat-button (click)="cardNav.toggle()">
     <mat-icon>shopping_cart</mat-icon>
-    <span fxHide.xs="true">Card</span>
+    <span fxHide.xs="true">Cart</span>
     <span *ngIf="_cardService.orders.length > 0">({{_cardService.orders.length}} items)</span>
     <span *ngIf="_cardService.orders.length === 0">(empty)</span>
   </button>

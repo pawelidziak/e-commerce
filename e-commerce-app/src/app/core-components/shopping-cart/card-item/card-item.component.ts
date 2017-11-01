@@ -26,15 +26,14 @@ export class CardItemComponent implements OnInit {
   }
 
   decreaseQuantity() {
-    if (this.order.quantity > 0) {
+    if (this.order.quantity > 1) {
       this.order.quantity--;
       this._cardService.calculateTotalPrice();
-
-      if (this.order.quantity === 0) {
-        this._cardService.removeOrder(this.order);
-      }
       this._cardService.saveOrderListInLocalStorage();
     }
   }
 
+  deleteOrder() {
+    this._cardService.removeOrder(this.order);
+  }
 }

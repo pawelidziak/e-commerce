@@ -1,4 +1,5 @@
 export interface IBook {
+  key: string;
   title: string;
   desc: string;
   author: string;

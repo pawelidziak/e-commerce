@@ -4,30 +4,45 @@
   display: flex;
   align-items: center;
   border-bottom: 1px solid $border_color;
-  padding: 30px 0;
+  padding: 10px 0 10px 10px;
   .avatar {
-    flex: 0.3;
-    //display: flex;
-    //justify-content: center;
+    flex: 0.25;
   }
   .name {
     flex: 0.4;
     padding: 0 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    .title {
+      font-weight: 700;
+    }
+
+    .author {
+      padding-top: 10px;
+      font-size: 80%;
+    }
   }
   .price {
     flex: 0.1;
     padding: 0 5px;
   }
   .quantity {
-    flex: 0.2;
+    flex: 0.25;
     display: flex;
     align-items: center;
-    justify-content: space-around;
+    font-size: 120%;
+    justify-content: flex-end;
     .quantity-product {
-      padding: 0 5px;
+      padding-right: 10px;
     }
     mat-icon {
       cursor: pointer;
     }
-  }
+  }&:hover {
+     background: $border_color;
+   }
 }
+
+.test {  }

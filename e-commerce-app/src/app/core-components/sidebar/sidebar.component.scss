@@ -82,9 +82,9 @@ mat-sidenav-container {
   @media #{$gt_sm_size} {
     width: 40vw;
   }
-  @media #{$gt_md_size} {
-    width: 30vw;
-  }
+  //@media #{$gt_md_size} {
+  //  width: 30vw;
+  //}
   .cart-nav-header {
     background: $material_green;
     padding: 20px;

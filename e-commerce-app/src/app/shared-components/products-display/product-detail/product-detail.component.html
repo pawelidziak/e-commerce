@@ -1,19 +1,57 @@
-<mat-card>
+<div class="book-detail-container" *ngIf="book">
 
   <div class="book-detail">
 
-    <div class="avatar">
+    <!-- AVATAR-->
+    <mat-card class="avatar no-right-borders">
       IMG
-    </div>
+    </mat-card>
 
-    <div class="info">
-      INFO
-      <p>{{book?.title}}</p>
-    </div>
+    <!-- INFO -->
+    <mat-card class="info no-border">
+      <p class="title">{{book.title}}</p>
+      <span class="my-hr"></span>
+    </mat-card>
 
-    <div class="actions">
-      ACTIONS
-    </div>
+    <!-- ACTIONS -->
+    <mat-card class="actions no-left-borders">
+      <div class="action-row">
+        <span>Price:</span>
+        <span><strong>{{book.price | currency: 'USD' : true}}</strong></span>
+      </div>
+
+
+      <div class="action-row">
+        <span>Quantity:</span>
+        <div class="quantity">
+          <!--<mat-icon class="fail-color" (click)="decreaseQuantity()">remove</mat-icon>-->
+          <input type="number" [formControl]="quantityControl" value="1">
+          <!--<mat-icon class="success-color" (click)="increaseQuantity()">add</mat-icon>-->
+        </div>
+      </div>
+
+      <span class="my-hr"></span>
+
+      <div class="action-row">
+        <span>Total price:</span>
+        <span><strong>{{calculateTotalPrice() | currency: 'USD' : true}}</strong></span>
+      </div>
+
+      <div class="action-row">
+        <div class="action-buttons">
+          <button mat-button (click)="addProductToCard()" [disabled]="book.quantity === 0">
+            <mat-icon>add_shopping_cart</mat-icon>
+            <span>add</span>
+          </button>
+          <button mat-raised-button color="primary">
+            <mat-icon>shopping_cart</mat-icon>
+            <span>checkout</span>
+          </button>
+        </div>
+      </div>
+
+
+    </mat-card>
 
   </div>
-</mat-card>
+</div>

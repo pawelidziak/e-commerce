@@ -5,36 +5,22 @@
   top: 0;
   z-index: 2;
   background-color: $material_teal;
-  padding: 10px 0 !important;
+  padding: 10px 20px;
   color: $primary_white;
   display: flex;
-  //flex-direction: column-reverse;
   justify-content: space-between;
   @media #{$gt-xs_size} {
     justify-content: flex-end;
   }
   @include box_shadow();
-  //.left {
-  //  display: flex;
-  //  flex: 0.7;
-  //}
-  //.right {
-  //  flex: 0.3;
-  //  display: flex;
-  //  justify-content: space-between;
-  //  @media #{$gt-xs_size} {
-  //    justify-content: flex-end;
-  //    margin-right: 10px;
-  //  }
-  //}
 }
 
-.my-toolbar-small {
-  width: calc(100vw - 250px);
+.my-toolbar-big-devices {
+  width: calc(100vw - 290px);
 }
 
-.my-toolbar-big {
-  width: calc(100vw);
+.my-toolbar-small-devices {
+  width: calc(100vw - 40px);
 }
 
 .search-form {
