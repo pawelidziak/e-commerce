@@ -1,7 +1,5 @@
 import {Component, OnInit} from '@angular/core';
 import 'rxjs/add/observable/of';
-import {CardService} from '../../_services/card.service';
-import {SearchService} from '../../_services/search.service';
 import {BookService} from '../../_services/book.service';
 import {IBook} from '../../_models/IBook';
 import {Subscription} from 'rxjs/Subscription';
@@ -28,8 +26,7 @@ export class ProductsDisplayComponent implements OnInit {
     {value: 'title-z-a', viewValue: 'Title (Z - A)'},
   ];
 
-  constructor(private _route: ActivatedRoute, private _cardService: CardService, public _searchService: SearchService,
-              public _bookService: BookService) {
+  constructor(private _route: ActivatedRoute, public _bookService: BookService) {
     this.sub = this._route.params.subscribe(
       params => {
         const category = params['category'];

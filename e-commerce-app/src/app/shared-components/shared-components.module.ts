@@ -24,7 +24,7 @@ import {FlexLayoutModule} from '@angular/flex-layout';
     MaterialModule,
     FormsModule,
     ReactiveFormsModule,
-    FlexLayoutModule,
+    FlexLayoutModule
   ],
   exports: [
     ProductsDisplayComponent

@@ -25,17 +25,12 @@ export class HeaderComponent implements OnInit {
   public searchInputFocused = false;
 
   myControl = new FormControl();
-  // options: Array<IBook> = [
-  //   {title: 'title1', desc: 'desc1', author: 'auhtor2', price: 2, isbn: 'isbn1', quantity: 5},
-  //   {title: 'title2', desc: 'desc1', author: 'auhtor2', price: 2, isbn: 'isbn2', quantity: 5},
-  // ];
   options: Array<IBook>;
   error: string;
   filteredOptions: Observable<IBook[]>;
 
-
   constructor(private _bookService: BookService, public _authService: AuthService,
-              public _cardService: CardService, public _dialog: MatDialog, public _searchService: SearchService) {
+              public _cardService: CardService, public _dialog: MatDialog) {
     if (window.innerWidth < 959) {
       this.hideSidenav = true;
     }

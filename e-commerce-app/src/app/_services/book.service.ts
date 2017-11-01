@@ -103,6 +103,7 @@ export class BookService {
         });
         break;
     }
+    console.log(array);
     return array;
   }
 }
