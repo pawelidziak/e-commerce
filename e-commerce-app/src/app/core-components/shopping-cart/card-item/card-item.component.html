@@ -1,5 +1,5 @@
 <div class="book">
-  <div class="avatar" [routerLink]="['/book', order.book.key]">IMG</div>
+  <div class="avatar" [routerLink]="['/book', order.book.key]" (click)="cardNav.close()">IMG</div>
 
   <div class="name">
       <span class="title">

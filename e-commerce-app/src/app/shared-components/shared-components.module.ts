@@ -9,6 +9,7 @@ import {ProductDetailComponent} from './products-display/product-detail/product-
 import {ProductListItemComponent} from './products-display/product-list-item/product-list-item.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {FlexLayoutModule} from '@angular/flex-layout';
+import {CheckoutComponent} from './checkout/checkout.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import {FlexLayoutModule} from '@angular/flex-layout';
     ProductMiniaturesItemComponent,
     SearchFilterPipe,
     ProductDetailComponent,
-    ProductListItemComponent
+    ProductListItemComponent,
+    CheckoutComponent
   ],
   imports: [
     CommonModule,

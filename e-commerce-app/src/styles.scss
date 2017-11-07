@@ -71,11 +71,37 @@ html, body {
   height: calc(100vh - 150px);
 }
 
-
+// simple hr
 .my-hr {
   display: flex;
   width: 100%;
   height: 1px;
   margin: 10px 0;
   background: $border_color;
+}
+
+// colors for quantity of book
+.inStock {
+  color: $material_green;
+  font-weight: 700;
+}
+
+.notInStock {
+  color: $material_red;
+  font-weight: 700;
+}
+
+// simple method for borders
+.no-border {
+  border-radius: 0;
+}
+
+.no-right-borders {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.no-left-borders {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
 }

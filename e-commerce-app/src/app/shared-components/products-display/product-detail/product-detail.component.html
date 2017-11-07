@@ -22,7 +22,7 @@
 
       <div class="action-row">
         <span>In stock:</span>
-        <span><strong>{{book.quantity}}</strong></span>
+        <span [ngClass]="{'inStock' : book.quantity > 0, 'notInStock': book.quantity === 0}"><strong>{{book.quantity}}</strong></span>
       </div>
 
       <div class="action-row">

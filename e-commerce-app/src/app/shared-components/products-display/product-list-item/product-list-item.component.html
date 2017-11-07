@@ -36,15 +36,14 @@
     <ng-container matColumnDef="actions">
       <mat-header-cell *matHeaderCellDef mat-sort-header> Actions</mat-header-cell>
       <mat-cell *matCellDef="let element" class="actions">
-        <button mat-button (click)="addProductToCard(element)" [disabled]="element.quantity === 0">
-          <mat-icon>add_shopping_cart</mat-icon>
-          <span fxHide.xs="true" >Add</span>
-        </button>
         <button mat-button [routerLink]="['/book', element.key]">
           <mat-icon>more_horiz</mat-icon>
           <span fxHide.xs="true">More</span>
         </button>
-
+        <button mat-button (click)="addProductToCard(element)" [disabled]="element.quantity === 0">
+          <mat-icon>add_shopping_cart</mat-icon>
+          <span fxHide.xs="true" >Add</span>
+        </button>
       </mat-cell>
     </ng-container>
 

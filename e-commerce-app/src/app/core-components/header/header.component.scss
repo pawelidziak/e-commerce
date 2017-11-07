@@ -29,14 +29,14 @@
   display: flex;
 
   // position for small devices
-  position: absolute;
+  position: fixed;
   left: 0;
   top: 0;
   width: calc(100% - 20px);
   .full-width {
     width: 100%;
   }
-  z-index: 2;
+  z-index: 9999;
 
   // position for large devices
   @media #{$gt-xs_size} {

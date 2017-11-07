@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {CardService} from '../../_services/card.service';
 import 'rxjs/add/observable/of';
 
@@ -9,6 +9,7 @@ import 'rxjs/add/observable/of';
 })
 export class ShoppingCartComponent implements OnInit {
 
+  @Input('cardNav') cardNav: any;
 
   constructor(public _cardService: CardService) {
   }

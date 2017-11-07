@@ -4,15 +4,17 @@ import {AdminPanelComponent} from './core-components/admin-panel/admin-panel.com
 import {ProductsDisplayComponent} from './shared-components/products-display/products-display.component';
 import {ProductDetailComponent} from './shared-components/products-display/product-detail/product-detail.component';
 import {SidebarComponent} from './core-components/sidebar/sidebar.component';
+import {CheckoutComponent} from './shared-components/checkout/checkout.component';
 
 const appRoutes: Routes = [
   {
     path: 'admin',
     component: AdminPanelComponent
   },
-  { path: 'books', component: ProductsDisplayComponent },
-  { path: 'book/:key', component: ProductDetailComponent },
-  { path: 'books/:category', component: ProductsDisplayComponent },
+  {path: 'books', component: ProductsDisplayComponent},
+  {path: 'book/:key', component: ProductDetailComponent},
+  {path: 'books/:category', component: ProductsDisplayComponent},
+  {path: 'checkout', component: CheckoutComponent},
   {
     path: 'home',
     component: SidebarComponent,

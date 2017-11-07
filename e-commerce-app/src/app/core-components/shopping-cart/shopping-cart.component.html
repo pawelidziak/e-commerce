@@ -12,7 +12,7 @@
   </div>
 
   <div *ngFor="let order of _cardService.orders" style="padding: 10px;">
-    <app-card-item [order]="order"></app-card-item>
+    <app-card-item [order]="order" [cardNav]="cardNav"></app-card-item>
   </div>
 
   <div class="check-out">
@@ -20,7 +20,7 @@
       <span>Total price: </span>
       <span><strong>{{_cardService.totalPrice | currency: 'USD' : true}}</strong></span>
     </div>
-    <button mat-raised-button color="primary">check out</button>
+    <button mat-raised-button color="primary"  [routerLink]="['/checkout']" (click)="cardNav.close()">check out</button>
   </div>
 
 </div>

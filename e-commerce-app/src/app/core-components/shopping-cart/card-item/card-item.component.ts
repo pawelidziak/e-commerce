@@ -11,6 +11,7 @@ import {FormControl} from '@angular/forms';
 export class CardItemComponent implements OnInit {
 
   @Input('order') order: IOrder;
+  @Input('cardNav') cardNav: any;
 
   quantityControl = new FormControl('1');
 
