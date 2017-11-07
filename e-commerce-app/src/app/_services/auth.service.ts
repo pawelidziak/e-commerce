@@ -1,8 +1,6 @@
 import {Injectable} from '@angular/core';
 import {AngularFireDatabase} from 'angularfire2/database';
 import {AngularFireAuth} from 'angularfire2/auth';
-import {Router} from '@angular/router';
-import {Observable} from 'rxjs/Observable';
 import * as firebase from 'firebase';
 
 
@@ -19,11 +17,6 @@ export class AuthService {
     });
 
   }
-
-  get getLoading(): boolean {
-    return this.loading;
-  }
-
   // Returns true if user is logged in
   get authenticated(): boolean {
     return this.user !== null;
@@ -42,11 +35,6 @@ export class AuthService {
   // Returns current user UID
   get currentUserId(): string {
     return this.authenticated ? this.user.uid : '';
-  }
-
-  // Anonymous User
-  get currentUserAnonymous(): boolean {
-    return this.authenticated ? this.user.isAnonymous : false;
   }
 
   // Returns current user display name or Guest

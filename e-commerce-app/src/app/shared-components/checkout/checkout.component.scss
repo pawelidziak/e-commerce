@@ -1,3 +1,65 @@
+@import '../../_helpers/variables';
+
 .checkout-container {
-  padding: 20px;
+  margin: 20px;
+  @include box_shadow;
+  background-color: $primary_white;
+}
+
+.list-container {
+}
+
+.book {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  &:hover {
+    background: $border_color;
+  }
+}
+
+.avatar {
+  cursor: pointer;
+}
+
+.info {
+  display: flex;
+  justify-content: space-between;
+}
+
+.test{
+  display: flex;
+  justify-content: center;
+}
+
+.data-form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  @media #{$gt-xs_size} {
+    width: 50%;
+  }
+  .mat-form-field{
+    width: 100%;
+  }
+  .two-fields{
+    display: flex;
+  }
+}
+
+.login-section{
+  display: flex;
+  justify-content: center;
+  button {
+    margin-left: 20px;
+  }
+}
+
+.actions-between{
+  display: flex;
+  justify-content: space-between;
+}
+.action-end {
+  display: flex;
+  justify-content: flex-end;
 }

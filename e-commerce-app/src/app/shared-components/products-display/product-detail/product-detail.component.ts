@@ -37,7 +37,6 @@ export class ProductDetailComponent implements OnInit {
       book => {
         this.book = book;
         this.book.key = this.bookKey;
-        console.log(this.book);
       },
       error => {
         this.errorMessage = <any>error;

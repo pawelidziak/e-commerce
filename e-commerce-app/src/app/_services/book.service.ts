@@ -12,14 +12,13 @@ import {IBook} from '../_models/IBook';
 @Injectable()
 export class BookService {
 
-
   private booksRef: AngularFireList<any>;
   private _booksWithCategory: Observable<any[]>;
   private _allBooks: Observable<any[]>;
 
   category$: BehaviorSubject<string | null>;
 
-  constructor(private _http: Http, private _db: AngularFireDatabase) {
+  constructor(private _db: AngularFireDatabase) {
 
     this.booksRef = this._db.list('books');
     this._allBooks = this.booksRef.valueChanges();

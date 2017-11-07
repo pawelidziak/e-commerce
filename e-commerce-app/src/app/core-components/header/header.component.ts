@@ -2,7 +2,7 @@ import {Component, HostListener, Input, OnInit, ViewEncapsulation} from '@angula
 import {CardService} from '../../_services/card.service';
 import {AuthService} from '../../_services/auth.service';
 import {MatDialog} from '@angular/material';
-import {AuthDialogComponent} from '../auth-dialog/auth-dialog.component';
+import {AuthDialogComponent} from '../../shared-components/auth-dialog/auth-dialog.component';
 import {SearchService} from '../../_services/search.service';
 import {Observable} from 'rxjs/Observable';
 import {FormControl} from '@angular/forms';

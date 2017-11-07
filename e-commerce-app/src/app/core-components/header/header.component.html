@@ -39,7 +39,7 @@
     <span *ngIf="_cardService.orders.length === 0">(empty)</span>
   </button>
 
-  <button mat-button *ngIf="_authService.currentUser === null" (click)="openAuthDialog()">
+  <button mat-button *ngIf="!_authService.authenticated" (click)="openAuthDialog()">
     <mat-icon>perm_identity</mat-icon>
     <span fxHide.xs="true">Login</span>
   </button>

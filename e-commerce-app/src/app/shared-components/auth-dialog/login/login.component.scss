@@ -1,0 +1,20 @@
+@import '../../../_helpers/variables';
+
+.login-container {
+  padding: 30px 20px;
+  font-size: 75%;
+  @media #{$gt-md_size} {
+    padding: 30px 40px;
+    font-size: 100%;
+  }
+  mat-form-field {
+    width: 100%;
+    padding: 5px 0;
+  }
+
+  .actions {
+    display: flex;
+    justify-content: center;
+  }
+
+}

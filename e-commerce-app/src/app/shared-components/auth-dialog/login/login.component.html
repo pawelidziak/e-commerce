@@ -1,0 +1,22 @@
+<div class="login-container">
+
+  <div class="error-msg" *ngIf="error">{{error}}</div>
+
+  <mat-form-field>
+    <input matInput placeholder="Email" [formControl]="email" required>
+    <mat-error *ngIf="email.invalid">{{getEmailErrorMsg()}}</mat-error>
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput placeholder="Password" [formControl]="password" required
+           [type]="hidePassword ? 'password' : 'text'">
+    <mat-icon matSuffix (click)="hidePassword = !hidePassword">{{hidePassword ? 'visibility' : 'visibility_off'}}
+    </mat-icon>
+    <mat-error *ngIf="password.invalid">{{getPasswordErrorMsg()}}</mat-error>
+  </mat-form-field>
+
+  <div class="actions">
+    <button mat-raised-button color="primary" (click)="login()">Login</button>
+  </div>
+
+</div>

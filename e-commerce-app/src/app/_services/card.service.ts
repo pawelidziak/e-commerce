@@ -56,8 +56,8 @@ export class CardService {
     }
   }
 
-  public setNewQuantity(order: IOrder, quantity: number){
-      order.quantity = quantity;
+  public setNewQuantity(order: IOrder, quantity: number) {
+    order.quantity = quantity;
     this.calculateTotalPrice();
     this.saveOrderListInLocalStorage();
   }

@@ -10,6 +10,9 @@ import {ProductListItemComponent} from './products-display/product-list-item/pro
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {FlexLayoutModule} from '@angular/flex-layout';
 import {CheckoutComponent} from './checkout/checkout.component';
+import {LoginComponent} from "./auth-dialog/login/login.component";
+import {AuthDialogComponent} from "./auth-dialog/auth-dialog.component";
+import {RegisterComponent} from "./auth-dialog/register/register.component";
 
 @NgModule({
   declarations: [
@@ -18,7 +21,10 @@ import {CheckoutComponent} from './checkout/checkout.component';
     SearchFilterPipe,
     ProductDetailComponent,
     ProductListItemComponent,
-    CheckoutComponent
+    CheckoutComponent,
+    AuthDialogComponent,
+    RegisterComponent,
+    LoginComponent
   ],
   imports: [
     CommonModule,
@@ -29,9 +35,11 @@ import {CheckoutComponent} from './checkout/checkout.component';
     FlexLayoutModule
   ],
   exports: [
-    ProductsDisplayComponent
+    ProductsDisplayComponent,
+    LoginComponent
   ],
-  providers: []
+  providers: [],
+  entryComponents: [AuthDialogComponent],
 
 })
 export class SharedComponentsModule {

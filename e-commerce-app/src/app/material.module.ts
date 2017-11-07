@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import {NgModule} from '@angular/core';
 
 import {
   MatButtonModule,
@@ -15,7 +15,7 @@ import {
   MatTabsModule,
   MatDialogModule,
   MatFormFieldModule, MatGridListModule, MatTableModule, MatSelectModule,
-  MatProgressSpinnerModule, MatSortModule, MatPaginatorModule, MatTooltipModule
+  MatProgressSpinnerModule, MatSortModule, MatPaginatorModule, MatTooltipModule, MatStepperModule
 } from '@angular/material';
 
 @NgModule({
@@ -40,7 +40,8 @@ import {
     MatProgressSpinnerModule,
     MatSortModule,
     MatPaginatorModule,
-    MatTooltipModule
+    MatTooltipModule,
+    MatStepperModule
   ],
   exports: [
     MatButtonModule,
@@ -63,7 +64,9 @@ import {
     MatProgressSpinnerModule,
     MatSortModule,
     MatPaginatorModule,
-    MatTooltipModule
+    MatTooltipModule,
+    MatStepperModule
   ]
 })
-export class MaterialModule {}
+export class MaterialModule {
+}
