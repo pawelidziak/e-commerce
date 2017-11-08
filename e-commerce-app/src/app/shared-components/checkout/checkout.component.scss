@@ -16,6 +16,13 @@
 }
 
 // THIRD STEP - confirm order
+.no-auth{
+  text-align: center;
+  padding: 20px;
+  font-size: 120%;
+  color: $material_red;
+}
+
 .confirm-order{
   padding: 20px 0;
   display: flex;
@@ -30,6 +37,14 @@
       width: 50%;
     }
   }
+}
+
+.order{
+  background: $material_green;
+  color: $primary_white;
+  text-transform: uppercase;
+  padding: 5px;
+  font-size: 120%;
 }
 
 

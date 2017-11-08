@@ -44,9 +44,9 @@
     <span fxHide.xs="true">Login</span>
   </button>
 
-  <button mat-button [matMenuTriggerFor]="userSettings" *ngIf="_authService.currentUser !== null">
+  <button mat-button [matMenuTriggerFor]="userSettings" *ngIf="_authService.authenticated">
     <mat-icon class="text-right">account_circle</mat-icon>
-    <span fxHide.xs="true">Paweł Idziak</span>
+    <span fxHide.xs="true">{{_authService.currentUserDisplayName}}</span>
     <mat-icon fxShow fxHide.xs="true">keyboard_arrow_down</mat-icon>
   </button>
 

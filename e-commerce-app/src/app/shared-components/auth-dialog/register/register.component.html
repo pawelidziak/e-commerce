@@ -3,37 +3,53 @@
   <div class="success-msg" *ngIf="response">{{response}}</div>
   <div class="error-msg" *ngIf="error">{{error}}</div>
 
-  <mat-form-field>
-    <input matInput placeholder="Name" [formControl]="name" required>
-    <mat-error *ngIf="name.invalid">{{getNameErrorMsg()}}</mat-error>
-  </mat-form-field>
+  <form [formGroup]="registerForm" (ngSubmit)="register()">
+    <div class="fields-inline">
+      <mat-form-field>
+        <input matInput placeholder="Name" [formControl]="name" required>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="Surname" [formControl]="surname" required>
+      </mat-form-field>
+    </div>
 
-  <mat-form-field>
-    <input matInput placeholder="Email" [formControl]="email" required>
-    <mat-error *ngIf="email.invalid">{{getEmailErrorMsg()}}</mat-error>
-  </mat-form-field>
+    <div class="fields-inline">
+      <mat-form-field>
+        <input matInput placeholder="Email" [formControl]="email" required>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="Telephone" [formControl]="telephone" required>
+      </mat-form-field>
+    </div>
 
-  <mat-form-field>
-    <input matInput placeholder="Password" [formControl]="password" required
-           [type]="hidePassword ? 'password' : 'text'">
-    <mat-icon matSuffix (click)="hidePassword = !hidePassword">
-      {{hidePassword ? 'visibility' : 'visibility_off'}}
-    </mat-icon>
-    <mat-error *ngIf="password.invalid">{{getPasswordErrorMsg()}}</mat-error>
-  </mat-form-field>
+    <div class="fields-inline">
+      <mat-form-field>
+        <input matInput placeholder="Street" [formControl]="street" required>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="Zip-code" [formControl]="zip_code" required pattern="^[0-9]{2}-[0-9]{3}$">
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="City" [formControl]="city" required>
+      </mat-form-field>
+    </div>
 
-  <mat-form-field>
-    <input matInput placeholder="Confirm password" [formControl]="confirmPassword" required
-           [type]="hidePassword ? 'password' : 'text'" validateEqual="password">
-    <mat-icon matSuffix (click)="hidePassword = !hidePassword">
-      {{hidePassword ? 'visibility' : 'visibility_off'}}
-    </mat-icon>
-  </mat-form-field>
-  <mat-error class="pass_error" *ngIf="(password.value !== confirmPassword.value) && confirmPassword.touched">
-    Password mismatch
-  </mat-error>
+    <div class="fields-inline">
+      <mat-form-field>
+        <input matInput placeholder="Password" [formControl]="password" required
+               [type]="hidePassword ? 'password' : 'text'">
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="Confirm password" [formControl]="confirmPassword" required
+               [type]="hidePassword ? 'password' : 'text'">
+        <mat-icon matSuffix (click)="hidePassword = !hidePassword">
+          {{hidePassword ? 'visibility' : 'visibility_off'}}
+        </mat-icon>
+      </mat-form-field>
+    </div>
 
-  <div class="actions">
-    <button mat-raised-button color="primary" (click)="register()">Register</button>
-  </div>
+    <div class="actions">
+      <button mat-raised-button color="primary" type="submit">Register</button>
+    </div>
+  </form>
 </div>

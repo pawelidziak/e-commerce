@@ -17,6 +17,7 @@ export class CheckoutComponent implements OnInit {
 
   ngOnInit(): void {
     this.dataForm = this._formBuilder.group({
+      // TODO pobieranie info usera
       name: ['Pawel', Validators.required],
       surname: ['Idziak', Validators.required],
       email: ['pa.idziak@gmail.com', Validators.required],

@@ -12,7 +12,7 @@
 
     <mat-step [stepControl]="dataForm">
       <span fxHide.xs *matStepLabel>Confirm Your data</span>
-      <div *ngIf="!_authService.authenticated">Sign up first!</div>
+      <div *ngIf="!_authService.authenticated" class="no-auth">Sign up first!</div>
 
         <div class="confirm-data">
           <app-confirm-data [dataForm]="dataForm" [editable]="true" *ngIf="_authService.authenticated"></app-confirm-data>
@@ -48,8 +48,9 @@
 
 
       </div>
-      <div>
+      <div class="actions-between">
         <button mat-raised-button color="primary" matStepperPrevious>Back</button>
+        <button mat-raised-button class="order">order</button>
       </div>
     </mat-step>
 

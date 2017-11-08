@@ -13,7 +13,6 @@ export class ConfirmDataComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    console.log(this.dataForm.controls['name'].value);
   }
 
 }

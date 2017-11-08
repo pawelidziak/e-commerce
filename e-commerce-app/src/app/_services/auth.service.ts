@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {AngularFireDatabase} from 'angularfire2/database';
 import {AngularFireAuth} from 'angularfire2/auth';
 import * as firebase from 'firebase';
-
+import {IUser} from '../_models/IUser';
 
 @Injectable()
 export class AuthService {
@@ -17,9 +17,10 @@ export class AuthService {
     });
 
   }
+
   // Returns true if user is logged in
   get authenticated(): boolean {
-    return this.user !== null;
+    return this.user !== null && this.user.emailVerified === true;
   }
 
   // Returns current user data
@@ -47,32 +48,58 @@ export class AuthService {
   }
 
   //// Email/Password Auth ////
-  emailSignUp(name: string, email: string, password: string) {
-    this.loading = true;
+  emailSignUp(email: string, password: string, newUser: IUser) {
     return this.afAuth.auth.createUserWithEmailAndPassword(email, password)
       .then((user) => {
-        this.user = user;
-        this.updatePersonal(name);
-        // this.router.navigate(['/home']);
-        this.loading = false;
+        // this.user = user;
+
+        user.sendEmailVerification()
+          .catch(
+            (error: any) => {
+              throw new Error((error.message));
+            }
+          );
+
+        this.updateUserData(newUser, user.uid);
       })
       .catch((error: any) => {
-        this.loading = false;
         throw new Error((error.message));
       });
+  }
+
+  // method updates user profile IN database
+  updateUserData(user: IUser, uid: string) {
+    this.updatePersonal(user.name);
+    this.db.object(`/users/${uid}`).update(user)
+      .catch((err) => {
+        console.log(err);
+      });
+  }
+
+  // method updates user profile (not in database!)
+  updatePersonal(name: string) {
+    const user = firebase.auth().currentUser;
+    return user.updateProfile({
+      displayName: name,
+      photoURL: ''
+    }).catch((error: any) => {
+      throw new Error((error.message));
+    });
   }
 
   emailLogin(email: string, password: string) {
     this.loading = true;
     return this.afAuth.auth.signInWithEmailAndPassword(email, password)
       .then((user) => {
-        this.user = user;
         // this.router.navigate(['/home']);
-        console.log(this.user);
-        this.loading = false;
+        if (user.emailVerified === false) {
+          throw new Error('Email not verified.');
+        } else {
+          console.log(user);
+          this.user = user;
+        }
       })
       .catch((error: any) => {
-        this.loading = false;
         throw new Error((error.message));
       });
   }
@@ -106,16 +133,5 @@ export class AuthService {
       .catch((error: any) => {
         throw new Error((error.message));
       });
-  }
-
-  updatePersonal(name: string) {
-    const user = firebase.auth().currentUser;
-
-    return user.updateProfile({
-      displayName: name,
-      photoURL: ''
-    }).catch((error: any) => {
-      throw new Error((error.message));
-    });
   }
 }

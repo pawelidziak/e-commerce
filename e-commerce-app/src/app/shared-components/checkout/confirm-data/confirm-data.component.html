@@ -1,7 +1,7 @@
 <div class="data-container">
 
   <form [formGroup]="dataForm" class="data-form" *ngIf="editable">
-    <div class="two-fields">
+    <div class="fields-inline">
       <mat-form-field>
         <input matInput placeholder="Name" formControlName="name" required>
       </mat-form-field>
@@ -13,13 +13,12 @@
       <input matInput placeholder="Email" formControlName="email" required>
     </mat-form-field>
     <mat-form-field>
-      <span matPrefix>+48 &nbsp;</span>
       <input matInput placeholder="Telephone" formControlName="telephone" required>
     </mat-form-field>
     <mat-form-field>
       <input matInput placeholder="Address" formControlName="address" required>
     </mat-form-field>
-    <div class="two-fields">
+    <div class="fields-inline">
       <mat-form-field>
         <input matInput placeholder="Zip-code" formControlName="zip_code" required pattern="^[0-9]{2}-[0-9]{3}$"
                maxlength="6">
@@ -32,7 +31,7 @@
 
 
     <form [formGroup]="dataForm" class="data-form" *ngIf="!editable">
-      <div class="two-fields">
+      <div class="fields-inline">
         <mat-form-field>
           <input matInput placeholder="Name" formControlName="name" readonly>
         </mat-form-field>
@@ -44,13 +43,12 @@
         <input matInput placeholder="Email" formControlName="email" readonly>
       </mat-form-field>
       <mat-form-field>
-        <span matPrefix>+48 &nbsp;</span>
         <input matInput placeholder="Telephone" formControlName="telephone" readonly>
       </mat-form-field>
       <mat-form-field>
         <input matInput placeholder="Address" formControlName="address" readonly>
       </mat-form-field>
-      <div class="two-fields">
+      <div class="fields-inline">
         <mat-form-field>
           <input matInput placeholder="Zip-code" formControlName="zip_code" readonly>
         </mat-form-field>

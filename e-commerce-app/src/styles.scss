@@ -118,3 +118,10 @@ html, body {
     padding: 0 20px 20px 20px !important;
   }
 }
+
+
+// FORM
+.fields-inline {
+  display: flex;
+  justify-content: space-around;
+}
