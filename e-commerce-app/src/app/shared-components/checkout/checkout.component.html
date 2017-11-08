@@ -3,62 +3,20 @@
 
   <mat-horizontal-stepper linear="true">
     <mat-step stepControl>
-      <ng-template matStepLabel><span fxHide.xs>Check Your order</span></ng-template>
-
-      <div *ngFor="let order of _cardService.orders">
-
-        <div class="book">
-          <div class="avatar" fxHide.xs>IMG</div>
-          <div class="info">
-            <span>{{order.book.title}}</span>
-            <span>{{order.book.author}}</span>
-          </div>
-          <div class="quantity">
-            <input type="number" [formControl]="quantityControl" min="1" [value]="order.quantity"
-                   [max]="order.book.quantity" (change)="setQuantity(order.book)">
-          </div>
-        </div>
-
-      </div>
+      <span fxHide.xs *matStepLabel>Check Your order</span>
+      <app-checkout-order [editable]="true"></app-checkout-order>
       <div class="action-end">
         <button mat-raised-button color="primary" matStepperNext>Next</button>
       </div>
     </mat-step>
 
     <mat-step [stepControl]="dataForm">
-      <ng-template matStepLabel><span fxHide.xs>Confirm Your data</span></ng-template>
-      <div class="test">
-        <div *ngIf="!_authService.authenticated">Sign up first!</div>
-        <form [formGroup]="dataForm" class="data-form" *ngIf="_authService.authenticated">
-          <div class="two-fields">
-            <mat-form-field>
-              <input matInput placeholder="Name" formControlName="name" required>
-            </mat-form-field>
-            <mat-form-field>
-              <input matInput placeholder="Surname" formControlName="surname" required>
-            </mat-form-field>
-          </div>
-          <mat-form-field>
-            <input matInput placeholder="Email" formControlName="email" required>
-          </mat-form-field>
-          <mat-form-field>
-            <span matPrefix>+48 &nbsp;</span>
-            <input matInput placeholder="Telephone" formControlName="telephone" required>
-          </mat-form-field>
-          <mat-form-field>
-            <input matInput placeholder="Address" formControlName="address" required>
-          </mat-form-field>
-          <div class="two-fields">
-            <mat-form-field>
-              <input matInput placeholder="Zip-Code" formControlName="zip_code" required pattern="^[0-9]{2}-[0-9]{3}$"
-                     maxlength="6">
-            </mat-form-field>
-            <mat-form-field>
-              <input matInput placeholder="City" formControlName="city" required>
-            </mat-form-field>
-          </div>
-        </form>
-      </div>
+      <span fxHide.xs *matStepLabel>Confirm Your data</span>
+      <div *ngIf="!_authService.authenticated">Sign up first!</div>
+
+        <div class="confirm-data">
+          <app-confirm-data [dataForm]="dataForm" [editable]="true" *ngIf="_authService.authenticated"></app-confirm-data>
+        </div>
       <div class="actions-between">
         <button mat-raised-button color="primary" matStepperPrevious>Back</button>
         <button mat-raised-button color="primary" matStepperNext>Next</button>
@@ -66,14 +24,34 @@
     </mat-step>
 
     <mat-step>
-      <ng-template matStepLabel><span fxHide.xs>Confirm</span></ng-template>
-      ZAMAWIAM
+      <span fxHide.xs *matStepLabel>Confirm</span>
+
+      <div class="confirm-order">
+
+        <div class="panel">
+          <mat-expansion-panel expanded="true">
+            <mat-expansion-panel-header>
+              <mat-panel-title>Your order</mat-panel-title>
+            </mat-expansion-panel-header>
+            <app-checkout-order [editable]="false"></app-checkout-order>
+          </mat-expansion-panel>
+        </div>
+
+        <div class="panel">
+          <mat-expansion-panel expanded="true">
+            <mat-expansion-panel-header>
+              <mat-panel-title>Shipping information</mat-panel-title>
+            </mat-expansion-panel-header>
+            <app-confirm-data [dataForm]="dataForm" [editable]="false"></app-confirm-data>
+          </mat-expansion-panel>
+        </div>
+
+
+      </div>
       <div>
         <button mat-raised-button color="primary" matStepperPrevious>Back</button>
       </div>
     </mat-step>
 
   </mat-horizontal-stepper>
-
-
 </div>

@@ -105,3 +105,16 @@ html, body {
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
 }
+
+// to avoid wrong display without 'mat-step-label'
+.mat-step-label{
+  min-width: 0 !important;
+}
+
+// change padding of checkout stepper on small devices
+.mat-horizontal-content-container{
+  padding: 0 5px 20px 5px !important;
+  @media #{$gt-xs_size} {
+    padding: 0 20px 20px 20px !important;
+  }
+}

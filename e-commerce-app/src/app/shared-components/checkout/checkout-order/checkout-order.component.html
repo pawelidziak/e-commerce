@@ -1,0 +1,36 @@
+<div style="padding: 10px">
+  <div class="header">
+    <div class="avatar" fxHide.xs>IMG</div>
+    <div class="info">
+      <span>Title</span>
+      <span fxHide.xs>Author</span>
+    </div>
+    <div class="quantity">
+      <span>Price</span>
+      <span fxHide.xs>Quantity</span>
+      <span fxHide fxShow.xs>Quan.</span>
+    </div>
+  </div>
+
+  <div *ngFor="let order of _cardService.orders">
+    <div class="book">
+      <div class="avatar" fxHide.xs>IMG</div>
+      <div class="info">
+        <span>{{order.book.title}}</span>
+        <span fxHide.xs>{{order.book.author}}</span>
+      </div>
+      <div class="quantity">
+        <span>{{order.book.price | currency: 'USD' : true}}</span>
+        <input *ngIf="editable" type="number" [formControl]="quantityControl" min="1" [value]="order.quantity"
+               [max]="order.book.quantity" (change)="setQuantity(order)">
+        <span *ngIf="!editable">{{order.quantity}}</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="price">
+    <span>Total price: </span>
+    <span><strong>{{_cardService.totalPrice | currency: 'USD' : true}}</strong></span>
+  </div>
+
+</div>

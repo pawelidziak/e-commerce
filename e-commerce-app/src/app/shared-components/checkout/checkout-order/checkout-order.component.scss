@@ -1,0 +1,54 @@
+@import '../../../_helpers/variables';
+
+// FIRST STEP - confirm order
+.header {
+  display: flex;
+  padding: 20px 10px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid $border_color;
+  color: darken($border_color, 10%);
+}
+
+.price {
+  border-top: 1px solid $border_color;
+  display: flex;
+  justify-content: space-between;
+  font-size: 20px;
+  padding: 20px 0;
+}
+
+.book {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 10px;
+  &:hover {
+    background: $border_color;
+  }
+}
+
+.avatar {
+  cursor: pointer;
+  flex: 0;
+  @media #{$gt-xs_size} {
+    flex: 0.3;
+  }
+}
+
+.info {
+  flex: 0.6;
+  @media #{$gt-xs_size} {
+    flex: 0.5;
+  }
+  display: flex;
+  justify-content: space-between;
+}
+
+.quantity {
+  flex: 0.4;
+  @media #{$gt-xs_size} {
+    flex: 0.2;
+    padding-left: 50px;
+  }
+  display: flex;
+  justify-content: space-between;
+}

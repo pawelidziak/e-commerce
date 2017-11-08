@@ -10,9 +10,11 @@ import {ProductListItemComponent} from './products-display/product-list-item/pro
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {FlexLayoutModule} from '@angular/flex-layout';
 import {CheckoutComponent} from './checkout/checkout.component';
-import {LoginComponent} from "./auth-dialog/login/login.component";
-import {AuthDialogComponent} from "./auth-dialog/auth-dialog.component";
-import {RegisterComponent} from "./auth-dialog/register/register.component";
+import {LoginComponent} from './auth-dialog/login/login.component';
+import {AuthDialogComponent} from './auth-dialog/auth-dialog.component';
+import {RegisterComponent} from './auth-dialog/register/register.component';
+import { CheckoutOrderComponent } from './checkout/checkout-order/checkout-order.component';
+import { ConfirmDataComponent } from './checkout/confirm-data/confirm-data.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,9 @@ import {RegisterComponent} from "./auth-dialog/register/register.component";
     CheckoutComponent,
     AuthDialogComponent,
     RegisterComponent,
-    LoginComponent
+    LoginComponent,
+    CheckoutOrderComponent,
+    ConfirmDataComponent
   ],
   imports: [
     CommonModule,

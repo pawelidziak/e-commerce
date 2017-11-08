@@ -6,60 +6,51 @@
   background-color: $primary_white;
 }
 
-.list-container {
-}
-
-.book {
-  display: flex;
-  justify-content: space-between;
-  padding: 10px;
-  &:hover {
-    background: $border_color;
+// SECOND STEP - confirm data
+.confirm-data{
+  padding: 0 20px;
+  @media #{$gt-md_size} {
+    width: 50%;
+    margin: 0 auto;
   }
 }
 
-.avatar {
-  cursor: pointer;
-}
-
-.info {
-  display: flex;
-  justify-content: space-between;
-}
-
-.test{
-  display: flex;
-  justify-content: center;
-}
-
-.data-form {
+// THIRD STEP - confirm order
+.confirm-order{
+  padding: 20px 0;
   display: flex;
   flex-direction: column;
-  width: 100%;
-  @media #{$gt-xs_size} {
-    width: 50%;
+  @media #{$gt-md_size} {
+    flex-direction: row;
   }
-  .mat-form-field{
-    width: 100%;
-  }
-  .two-fields{
-    display: flex;
-  }
-}
-
-.login-section{
-  display: flex;
-  justify-content: center;
-  button {
-    margin-left: 20px;
+  .panel{
+    margin: 10px;
+    width: calc(100% - 20px);
+    @media #{$gt-md_size} {
+      width: 50%;
+    }
   }
 }
 
-.actions-between{
+
+// button positions
+.actions-between {
   display: flex;
   justify-content: space-between;
 }
+
 .action-end {
   display: flex;
   justify-content: flex-end;
+}
+.mat-expansion-panel{
+  box-shadow: none !important;
+  border: 1px solid $border_color;
+}
+mat-expansion-panel-header{
+  background: $border_color;
+  min-height: 64px;
+  &:hover, &:focus{
+    background: $border_color !important;
+  }
 }

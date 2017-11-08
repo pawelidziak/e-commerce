@@ -1,0 +1,34 @@
+@import '../../../_helpers/variables';
+
+.data-container {
+  width: 100%;
+  margin: 0 auto;
+  padding: 20px 0;
+  @media #{$gt-xs_size} {
+    width: 50%;
+    margin: 0 auto;
+  }
+  @media #{$gt-md_size} {
+    width: 100%;
+    margin: 0;
+  }
+}
+
+.data-form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  .mat-form-field {
+    width: 100%;
+  }
+}
+
+.two-fields {
+  display: flex;
+  justify-content: space-around;
+}
+
+.shipping {
+  display: flex;
+  justify-content: space-between;
+}
