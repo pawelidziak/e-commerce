@@ -22,7 +22,7 @@ export class CheckoutComponent implements OnInit {
       surname: ['Idziak', Validators.required],
       email: ['pa.idziak@gmail.com', Validators.required],
       telephone: ['663 406 004', Validators.required],
-      address: ['Ulica', Validators.required],
+      street: ['Ulica', Validators.required],
       zip_code: ['67-400', Validators.required],
       city: ['Wschowa', Validators.required]
     });

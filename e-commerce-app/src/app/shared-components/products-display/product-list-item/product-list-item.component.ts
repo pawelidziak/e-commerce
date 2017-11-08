@@ -35,7 +35,6 @@ export class ProductListItemComponent implements OnInit {
         this.getBooks(category);
       });
 
-    console.log(window.innerWidth);
     this.displayedColumns = window.innerWidth < 600 ? this.displayedColumnsSmall : this.displayedColumnsBig;
   }
 

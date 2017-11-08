@@ -2,11 +2,11 @@ import {Component, Input, OnInit} from '@angular/core';
 import {FormGroup} from '@angular/forms';
 
 @Component({
-  selector: 'app-confirm-data',
-  templateUrl: './confirm-data.component.html',
-  styleUrls: ['./confirm-data.component.scss']
+  selector: 'app-user-data',
+  templateUrl: './user-data.component.html',
+  styleUrls: ['./user-data.component.scss']
 })
-export class ConfirmDataComponent implements OnInit {
+export class UserDataComponent implements OnInit {
 
   @Input('dataForm') dataForm: FormGroup;
   @Input('editable') editable: boolean;

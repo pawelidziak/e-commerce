@@ -14,6 +14,7 @@ import {ShoppingCartComponent} from './shopping-cart/shopping-cart.component';
 import {CardItemComponent} from './shopping-cart/card-item/card-item.component';
 import {SharedComponentsModule} from '../shared-components/shared-components.module';
 import {AdminPanelComponent} from './admin-panel/admin-panel.component';
+import { UserProfileComponent } from './user-profile/user-profile.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import {AdminPanelComponent} from './admin-panel/admin-panel.component';
     HeaderComponent,
     ShoppingCartComponent,
     CardItemComponent,
-    AdminPanelComponent
+    AdminPanelComponent,
+    UserProfileComponent
   ],
   imports: [
     CommonModule,

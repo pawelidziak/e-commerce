@@ -57,7 +57,7 @@
   <div mat-menu-item class="text-center">
     Avatar
   </div>
-  <button mat-menu-item>
+  <button mat-menu-item [routerLink]="['/profile', _authService.currentUserId]">
     <mat-icon>perm_identity</mat-icon>
     <span>Profile</span>
   </button>

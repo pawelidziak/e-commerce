@@ -1,0 +1,16 @@
+@import '../../_helpers/variables';
+
+.user-profile{
+  background: $primary_white;
+  @include box_shadow;
+  padding: 20px;
+  margin: 20px;
+
+  .user-form {
+    width: 50%;
+    margin: 0 auto;
+    button{
+      width: 100%;
+    }
+  }
+}

@@ -5,6 +5,7 @@ import {ProductsDisplayComponent} from './shared-components/products-display/pro
 import {ProductDetailComponent} from './shared-components/products-display/product-detail/product-detail.component';
 import {SidebarComponent} from './core-components/sidebar/sidebar.component';
 import {CheckoutComponent} from './shared-components/checkout/checkout.component';
+import {UserProfileComponent} from './core-components/user-profile/user-profile.component';
 
 const appRoutes: Routes = [
   {
@@ -15,6 +16,7 @@ const appRoutes: Routes = [
   {path: 'book/:key', component: ProductDetailComponent},
   {path: 'books/:category', component: ProductsDisplayComponent},
   {path: 'checkout', component: CheckoutComponent},
+  {path: 'profile/:uid', component: UserProfileComponent},
   {
     path: 'home',
     component: SidebarComponent,

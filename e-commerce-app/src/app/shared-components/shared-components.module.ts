@@ -13,8 +13,8 @@ import {CheckoutComponent} from './checkout/checkout.component';
 import {LoginComponent} from './auth-dialog/login/login.component';
 import {AuthDialogComponent} from './auth-dialog/auth-dialog.component';
 import {RegisterComponent} from './auth-dialog/register/register.component';
-import { CheckoutOrderComponent } from './checkout/checkout-order/checkout-order.component';
-import { ConfirmDataComponent } from './checkout/confirm-data/confirm-data.component';
+import {CheckoutOrderComponent} from './checkout/checkout-order/checkout-order.component';
+import {UserDataComponent} from './user-data/user-data.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +28,7 @@ import { ConfirmDataComponent } from './checkout/confirm-data/confirm-data.compo
     RegisterComponent,
     LoginComponent,
     CheckoutOrderComponent,
-    ConfirmDataComponent
+    UserDataComponent
   ],
   imports: [
     CommonModule,
@@ -40,7 +40,8 @@ import { ConfirmDataComponent } from './checkout/confirm-data/confirm-data.compo
   ],
   exports: [
     ProductsDisplayComponent,
-    LoginComponent
+    LoginComponent,
+    UserDataComponent
   ],
   providers: [],
   entryComponents: [AuthDialogComponent],

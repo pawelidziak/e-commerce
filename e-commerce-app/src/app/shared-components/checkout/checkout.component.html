@@ -15,7 +15,7 @@
       <div *ngIf="!_authService.authenticated" class="no-auth">Sign up first!</div>
 
         <div class="confirm-data">
-          <app-confirm-data [dataForm]="dataForm" [editable]="true" *ngIf="_authService.authenticated"></app-confirm-data>
+          <app-user-data [dataForm]="dataForm" [editable]="true" *ngIf="_authService.authenticated"></app-user-data>
         </div>
       <div class="actions-between">
         <button mat-raised-button color="primary" matStepperPrevious>Back</button>
@@ -42,7 +42,7 @@
             <mat-expansion-panel-header>
               <mat-panel-title>Shipping information</mat-panel-title>
             </mat-expansion-panel-header>
-            <app-confirm-data [dataForm]="dataForm" [editable]="false"></app-confirm-data>
+            <app-user-data [dataForm]="dataForm" [editable]="false"></app-user-data>
           </mat-expansion-panel>
         </div>
 

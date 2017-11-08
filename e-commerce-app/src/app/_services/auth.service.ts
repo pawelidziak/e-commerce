@@ -3,6 +3,7 @@ import {AngularFireDatabase} from 'angularfire2/database';
 import {AngularFireAuth} from 'angularfire2/auth';
 import * as firebase from 'firebase';
 import {IUser} from '../_models/IUser';
+import {Observable} from 'rxjs/Observable';
 
 @Injectable()
 export class AuthService {
@@ -10,9 +11,9 @@ export class AuthService {
   user: any = null;
   loading: boolean;
 
-  constructor(private afAuth: AngularFireAuth, private db: AngularFireDatabase) {
-
-    afAuth.authState.subscribe((auth) => {
+  constructor(private _afAuth: AngularFireAuth, private _db: AngularFireDatabase) {
+    console.log('auth');
+    _afAuth.authState.subscribe((auth) => {
       this.user = auth;
     });
 
@@ -20,7 +21,7 @@ export class AuthService {
 
   // Returns true if user is logged in
   get authenticated(): boolean {
-    return this.user !== null && this.user.emailVerified === true;
+    return (this.user !== null && this.user.emailVerified === true);
   }
 
   // Returns current user data
@@ -30,7 +31,7 @@ export class AuthService {
 
   // Returns
   get currentUserObservable(): any {
-    return this.afAuth.authState;
+    return this._afAuth.authState;
   }
 
   // Returns current user UID
@@ -47,15 +48,20 @@ export class AuthService {
     this.user.displayName = name;
   }
 
+  getUserFormDB(uid: string): Observable<IUser> {
+    return this._db.object('users/' + uid).valueChanges();
+  }
+
   //// Email/Password Auth ////
   emailSignUp(email: string, password: string, newUser: IUser) {
-    return this.afAuth.auth.createUserWithEmailAndPassword(email, password)
+    return this._afAuth.auth.createUserWithEmailAndPassword(email, password)
       .then((user) => {
         // this.user = user;
 
         user.sendEmailVerification()
           .catch(
             (error: any) => {
+              console.log(error);
               throw new Error((error.message));
             }
           );
@@ -63,16 +69,18 @@ export class AuthService {
         this.updateUserData(newUser, user.uid);
       })
       .catch((error: any) => {
+        console.log(error);
         throw new Error((error.message));
       });
   }
 
   // method updates user profile IN database
   updateUserData(user: IUser, uid: string) {
-    this.updatePersonal(user.name);
-    this.db.object(`/users/${uid}`).update(user)
-      .catch((err) => {
-        console.log(err);
+    // this.updatePersonal(user.name);
+    this._db.object(`/users/${uid}`).update(user)
+      .catch((error) => {
+        console.log(error);
+        throw new Error((error.message));
       });
   }
 
@@ -83,19 +91,19 @@ export class AuthService {
       displayName: name,
       photoURL: ''
     }).catch((error: any) => {
+      console.log(error);
       throw new Error((error.message));
     });
   }
 
   emailLogin(email: string, password: string) {
     this.loading = true;
-    return this.afAuth.auth.signInWithEmailAndPassword(email, password)
+    return this._afAuth.auth.signInWithEmailAndPassword(email, password)
       .then((user) => {
         // this.router.navigate(['/home']);
         if (user.emailVerified === false) {
           throw new Error('Email not verified.');
         } else {
-          console.log(user);
           this.user = user;
         }
       })
@@ -122,7 +130,7 @@ export class AuthService {
 
   //// Sign Out ////
   signOut(): void {
-    this.afAuth.auth.signOut();
+    this._afAuth.auth.signOut();
     // this.router.navigate(['/login']);
   }
 
