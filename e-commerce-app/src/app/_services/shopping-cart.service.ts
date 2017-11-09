@@ -4,7 +4,7 @@ import {IOrder} from '../_models/IOrder';
 import {IBook} from '../_models/IBook';
 
 @Injectable()
-export class CardService {
+export class ShoppingCartService {
 
   private _orders: Array<IOrder> = [];
   private _totalPrice = 0;

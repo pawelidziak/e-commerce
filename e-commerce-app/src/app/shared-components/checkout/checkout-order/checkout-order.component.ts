@@ -1,5 +1,5 @@
 import {Component, Input, OnInit, ViewEncapsulation} from '@angular/core';
-import {CardService} from '../../../_services/card.service';
+import {ShoppingCartService} from '../../../_services/shopping-cart.service';
 import {IOrder} from '../../../_models/IOrder';
 import {FormControl} from '@angular/forms';
 
@@ -13,7 +13,7 @@ export class CheckoutOrderComponent implements OnInit {
   @Input('editable') editable: boolean;
 
   quantityControl = new FormControl();
-  constructor( public _cardService: CardService) { }
+  constructor( public _cardService: ShoppingCartService) { }
 
   ngOnInit() {
   }

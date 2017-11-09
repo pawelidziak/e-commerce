@@ -4,19 +4,26 @@ import {AngularFireAuth} from 'angularfire2/auth';
 import * as firebase from 'firebase';
 import {IUser} from '../_models/IUser';
 import {Observable} from 'rxjs/Observable';
+import {AbstractControl, FormControl, Validators} from '@angular/forms';
 
 @Injectable()
 export class AuthService {
 
   user: any = null;
   loading: boolean;
+  // needed just for stepper (checkout)
+  authAbstractControl: AbstractControl = new FormControl(false, Validators.requiredTrue);
 
   constructor(private _afAuth: AngularFireAuth, private _db: AngularFireDatabase) {
-    console.log('auth');
     _afAuth.authState.subscribe((auth) => {
       this.user = auth;
+      localStorage.removeItem('uid');
+      this.authAbstractControl.setValue(false);
+      if (this.user) {
+        localStorage.setItem('uid', this.user.uid);
+        this.authAbstractControl.setValue(true);
+      }
     });
-
   }
 
   // Returns true if user is logged in
@@ -36,7 +43,8 @@ export class AuthService {
 
   // Returns current user UID
   get currentUserId(): string {
-    return this.authenticated ? this.user.uid : '';
+    // return this.authenticated ? this.user.uid : '';
+    return localStorage.getItem('uid') || '';
   }
 
   // Returns current user display name or Guest
@@ -50,6 +58,7 @@ export class AuthService {
 
   getUserFormDB(uid: string): Observable<IUser> {
     return this._db.object('users/' + uid).valueChanges();
+
   }
 
   //// Email/Password Auth ////
@@ -96,6 +105,7 @@ export class AuthService {
     });
   }
 
+
   emailLogin(email: string, password: string) {
     this.loading = true;
     return this._afAuth.auth.signInWithEmailAndPassword(email, password)
@@ -105,6 +115,7 @@ export class AuthService {
           throw new Error('Email not verified.');
         } else {
           this.user = user;
+          // location.reload();
         }
       })
       .catch((error: any) => {

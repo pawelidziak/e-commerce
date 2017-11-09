@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {CardService} from '../../_services/card.service';
+import {ShoppingCartService} from '../../_services/shopping-cart.service';
 import 'rxjs/add/observable/of';
 
 @Component({
@@ -11,7 +11,7 @@ export class ShoppingCartComponent implements OnInit {
 
   @Input('cardNav') cardNav: any;
 
-  constructor(public _cardService: CardService) {
+  constructor(public _cardService: ShoppingCartService) {
   }
 
   ngOnInit() {

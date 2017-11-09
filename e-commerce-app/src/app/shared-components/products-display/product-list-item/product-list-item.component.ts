@@ -9,7 +9,7 @@ import {BookService} from '../../../_services/book.service';
 import {IBook} from '../../../_models/IBook';
 import {ActivatedRoute} from '@angular/router';
 import {Subscription} from 'rxjs/Subscription';
-import {CardService} from '../../../_services/card.service';
+import {ShoppingCartService} from '../../../_services/shopping-cart.service';
 
 @Component({
   selector: 'app-product-list',
@@ -28,7 +28,7 @@ export class ProductListItemComponent implements OnInit {
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
-  constructor(private _route: ActivatedRoute, private _bookService: BookService, private _cardService: CardService) {
+  constructor(private _route: ActivatedRoute, private _bookService: BookService, private _cardService: ShoppingCartService) {
     this.sub = this._route.params.subscribe(
       params => {
         const category = params['category'];

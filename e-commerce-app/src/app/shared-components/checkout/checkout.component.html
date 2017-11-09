@@ -1,32 +1,32 @@
 <div class="checkout-container">
 
-
-  <mat-horizontal-stepper linear="true">
-    <mat-step stepControl>
+  <mat-horizontal-stepper [linear]="true" #stepper>
+    <mat-step [stepControl]="_authService.authAbstractControl">
       <span fxHide.xs *matStepLabel>Check Your order</span>
       <app-checkout-order [editable]="true"></app-checkout-order>
       <div class="action-end">
-        <button mat-raised-button color="primary" matStepperNext>Next</button>
+        <span class="no-auth" *ngIf="_authService.authAbstractControl.invalid">Sign up first</span>
+        <button mat-raised-button color="primary" matStepperNext [disabled]="_authService.authAbstractControl.invalid">Next</button>
       </div>
     </mat-step>
 
-    <mat-step [stepControl]="dataForm">
-      <span fxHide.xs *matStepLabel>Confirm Your data</span>
+    <mat-step [stepControl]="_authService.authAbstractControl">
+      <span fxHide.xs *matStepLabel>Shipping address</span>
       <div *ngIf="!_authService.authenticated" class="no-auth">Sign up first!</div>
-
-        <div class="confirm-data">
-          <app-user-data [dataForm]="dataForm" [editable]="true" *ngIf="_authService.authenticated"></app-user-data>
-        </div>
+      <div class="confirm-data" *ngIf="_authService.authenticated">
+        <app-user-data [dataForm]="dataForm" [editable]="true"></app-user-data>
+      </div>
       <div class="actions-between">
         <button mat-raised-button color="primary" matStepperPrevious>Back</button>
         <button mat-raised-button color="primary" matStepperNext>Next</button>
       </div>
     </mat-step>
 
-    <mat-step>
+    <mat-step [stepControl]="_authService.authAbstractControl">
       <span fxHide.xs *matStepLabel>Confirm</span>
+      <div *ngIf="!_authService.authenticated" class="no-auth">Sign up first!</div>
 
-      <div class="confirm-order">
+      <div class="confirm-order" *ngIf="_authService.authenticated">
 
         <div class="panel">
           <mat-expansion-panel expanded="true">
@@ -38,7 +38,7 @@
         </div>
 
         <div class="panel">
-          <mat-expansion-panel expanded="true">
+          <mat-expansion-panel expanded="true" *ngIf="_authService.authenticated && dataForm && stepper.selectedIndex === 2">
             <mat-expansion-panel-header>
               <mat-panel-title>Shipping information</mat-panel-title>
             </mat-expansion-panel-header>
@@ -46,11 +46,10 @@
           </mat-expansion-panel>
         </div>
 
-
       </div>
       <div class="actions-between">
         <button mat-raised-button color="primary" matStepperPrevious>Back</button>
-        <button mat-raised-button class="order">order</button>
+        <button mat-raised-button class="order" [disabled]="_authService.authAbstractControl.invalid">order</button>
       </div>
     </mat-step>
 

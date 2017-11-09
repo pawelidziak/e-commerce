@@ -8,7 +8,7 @@ import {HttpModule} from '@angular/http';
 import {MaterialModule} from './material.module';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {FlexLayoutModule} from '@angular/flex-layout';
-import {CardService} from './_services/card.service';
+import {ShoppingCartService} from './_services/shopping-cart.service';
 import {AuthService} from './_services/auth.service';
 import {AngularFireDatabase} from 'angularfire2/database';
 import {AngularFireAuth} from 'angularfire2/auth';
@@ -48,7 +48,7 @@ export const firebaseConfig = {
     AngularFireAuth,
     AngularFireDatabase,
     AuthService,
-    CardService,
+    ShoppingCartService,
     SearchService,
     BookService,
     CategoryService

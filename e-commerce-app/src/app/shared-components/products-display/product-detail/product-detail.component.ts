@@ -4,7 +4,7 @@ import {ActivatedRoute} from '@angular/router';
 import {BookService} from '../../../_services/book.service';
 import {IBook} from '../../../_models/IBook';
 import {FormControl} from '@angular/forms';
-import {CardService} from '../../../_services/card.service';
+import {ShoppingCartService} from '../../../_services/shopping-cart.service';
 
 @Component({
   selector: 'app-product-detail',
@@ -21,7 +21,7 @@ export class ProductDetailComponent implements OnInit {
 
   quantityControl = new FormControl('1');
 
-  constructor(private _route: ActivatedRoute, private _bookService: BookService, private _cardService: CardService) {
+  constructor(private _route: ActivatedRoute, private _bookService: BookService, private _cardService: ShoppingCartService) {
   }
 
   ngOnInit(): void {

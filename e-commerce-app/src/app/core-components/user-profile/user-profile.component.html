@@ -2,9 +2,13 @@
   <mat-spinner></mat-spinner>
 </div>
 
-<div class="user-profile" *ngIf="!loading">
+<div *ngIf="!_authService.authenticated && !loading" class="no-auth">Sign up first!</div>
+
+<div class="user-profile" *ngIf="_authService.authenticated && !loading && user">
   <div class="user-form">
-    <app-user-data *ngIf="user" [dataForm]="dataForm" [editable]="true"></app-user-data>
-    <button mat-raised-button color="primary" (click)="updateUser()">UPDATE</button>
+    <app-user-data [dataForm]="dataForm" [editable]="true"></app-user-data>
+    <div class="actions">
+      <button mat-raised-button color="primary" (click)="updateUser()">UPDATE</button>
+    </div>
   </div>
 </div>

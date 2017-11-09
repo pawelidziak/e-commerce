@@ -7,10 +7,20 @@
   margin: 20px;
 
   .user-form {
-    width: 50%;
-    margin: 0 auto;
-    button{
+    padding: 0 20px;
+    @media #{$gt-md_size} {
+      width: 50%;
+      margin: 0 auto;
+    }
+    .actions{
       width: 100%;
+      @media #{$gt-xs_size} {
+        width: 50%;
+        margin: 0 auto;
+      }
+      button {
+        width: 100%;
+      }
     }
   }
 }

@@ -1,5 +1,5 @@
 import {Component, HostListener, Input, OnInit, ViewEncapsulation} from '@angular/core';
-import {CardService} from '../../_services/card.service';
+import {ShoppingCartService} from '../../_services/shopping-cart.service';
 import {AuthService} from '../../_services/auth.service';
 import {MatDialog} from '@angular/material';
 import {AuthDialogComponent} from '../../shared-components/auth-dialog/auth-dialog.component';
@@ -30,7 +30,7 @@ export class HeaderComponent implements OnInit {
   filteredOptions: Observable<IBook[]>;
 
   constructor(private _bookService: BookService, public _authService: AuthService,
-              public _cardService: CardService, public _dialog: MatDialog) {
+              public _cardService: ShoppingCartService, public _dialog: MatDialog) {
     if (window.innerWidth < 959) {
       this.hideSidenav = true;
     }

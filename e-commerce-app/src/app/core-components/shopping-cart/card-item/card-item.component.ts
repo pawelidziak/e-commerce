@@ -1,6 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {IOrder} from '../../../_models/IOrder';
-import {CardService} from '../../../_services/card.service';
+import {ShoppingCartService} from '../../../_services/shopping-cart.service';
 import {FormControl} from '@angular/forms';
 
 @Component({
@@ -15,7 +15,7 @@ export class CardItemComponent implements OnInit {
 
   quantityControl = new FormControl('1');
 
-  constructor(private _cardService: CardService) {
+  constructor(private _cardService: ShoppingCartService) {
   }
 
   ngOnInit() {

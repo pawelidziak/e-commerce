@@ -16,12 +16,6 @@
 }
 
 // THIRD STEP - confirm order
-.no-auth{
-  text-align: center;
-  padding: 20px;
-  font-size: 120%;
-  color: $material_red;
-}
 
 .confirm-order{
   padding: 20px 0;
@@ -57,6 +51,7 @@
 .action-end {
   display: flex;
   justify-content: flex-end;
+  align-items: center;
 }
 .mat-expansion-panel{
   box-shadow: none !important;

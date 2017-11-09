@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {CardService} from '../../../_services/card.service';
+import {ShoppingCartService} from '../../../_services/shopping-cart.service';
 import {IBook} from '../../../_models/IBook';
 
 @Component({
@@ -11,7 +11,7 @@ export class ProductMiniaturesItemComponent implements OnInit {
 
   @Input('book') book: IBook;
 
-  constructor(private _cardService: CardService) {
+  constructor(private _cardService: ShoppingCartService) {
   }
 
   ngOnInit() {

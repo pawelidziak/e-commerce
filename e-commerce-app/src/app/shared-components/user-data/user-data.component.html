@@ -1,4 +1,4 @@
-<div class="data-container">
+<div class="data-container" *ngIf="dataForm !== null">
 
   <form [formGroup]="dataForm" class="data-form" *ngIf="editable">
     <div class="fields-inline">

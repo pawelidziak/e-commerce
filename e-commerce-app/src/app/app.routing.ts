@@ -16,7 +16,7 @@ const appRoutes: Routes = [
   {path: 'book/:key', component: ProductDetailComponent},
   {path: 'books/:category', component: ProductsDisplayComponent},
   {path: 'checkout', component: CheckoutComponent},
-  {path: 'profile/:uid', component: UserProfileComponent},
+  {path: 'profile', component: UserProfileComponent},
   {
     path: 'home',
     component: SidebarComponent,
