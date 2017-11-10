@@ -12,7 +12,7 @@
     </div>
   </div>
 
-  <div *ngFor="let order of _cardService.orders">
+  <div *ngFor="let order of _cartService.orders">
     <div class="book">
       <div class="avatar" fxHide.xs>IMG</div>
       <div class="info">
@@ -30,7 +30,7 @@
 
   <div class="price">
     <span>Total price: </span>
-    <span><strong>{{_cardService.totalPrice | currency: 'USD' : true}}</strong></span>
+    <span><strong>{{_cartService.totalPrice | currency: 'USD' : true}}</strong></span>
   </div>
 
 </div>

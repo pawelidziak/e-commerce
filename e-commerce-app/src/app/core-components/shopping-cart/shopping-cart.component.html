@@ -1,8 +1,8 @@
-<div *ngIf="_cardService.orders.length === 0" class="no-products">
+<div *ngIf="_cartService.orders.length === 0" class="no-products">
   <span>No products</span>
 </div>
 
-<div *ngIf="_cardService.orders.length > 0">
+<div *ngIf="_cartService.orders.length > 0">
 
   <div class="card-header">
     <button mat-button (click)="clearCard()">
@@ -11,14 +11,14 @@
     </button>
   </div>
 
-  <div *ngFor="let order of _cardService.orders" style="padding: 10px;">
+  <div *ngFor="let order of _cartService.orders" style="padding: 10px;">
     <app-card-item [order]="order" [cardNav]="cardNav"></app-card-item>
   </div>
 
   <div class="check-out">
     <div class="price">
       <span>Total price: </span>
-      <span><strong>{{_cardService.totalPrice | currency: 'USD' : true}}</strong></span>
+      <span><strong>{{_cartService.totalPrice | currency: 'USD' : true}}</strong></span>
     </div>
     <button mat-raised-button color="primary"  [routerLink]="['/checkout']" (click)="cardNav.close()">check out</button>
   </div>

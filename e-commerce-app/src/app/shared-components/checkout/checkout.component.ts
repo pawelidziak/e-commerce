@@ -11,10 +11,11 @@ import {IUser} from '../../_models/IUser';
 })
 export class CheckoutComponent implements OnInit, OnChanges {
 
+
   dataForm: FormGroup = null;
   user: IUser = null;
 
-  constructor(private _formBuilder: FormBuilder, public _cardService: ShoppingCartService, public _authService: AuthService) {
+  constructor(private _formBuilder: FormBuilder, public _cartService: ShoppingCartService, public _authService: AuthService) {
   }
 
   ngOnInit(): void {
@@ -29,7 +30,7 @@ export class CheckoutComponent implements OnInit, OnChanges {
     this._authService.getUserFormDB(this._authService.currentUserId).subscribe(
       (user) => {
         this.user = user;
-        this.updateForm(this.user);
+        this.updateForm();
       },
       (error) => {
         console.log(error);
@@ -37,18 +38,22 @@ export class CheckoutComponent implements OnInit, OnChanges {
     );
   }
 
-  updateForm(user: IUser): void {
+  updateForm(): void {
     const email = this._authService.currentUser ? this._authService.currentUser.email : '';
-    console.log('update form');
     this.dataForm = this._formBuilder.group({
-      name: [user.name, Validators.required],
-      surname: [user.surname, Validators.required],
+      name: [this.user.name, Validators.required],
+      surname: [this.user.surname, Validators.required],
       email: [email, Validators.required],
-      telephone: [user.telephone, Validators.required],
-      street: [user.street, Validators.required],
-      zip_code: [user.zip_code, Validators.required],
-      city: [user.city, Validators.required]
+      telephone: [this.user.telephone, Validators.required],
+      street: [this.user.street, Validators.required],
+      zip_code: [this.user.zip_code, Validators.required],
+      city: [this.user.city, Validators.required]
     });
   }
+
+  makeOrder() {
+    this._cartService.makeOrder();
+  }
+
 
 }

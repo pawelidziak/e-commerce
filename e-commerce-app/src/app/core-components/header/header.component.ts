@@ -30,7 +30,7 @@ export class HeaderComponent implements OnInit {
   filteredOptions: Observable<IBook[]>;
 
   constructor(private _bookService: BookService, public _authService: AuthService,
-              public _cardService: ShoppingCartService, public _dialog: MatDialog) {
+              public _cartService: ShoppingCartService, public _dialog: MatDialog) {
     if (window.innerWidth < 959) {
       this.hideSidenav = true;
     }

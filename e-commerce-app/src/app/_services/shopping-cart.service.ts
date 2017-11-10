@@ -1,7 +1,7 @@
-import {Http} from '@angular/http';
 import {Injectable} from '@angular/core';
 import {IOrder} from '../_models/IOrder';
 import {IBook} from '../_models/IBook';
+import {AngularFireDatabase} from 'angularfire2/database';
 
 @Injectable()
 export class ShoppingCartService {
@@ -9,15 +9,27 @@ export class ShoppingCartService {
   private _orders: Array<IOrder> = [];
   private _totalPrice = 0;
 
-  constructor(private http: Http) {
+  constructor(private _db: AngularFireDatabase) {
     this._orders = [];
     if (localStorage.getItem('orders')) {
       this.parseOrdersFromLocalStorage(JSON.parse(localStorage.getItem('orders')));
       this.calculateTotalPrice();
+      this.checksOrders();
     }
   }
 
   // methods
+  private checksOrders() {
+    this.orders.forEach((order) => {
+      this._db.object('books/' + order.book.key).valueChanges().subscribe((book: IBook) => {
+        console.log('zamian');
+        if (book.quantity < order.quantity) {
+          this.orders = this.orders.filter(obj => obj !== order);
+        }
+      });
+    });
+  }
+
   private parseOrdersFromLocalStorage(lists: any[]) {
     for (const list of lists) {
       switch (list.name) {
@@ -42,7 +54,6 @@ export class ShoppingCartService {
     }
   }
 
-
   public addBookToOrderList(book: IBook, quantity: number = 1) {
     const foundedOrder = this._orders.find(x => x.book.key === book.key);
     if (!foundedOrder && book.quantity > 0) {
@@ -54,6 +65,7 @@ export class ShoppingCartService {
       this.saveOrderListInLocalStorage();
       this.calculateTotalPrice();
     }
+    this.checksOrders();
   }
 
   public setNewQuantity(order: IOrder, quantity: number) {
@@ -90,6 +102,41 @@ export class ShoppingCartService {
   clearOrders() {
     this.orders = [];
     this.removeOrderListFromLocalStorage();
+  }
+
+  makeOrder() {
+    this._db.list('orders').push(this.orders);
+    this.orders.forEach((order) => {
+      // this.changeBookQuantity(order.book.key, order.book.quantity - order.quantity);
+      // if (this.checkBookAvailable(order.book.key, order.quantity)) {
+      //   this.changeBookQuantity(order.book.key, order.book.quantity - order.quantity)
+      //     .catch((error) => {
+      //       throw new Error(error);
+      //     });
+      // } else {
+      //   return false;
+      // }
+    });
+  }
+
+  checkBookAvailable(key: string, quantity: number) {
+    console.log(key);
+    this._db.object('books/' + key).valueChanges().subscribe(
+      (book: IBook) => {
+        console.log(book);
+        console.log(book.quantity >= quantity);
+        return book.quantity >= quantity;
+      },
+      (error) => {
+        console.log(error);
+        return false;
+      }
+    );
+  }
+
+
+  changeBookQuantity(key: string, quantity: number) {
+    return this._db.object('books/' + key).update({quantity: quantity});
   }
 
   // getters & setters

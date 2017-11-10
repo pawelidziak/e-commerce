@@ -11,8 +11,8 @@ import {MatDialogRef} from '@angular/material';
 export class LoginComponent implements OnInit {
 
   // Create Login Controls
-  email = new FormControl('', [Validators.required, Validators.email]);
-  password = new FormControl('', [Validators.required]);
+  email = new FormControl('pa.idziak@gmail.com', [Validators.required, Validators.email]);
+  password = new FormControl('123456', [Validators.required]);
 
   hidePassword = true;
   error: string;

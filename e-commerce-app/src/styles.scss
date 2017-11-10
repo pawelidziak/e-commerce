@@ -131,3 +131,8 @@ html, body {
   font-size: 120%;
   color: $material_red;
 }
+
+// to avoid clicking in step header (checkout stepper)
+.mat-horizontal-stepper-header{
+  pointer-events: none !important;
+}

@@ -11,14 +11,14 @@ export class ProductMiniaturesItemComponent implements OnInit {
 
   @Input('book') book: IBook;
 
-  constructor(private _cardService: ShoppingCartService) {
+  constructor(private _cartService: ShoppingCartService) {
   }
 
   ngOnInit() {
   }
 
   addProductToCard(): void {
-    this._cardService.addBookToOrderList(this.book);
+    this._cartService.addBookToOrderList(this.book);
   }
 
 }

@@ -15,7 +15,7 @@ export class CardItemComponent implements OnInit {
 
   quantityControl = new FormControl('1');
 
-  constructor(private _cardService: ShoppingCartService) {
+  constructor(private _cartService: ShoppingCartService) {
   }
 
   ngOnInit() {
@@ -28,10 +28,10 @@ export class CardItemComponent implements OnInit {
     if (this.quantityControl.value > this.order.book.quantity) {
       this.quantityControl.setValue(this.order.book.quantity);
     }
-    this._cardService.setNewQuantity(this.order, this.quantityControl.value);
+    this._cartService.setNewQuantity(this.order, this.quantityControl.value);
   }
 
   deleteOrder() {
-    this._cardService.removeOrder(this.order);
+    this._cartService.removeOrder(this.order);
   }
 }

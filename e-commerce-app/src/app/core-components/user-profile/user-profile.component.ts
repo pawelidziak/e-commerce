@@ -2,8 +2,6 @@ import {Component, OnChanges, OnInit, SimpleChanges} from '@angular/core';
 import {AuthService} from '../../_services/auth.service';
 import {IUser} from '../../_models/IUser';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {Subscription} from 'rxjs/Subscription';
-import {ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-user-profile',

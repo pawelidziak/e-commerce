@@ -28,7 +28,7 @@ export class ProductListItemComponent implements OnInit {
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
-  constructor(private _route: ActivatedRoute, private _bookService: BookService, private _cardService: ShoppingCartService) {
+  constructor(private _route: ActivatedRoute, private _bookService: BookService, private _cartService: ShoppingCartService) {
     this.sub = this._route.params.subscribe(
       params => {
         const category = params['category'];
@@ -55,7 +55,7 @@ export class ProductListItemComponent implements OnInit {
   }
 
   addProductToCard(element: IBook): void {
-    this._cardService.addBookToOrderList(element);
+    this._cartService.addBookToOrderList(element);
   }
 
   @HostListener('window:resize', ['$event'])

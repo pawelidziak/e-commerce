@@ -21,7 +21,7 @@ export class ProductDetailComponent implements OnInit {
 
   quantityControl = new FormControl('1');
 
-  constructor(private _route: ActivatedRoute, private _bookService: BookService, private _cardService: ShoppingCartService) {
+  constructor(private _route: ActivatedRoute, private _bookService: BookService, private _cartService: ShoppingCartService) {
   }
 
   ngOnInit(): void {
@@ -53,7 +53,7 @@ export class ProductDetailComponent implements OnInit {
 
   addProductToCard(): void {
     if (this.quantityControl.value) {
-      this._cardService.addBookToOrderList(this.book, this.quantityControl.value);
+      this._cartService.addBookToOrderList(this.book, this.quantityControl.value);
     }
   }
 

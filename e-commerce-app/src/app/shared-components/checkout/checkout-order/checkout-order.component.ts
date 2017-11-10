@@ -13,7 +13,7 @@ export class CheckoutOrderComponent implements OnInit {
   @Input('editable') editable: boolean;
 
   quantityControl = new FormControl();
-  constructor( public _cardService: ShoppingCartService) { }
+  constructor( public _cartService: ShoppingCartService) { }
 
   ngOnInit() {
   }
@@ -25,6 +25,6 @@ export class CheckoutOrderComponent implements OnInit {
     if (this.quantityControl.value > order.book.quantity) {
       this.quantityControl.setValue(order.book.quantity);
     }
-    this._cardService.setNewQuantity(order, this.quantityControl.value);
+    this._cartService.setNewQuantity(order, this.quantityControl.value);
   }
 }

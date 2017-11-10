@@ -35,8 +35,8 @@
   <button mat-button (click)="cardNav.toggle()">
     <mat-icon>shopping_cart</mat-icon>
     <span fxHide.xs="true">Cart</span>
-    <span *ngIf="_cardService.orders.length > 0">({{_cardService.orders.length}} items)</span>
-    <span *ngIf="_cardService.orders.length === 0">(empty)</span>
+    <span *ngIf="_cartService.orders.length > 0">({{_cartService.orders.length}} items)</span>
+    <span *ngIf="_cartService.orders.length === 0">(empty)</span>
   </button>
 
   <button mat-button *ngIf="!_authService.authenticated" (click)="openAuthDialog()">

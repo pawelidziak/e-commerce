@@ -11,14 +11,14 @@ export class ShoppingCartComponent implements OnInit {
 
   @Input('cardNav') cardNav: any;
 
-  constructor(public _cardService: ShoppingCartService) {
+  constructor(public _cartService: ShoppingCartService) {
   }
 
   ngOnInit() {
   }
 
   clearCard() {
-    this._cardService.clearOrders();
+    this._cartService.clearOrders();
   }
 
 }
