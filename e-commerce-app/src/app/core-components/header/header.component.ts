@@ -8,6 +8,7 @@ import {Observable} from 'rxjs/Observable';
 import {FormControl} from '@angular/forms';
 import {IBook} from '../../_models/IBook';
 import {BookService} from '../../_services/book.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -30,7 +31,7 @@ export class HeaderComponent implements OnInit {
   filteredOptions: Observable<IBook[]>;
 
   constructor(private _bookService: BookService, public _authService: AuthService,
-              public _cartService: ShoppingCartService, public _dialog: MatDialog) {
+              public _cartService: ShoppingCartService, public _dialog: MatDialog, private _router: Router) {
     if (window.innerWidth < 959) {
       this.hideSidenav = true;
     }
@@ -45,7 +46,6 @@ export class HeaderComponent implements OnInit {
           .startWith(null)
           .map(book => book && typeof book === 'object' ? book.title : book)
           .map(title => title ? this.filter(title) : this.options.slice());
-
       },
       error => {
         this.error = <any>error;
@@ -85,5 +85,11 @@ export class HeaderComponent implements OnInit {
     this.hideSidenav = event.target.innerWidth <= 959;
   }
 
+  searchBook() {
+    // TODO
+    // const tmpBook: IBook = this.myControl.value;
+    // console.log(tmpBook.key);
+    // this._router.navigate(['/book', tmpBook.key]);
+  }
 
 }

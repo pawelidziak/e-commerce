@@ -10,17 +10,19 @@
     <mat-icon>menu</mat-icon>
   </button>
 
-  <button mat-button *ngIf="!searchInputFocused" (click)="searchInputFocused = true">
+  <button mat-button *ngIf="!searchInputFocused" (click)="searchInputFocused = true;">
     <mat-icon>search</mat-icon>
     <span fxHide.xs="true">Search</span>
   </button>
 
   <form class="search-form" *ngIf="searchInputFocused">
     <mat-form-field class="full-width" floatPlaceholder="never">
-      <input placeholder="Search" matInput [formControl]="myControl" [matAutocomplete]="auto">
+      <form (ngSubmit)="searchBook()">
+        <input placeholder="Search" matInput [formControl]="myControl" [matAutocomplete]="auto" autofocus>
+      </form>
       <mat-autocomplete #auto [displayWith]="displayFn">
         <div *ngFor="let option of filteredOptions | async; let i=index">
-          <mat-option *ngIf="i<10" [value]="option">
+          <mat-option *ngIf="i<10" [value]="option" [routerLink]="['/book', option.key]">
             {{ option.title }}
           </mat-option>
         </div>

@@ -1,4 +1,9 @@
-<div class="checkout-container">
+<mat-card *ngIf="_cartService.orders.length === 0" class="no-book">
+  <mat-icon>error_outline</mat-icon>
+  <p>Don't You forget to add book to shopping cart? Please change this!</p>
+</mat-card>
+
+<div class="checkout-container" *ngIf="_cartService.orders.length > 0">
 
   <mat-horizontal-stepper [linear]="true" #stepper>
     <mat-step [stepControl]="_authService.authAbstractControl">

@@ -60,7 +60,6 @@ export class ProductListItemComponent implements OnInit {
 
   @HostListener('window:resize', ['$event'])
   onResize(event: any) {
-    console.log(event.target.innerWidth);
     this.displayedColumns = event.target.innerWidth <= 600 ? this.displayedColumnsSmall : this.displayedColumnsBig;
   }
 
