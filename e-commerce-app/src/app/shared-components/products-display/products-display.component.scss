@@ -33,7 +33,10 @@
 }
 
 .product-list {
-  padding: 20px;
+  padding: 20px 0;
+  @media #{$gt-sm_size} {
+    padding: 20px;
+  }
 }
 
 .no-books {

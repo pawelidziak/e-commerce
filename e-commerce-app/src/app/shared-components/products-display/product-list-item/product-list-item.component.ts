@@ -22,7 +22,7 @@ export class ProductListItemComponent implements OnInit {
 
   displayedColumns = [];
   displayedColumnsBig = ['img', 'title', 'author', 'desc', 'price', 'actions'];
-  displayedColumnsSmall = ['title', 'author', 'price', 'actions'];
+  displayedColumnsSmall = ['title', 'price', 'actions'];
   dataSource: ExampleDataSource;
 
   @ViewChild(MatSort) sort: MatSort;

@@ -19,6 +19,7 @@ export class ProductsDisplayComponent implements OnInit {
   displayList = false;
   _arrayBooks: Array<IBook>;
   private sub: Subscription;
+  storage = firebase.storage().ref();
 
   // private itemDoc: AngularFirestoreDocument<any>;
   // item: Observable<any>;
@@ -40,20 +41,10 @@ export class ProductsDisplayComponent implements OnInit {
         const category = params['category'];
         this.getBooks(category);
       });
-
-    // this.itemDoc = _fs.doc<any>('books/-KxckpbsmNXBi7U_dDOO');
-    // this.item = this.itemDoc.valueChanges();
-
-
-    // this._fs.doc('books/').ref;
-    // const storage = firebase.storage();
-    // const pathReference = storage.ref('books/-KxckpbsmNXBi7U_dDOO.jpg');
-
-
   }
 
   ngOnInit() {
-    this.getBookAvatar('-KxckpbsmNXBi7U_dDOO.jpg');
+    // this.getBookAvatar('-KxckpbsmNXBi7U_dDOO.jpg');
   }
 
   getBookAvatar(uid: string) {

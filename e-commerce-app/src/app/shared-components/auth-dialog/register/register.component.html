@@ -1,7 +1,7 @@
 <div class="register-container">
 
-  <div class="success-msg" *ngIf="response">{{response}}</div>
-  <div class="error-msg" *ngIf="error">{{error}}</div>
+  <app-alert [msg]="response? response : error" [isSuccess]="!!response"></app-alert>
+
 
   <form [formGroup]="registerForm" (ngSubmit)="register()">
     <div class="fields-inline">

@@ -16,6 +16,7 @@ import {RegisterComponent} from './auth-dialog/register/register.component';
 import {CheckoutOrderComponent} from './checkout/checkout-order/checkout-order.component';
 import {UserDataComponent} from './user-data/user-data.component';
 import {LimitCharPipe} from '../_helpers/LimitCharPipe';
+import { AlertComponent } from './alert/alert.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import {LimitCharPipe} from '../_helpers/LimitCharPipe';
     LoginComponent,
     CheckoutOrderComponent,
     UserDataComponent,
-    LimitCharPipe
+    LimitCharPipe,
+    AlertComponent
   ],
   imports: [
     CommonModule,
@@ -43,7 +45,8 @@ import {LimitCharPipe} from '../_helpers/LimitCharPipe';
   exports: [
     ProductsDisplayComponent,
     LoginComponent,
-    UserDataComponent
+    UserDataComponent,
+    AlertComponent
   ],
   providers: [],
   entryComponents: [AuthDialogComponent],

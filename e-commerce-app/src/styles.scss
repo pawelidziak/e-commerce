@@ -31,27 +31,7 @@ html, body {
   flex: 1;
 }
 
-// messages
-@mixin msg-box {
-  padding: 15px;
-  color: $primary_white;
-  @include box_shadow();
-  text-align: center;
-  margin: 10px 0;
-  border-radius: 2px;
-  font-size: 90%;
-}
-
-.success-msg {
-  background: $material_green;
-  @include msg-box;
-}
-
-.error-msg {
-  background: $material_red;
-  @include msg-box;
-}
-
+// colors
 .fail-color {
   color: $material_red;
 }

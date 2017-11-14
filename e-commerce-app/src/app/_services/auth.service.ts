@@ -58,8 +58,8 @@ export class AuthService {
 
   getUserFormDB(uid: string): Observable<IUser> {
     return this._db.object('users/' + uid).valueChanges();
-
   }
+
 
   //// Email/Password Auth ////
   emailSignUp(email: string, password: string, newUser: IUser) {
@@ -70,39 +70,14 @@ export class AuthService {
         user.sendEmailVerification()
           .catch(
             (error: any) => {
-              console.log(error);
               throw new Error((error.message));
             }
           );
-
-        this.updateUserData(newUser, user.uid);
+        this.updateUserData(newUser, user.uid, email);
       })
       .catch((error: any) => {
-        console.log(error);
         throw new Error((error.message));
       });
-  }
-
-  // method updates user profile IN database
-  updateUserData(user: IUser, uid: string) {
-    // this.updatePersonal(user.name);
-    this._db.object(`/users/${uid}`).update(user)
-      .catch((error) => {
-        console.log(error);
-        throw new Error((error.message));
-      });
-  }
-
-  // method updates user profile (not in database!)
-  updatePersonal(name: string) {
-    const user = firebase.auth().currentUser;
-    return user.updateProfile({
-      displayName: name,
-      photoURL: ''
-    }).catch((error: any) => {
-      console.log(error);
-      throw new Error((error.message));
-    });
   }
 
 
@@ -146,11 +121,59 @@ export class AuthService {
   }
 
   // UPDATE USER
-  updateEmail(email: string) {
+  private updateEmail(email: string) {
     const user = firebase.auth().currentUser;
     return user.updateEmail(email)
       .catch((error: any) => {
-        throw new Error((error.message));
+        throw new Error(error.message);
       });
   }
+
+  updatePassword(password: string) {
+    const user = firebase.auth().currentUser;
+    return user.updatePassword(password)
+      .catch((error: any) => {
+        throw new Error(error.message);
+      });
+  }
+
+
+  // method updates user profile IN database
+  updateUserData(user: IUser, uid: string, email: string) {
+    // this.updatePersonal(user.name);
+    const updateObject = this._db.object(`/users/${uid}`).update(user)
+      .catch((error) => {
+        throw new Error(error.message);
+      });
+
+    const updateEmail = this.updateEmail(email)
+      .catch((error) => {
+        throw new Error(error.message);
+      });
+
+    const updatePersonal = this.updatePersonal(user.name)
+      .catch((error) => {
+        throw new Error(error.message);
+      });
+
+    const dataChanged = [
+      updateObject,
+      updateEmail,
+      updatePersonal
+    ];
+
+    return Observable.merge(dataChanged);
+  }
+
+  // method updates user profile (not in database!)
+  private updatePersonal(name: string) {
+    const user = firebase.auth().currentUser;
+    return user.updateProfile({
+      displayName: name,
+      photoURL: ''
+    }).catch((error: any) => {
+      throw new Error((error.message));
+    });
+  }
+
 }

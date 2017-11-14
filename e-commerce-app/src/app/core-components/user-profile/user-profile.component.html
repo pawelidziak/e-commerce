@@ -5,6 +5,9 @@
 <div *ngIf="!_authService.authenticated && !loading" class="no-auth">Sign up first!</div>
 
 <div class="user-profile" *ngIf="_authService.authenticated && !loading && user">
+
+  <app-alert [msg]="success? success : error" [isSuccess]="!!success"></app-alert>
+
   <div class="user-form">
     <app-user-data [dataForm]="dataForm" [editable]="true"></app-user-data>
     <div class="actions">

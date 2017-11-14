@@ -59,7 +59,6 @@ export class RegisterComponent implements OnInit {
         isAdmin: false
       };
 
-      console.log(user);
       this._authService.emailSignUp(this.email.value, this.password.value, user)
         .then(() => {
           this.response = 'You have been registered! Confirmation email was sent.';

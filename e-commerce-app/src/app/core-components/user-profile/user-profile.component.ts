@@ -14,6 +14,7 @@ export class UserProfileComponent implements OnInit, OnChanges {
   dataForm: FormGroup;
   loading: boolean;
   error: string;
+  success: string;
 
   constructor(public _authService: AuthService, private _formBuilder: FormBuilder) {
   }
@@ -55,7 +56,24 @@ export class UserProfileComponent implements OnInit, OnChanges {
   }
 
   updateUser(): void {
-    console.log(this.dataForm.controls['name'].value);
-    // TODO aktualizacja danych usera
+    const updatedUser: IUser = {
+      name: this.dataForm.controls['name'].value,
+      surname: this.dataForm.controls['surname'].value,
+      telephone: this.dataForm.controls['telephone'].value,
+      street: this.dataForm.controls['street'].value,
+      zip_code: this.dataForm.controls['zip_code'].value,
+      city: this.dataForm.controls['city'].value,
+      isAdmin: false
+    };
+
+    this._authService.updateUserData(updatedUser, this._authService.currentUserId, this.dataForm.controls['email'].value)
+      .subscribe(
+        _ => {
+          this.success = 'The data has been changed.';
+        },
+        (error) => {
+          this.error = error;
+        });
   }
+
 }

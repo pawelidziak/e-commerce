@@ -1,6 +1,6 @@
 <mat-sidenav-container>
 
-  <mat-sidenav #sideNav  position="start" [mode]="hideSidenav ? 'over' : 'side'" [opened]="!hideSidenav">
+  <mat-sidenav #sideNav [disableClose]="true" [mode]="hideSidenav ? 'over' : 'side'" [opened]="!hideSidenav">
 
     <div class="sidenav-header" [routerLink]="['/books', '']" (click)="hideSidenav? sideNav.close() : null">
       <span>Sidenav</span>
