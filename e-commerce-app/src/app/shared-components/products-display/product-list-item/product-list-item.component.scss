@@ -28,3 +28,12 @@ mat-row {
     justify-content: center;
   }
 }
+
+.book-image {
+  height: 140px;
+  width: 140px;
+  img {
+    max-width: 100%;
+    max-height: 100%;
+  }
+}

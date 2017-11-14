@@ -4,13 +4,16 @@
 
     <!-- AVATAR-->
     <mat-card class="avatar no-right-borders">
-      IMG
+        <div class="book-image">
+          <img class="" mat-card-image [src]="book.image" [alt]="book.title + ' image'">
+        </div>
     </mat-card>
 
     <!-- INFO -->
     <mat-card class="info no-border">
       <p class="title">{{book.title}}</p>
       <span class="my-hr" fxHide.xs="true"></span>
+      <span class="author">{{book.author}}</span>
     </mat-card>
 
     <!-- ACTIONS -->

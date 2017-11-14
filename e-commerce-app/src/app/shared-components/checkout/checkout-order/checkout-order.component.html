@@ -14,10 +14,12 @@
 
   <div *ngFor="let order of _cartService.orders">
     <div class="book">
-      <div class="avatar" fxHide.xs>IMG</div>
+      <div class="avatar" fxHide.xs [routerLink]="['/book', order?.book.key]">
+        <img [src]="order?.book.image" [alt]="order?.book.title + ' image'">
+      </div>
       <div class="info">
-        <span>{{order.book.title}}</span>
-        <span fxHide.xs>{{order.book.author}}</span>
+        <span class="title">{{order.book.title | limitChar: '60'}}</span>
+        <span fxHide.xs class="author">{{order.book.author}}</span>
       </div>
       <div class="quantity">
         <span>{{order.book.price | currency: 'USD' : true}}</span>

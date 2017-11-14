@@ -38,7 +38,8 @@ export class BookService {
               author: c.payload.val().author,
               isbn: c.payload.val().isbn,
               price: c.payload.val().price,
-              quantity: c.payload.val().quantity
+              quantity: c.payload.val().quantity,
+              image: c.payload.val().image
             }
           ));
         })

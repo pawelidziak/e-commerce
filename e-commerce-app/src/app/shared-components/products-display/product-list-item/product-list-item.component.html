@@ -7,13 +7,17 @@
     <!-- Position Column -->
     <ng-container matColumnDef="img">
       <mat-header-cell *matHeaderCellDef> IMG</mat-header-cell>
-      <mat-cell *matCellDef="let element"> IMG</mat-cell>
+      <mat-cell *matCellDef="let element" [routerLink]="['/book', element.key]" style="cursor: pointer">
+        <div class="book-image">
+          <img [src]="element.image" [alt]="element.title + ' image'">
+        </div>
+      </mat-cell>
     </ng-container>
 
     <!-- Name Column -->
     <ng-container matColumnDef="title">
       <mat-header-cell *matHeaderCellDef mat-sort-header> Title</mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.title}}</mat-cell>
+      <mat-cell *matCellDef="let element"> {{element.title | limitChar: '30'}}</mat-cell>
     </ng-container>
 
     <!-- Weight Column -->
@@ -25,7 +29,7 @@
     <!-- Color Column -->
     <ng-container matColumnDef="desc">
       <mat-header-cell *matHeaderCellDef mat-sort-header> Desc</mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.desc}}</mat-cell>
+      <mat-cell *matCellDef="let element"> {{element.desc | limitChar: '30'}}</mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="price">
@@ -34,7 +38,7 @@
     </ng-container>
 
     <ng-container matColumnDef="actions">
-      <mat-header-cell *matHeaderCellDef mat-sort-header> Actions</mat-header-cell>
+      <mat-header-cell *matHeaderCellDef> Actions</mat-header-cell>
       <mat-cell *matCellDef="let element" class="actions">
         <button mat-button [routerLink]="['/book', element.key]">
           <mat-icon>more_horiz</mat-icon>
@@ -42,7 +46,7 @@
         </button>
         <button mat-button (click)="addProductToCard(element)" [disabled]="element.quantity === 0">
           <mat-icon>add_shopping_cart</mat-icon>
-          <span fxHide.xs="true" >Add</span>
+          <span fxHide.xs="true">Add</span>
         </button>
       </mat-cell>
     </ng-container>

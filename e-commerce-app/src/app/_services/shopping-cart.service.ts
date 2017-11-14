@@ -22,7 +22,6 @@ export class ShoppingCartService {
   private checksOrders() {
     this.orders.forEach((order) => {
       this._db.object('books/' + order.book.key).valueChanges().subscribe((book: IBook) => {
-        console.log('zamian');
         if (book.quantity < order.quantity) {
           this.orders = this.orders.filter(obj => obj !== order);
         }
@@ -44,6 +43,7 @@ export class ShoppingCartService {
                 isbn: order.book.isbn,
                 price: order.book.price,
                 quantity: order.book.quantity,
+                image: order.book.image
               },
               quantity: order.quantity
             };

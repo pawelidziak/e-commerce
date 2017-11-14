@@ -15,6 +15,7 @@ import {AuthDialogComponent} from './auth-dialog/auth-dialog.component';
 import {RegisterComponent} from './auth-dialog/register/register.component';
 import {CheckoutOrderComponent} from './checkout/checkout-order/checkout-order.component';
 import {UserDataComponent} from './user-data/user-data.component';
+import {LimitCharPipe} from '../_helpers/LimitCharPipe';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import {UserDataComponent} from './user-data/user-data.component';
     RegisterComponent,
     LoginComponent,
     CheckoutOrderComponent,
-    UserDataComponent
+    UserDataComponent,
+    LimitCharPipe
   ],
   imports: [
     CommonModule,
