@@ -39,14 +39,17 @@
 .avatar {
   cursor: pointer;
   outline: none;
-  flex: 0;
+  flex: 0.4;
   @media #{$gt-xs_size} {
     flex: 0.2;
   }
 }
 
 .info {
-  flex: 0.6;
+  flex: 0;
+  @media #{$gt-xs_size} {
+    flex: 0.5;
+  }
   display: flex;
   justify-content: space-between;
   .author {
@@ -55,9 +58,9 @@
 }
 
 .quantity {
-  flex: 0.4;
+  flex: 0.6;
   @media #{$gt-xs_size} {
-    flex: 0.2;
+    flex: 0.3;
     padding-left: 50px;
   }
   display: flex;

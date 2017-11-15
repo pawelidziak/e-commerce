@@ -29,6 +29,16 @@
 
   <div *ngIf="orders">
 
+    <div class="text-center">
+      <p>Here are yours orders. If you have not paid money yet, you can cancel your order.</p>
+      <p>If You have any question please contact us.
+        <button mat-raised-button [routerLink]="['/contact']">
+          <mat-icon>phone</mat-icon>
+          <span>Contact</span>
+        </button>
+      </p><br>
+    </div>
+
     <div *ngFor="let order of orders | OrderBy; let i=index" class="one-order">
 
       <mat-expansion-panel class="panel" [expanded]="i === 0">
@@ -42,20 +52,24 @@
           </mat-panel-description>
         </mat-expansion-panel-header>
 
-          <div class="panel-content">
-            <app-checkout-order [list]="order.list" [totalPrice]="order.totalPrice" [editable]="false"></app-checkout-order>
+        <div class="panel-content">
+          <app-checkout-order [list]="order.list" [totalPrice]="order.totalPrice"
+                              [editable]="false"></app-checkout-order>
 
-            <div class="order-info">
-              <span><strong>Order ID: </strong> {{order.key}}</span>
-              <span><strong>Date of post: </strong> {{order.postDate | date: 'short'}}</span>
-              <span><strong>Date of delivery: </strong> {{order.deliveryDate | date: 'short'}}</span>
-            </div>
-
-            <div class="actions">
-              <button mat-raised-button class="cancel-button" (click)="cancelOrder(order.key)" [disabled]="order.status !== 'waiting for payment'">Cancel</button>
-            </div>
-
+          <div class="order-info">
+            <span><strong>Order ID: </strong> {{order.key}}</span>
+            <span><strong>Date of order: </strong> {{order.orderDate | date: 'short'}}</span>
+            <span><strong>Date of post: </strong> {{(order.postDate)? (order.postDate | date: 'short') : 'Not posted yet'}}</span>
+            <span><strong>Date of delivery: </strong> {{(order.deliveryDate)? (order.deliveryDate | date: 'short') : 'Not delivered yet'}}</span>
           </div>
+
+          <div class="actions">
+            <button mat-raised-button class="cancel-button" (click)="cancelOrder(order.key)"
+                    [disabled]="order.status !== 'waiting for payment'">Cancel
+            </button>
+          </div>
+
+        </div>
 
       </mat-expansion-panel>
     </div>

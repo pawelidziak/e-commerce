@@ -1,9 +1,9 @@
 <div style="padding: 10px">
   <div class="header">
-    <div class="avatar" fxHide.xs>IMG</div>
-    <div class="info">
+    <div class="avatar">IMG</div>
+    <div class="info" fxHide.xs>
       <span>Title</span>
-      <span fxHide.xs>Author</span>
+      <span>Author</span>
     </div>
     <div class="quantity">
       <span>Price</span>
@@ -14,12 +14,12 @@
 
   <div *ngFor="let order of list">
     <div class="book">
-      <div class="avatar" fxHide.xs [routerLink]="['/book', order?.book.key]">
+      <div class="avatar" [routerLink]="['/book', order?.book.key]">
         <img [src]="order?.book.image" [alt]="order?.book.title + ' image'">
       </div>
-      <div class="info">
+      <div class="info" fxHide.xs >
         <span class="title">{{order.book.title | limitChar: '60'}}</span>
-        <span fxHide.xs class="author">{{order.book.author}}</span>
+        <span class="author">{{order.book.author}}</span>
       </div>
       <div class="quantity">
         <span>{{order.book.price | currency: 'USD' : true}}</span>
