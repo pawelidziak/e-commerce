@@ -3,6 +3,10 @@ import {IOrder} from '../_models/IOrder';
 import {IBook} from '../_models/IBook';
 import {AngularFireDatabase} from 'angularfire2/database';
 import {MatSnackBar} from '@angular/material';
+import {AuthService} from './auth.service';
+import {Router} from '@angular/router';
+import {IOrderDTO} from '../_models/IOrderDTO';
+import {Observable} from 'rxjs/Observable';
 
 @Injectable()
 export class ShoppingCartService {
@@ -10,7 +14,8 @@ export class ShoppingCartService {
   private _orders: Array<IOrder> = [];
   private _totalPrice = 0;
 
-  constructor(private _db: AngularFireDatabase, private _snackBar: MatSnackBar) {
+  constructor(private _db: AngularFireDatabase, private _snackBar: MatSnackBar, private _authService: AuthService,
+              private _router: Router) {
     this._orders = [];
     if (localStorage.getItem('orders')) {
       this.parseOrdersFromLocalStorage(JSON.parse(localStorage.getItem('orders')));
@@ -115,25 +120,37 @@ export class ShoppingCartService {
   }
 
   makeOrder() {
-    this._db.list('orders').push(this.orders);
-    this.orders.forEach((order) => {
-      // this.changeBookQuantity(order.book.key, order.book.quantity - order.quantity);
-      // if (this.checkBookAvailable(order.book.key, order.quantity)) {
-      //   this.changeBookQuantity(order.book.key, order.book.quantity - order.quantity)
-      //     .catch((error) => {
-      //       throw new Error(error);
-      //     });
-      // } else {
-      //   return false;
-      // }
+    const orderDTO: IOrderDTO = {
+      key: null,
+      userId: this._authService.currentUser.uid,
+      list: this.orders,
+      totalPrice: this.totalPrice,
+      status: 'waiting for payment',
+      orderDate: Date.now(),
+      postDate: null,
+      deliveryDate: null
+    };
+    this._db.list('orders').push(orderDTO)
+      .then((order) => {
+        this._router.navigate(['/order', order.key]);
+        this.clearOrders();
+      });
+  }
+
+  getUserOrders(key: string): Observable<IOrderDTO[]> {
+    return this._db.list('/orders', ref => ref.orderByChild('userId').equalTo(key)).snapshotChanges().map(changes => {
+      return changes.map(c => ({key: c.payload.key, ...c.payload.val()}));
     });
+  }
+
+  cancelOrder(key: string) {
+    return this._db.object('orders/' + key).remove();
   }
 
   checkBookAvailable(key: string, quantity: number) {
     console.log(key);
     this._db.object('books/' + key).valueChanges().subscribe(
       (book: IBook) => {
-        console.log(book);
         console.log(book.quantity >= quantity);
         return book.quantity >= quantity;
       },
@@ -142,6 +159,10 @@ export class ShoppingCartService {
         return false;
       }
     );
+  }
+
+  getOrderByKey(key: string) {
+    return this._db.object('orders/' + key).valueChanges();
   }
 
 

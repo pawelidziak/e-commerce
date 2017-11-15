@@ -12,7 +12,7 @@
     </div>
   </div>
 
-  <div *ngFor="let order of _cartService.orders">
+  <div *ngFor="let order of list">
     <div class="book">
       <div class="avatar" fxHide.xs [routerLink]="['/book', order?.book.key]">
         <img [src]="order?.book.image" [alt]="order?.book.title + ' image'">
@@ -32,7 +32,7 @@
 
   <div class="price">
     <span>Total price: </span>
-    <span><strong>{{_cartService.totalPrice | currency: 'USD' : true}}</strong></span>
+    <span><strong>{{totalPrice | currency: 'USD' : true}}</strong></span>
   </div>
 
 </div>

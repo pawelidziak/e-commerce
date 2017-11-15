@@ -10,6 +10,8 @@ import {FormControl} from '@angular/forms';
 })
 export class CheckoutOrderComponent implements OnInit {
 
+  @Input('list') list: any[];
+  @Input('totalPrice') totalPrice: number;
   @Input('editable') editable: boolean;
 
   quantityControl = new FormControl();

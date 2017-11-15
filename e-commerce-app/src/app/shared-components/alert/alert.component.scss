@@ -1,7 +1,7 @@
 @import '../../_helpers/variables';
 
 .my-alert {
-  padding: 15px;
+  padding: 20px;
   color: $primary_white;
   @include box_shadow();
   text-align: center;

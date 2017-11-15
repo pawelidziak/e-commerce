@@ -44,7 +44,8 @@ import {AlertComponent} from './alert/alert.component';
     ProductsDisplayComponent,
     LoginComponent,
     UserDataComponent,
-    AlertComponent
+    AlertComponent,
+    CheckoutOrderComponent
   ],
   providers: [],
   entryComponents: [AuthDialogComponent],

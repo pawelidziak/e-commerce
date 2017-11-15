@@ -1,0 +1,37 @@
+@import '../../_helpers/variables';
+
+.user-orders-container{
+  margin: 10px;
+}
+
+.panel {
+  width: 100%;
+  margin: 20px 0;
+}
+.panel-content{
+  padding: 35px 0 20px 0;
+
+  .order-info {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .actions {
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 2px;
+  }
+}
+
+.cancel-button {
+  background: $material_red;
+  color: $primary_white;
+}
+
+mat-expansion-panel-header {
+  background: $border_color;
+  min-height: 64px;
+  &:hover, &:focus {
+    background: $border_color !important;
+  }
+}

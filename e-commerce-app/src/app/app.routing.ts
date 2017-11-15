@@ -3,34 +3,23 @@ import {Routes, RouterModule} from '@angular/router';
 import {AdminPanelComponent} from './core-components/admin-panel/admin-panel.component';
 import {ProductsDisplayComponent} from './shared-components/products-display/products-display.component';
 import {ProductDetailComponent} from './shared-components/products-display/product-detail/product-detail.component';
-import {SidebarComponent} from './core-components/sidebar/sidebar.component';
 import {CheckoutComponent} from './shared-components/checkout/checkout.component';
 import {UserProfileComponent} from './core-components/user-profile/user-profile.component';
+import {OrderComponent} from './core-components/order/order.component';
+import {UserOrdersComponent} from './core-components/user-orders/user-orders.component';
 
 const appRoutes: Routes = [
-  {
-    path: 'admin',
-    component: AdminPanelComponent
-  },
+  {path: 'admin', component: AdminPanelComponent},
   {path: 'books', component: ProductsDisplayComponent},
   {path: 'book/:key', component: ProductDetailComponent},
+  {path: 'order/:key', component: OrderComponent},
+  {path: 'orders', component: UserOrdersComponent},
   {path: 'books/:category', component: ProductsDisplayComponent},
   {path: 'checkout', component: CheckoutComponent},
   {path: 'profile', component: UserProfileComponent},
-  {
-    path: 'home',
-    component: SidebarComponent,
-    // canActivate: [AuthGuard]
-  },
-  // {
-  //   path: 'user/confirm/:id',
-  //   component: PasswordConfirmedComponent
-  // },
-  // // otherwise redirect to main-content
-  // {
-  //   path: '**',
-  //   redirectTo: 'home'
-  // }
+  {path: 'home', component: ProductsDisplayComponent}, // canActivate: [AuthGuard],
+  // otherwise redirect to main-content
+  {path: '**', redirectTo: 'home'}
 ] as Routes;
 
 export const routing: ModuleWithProviders = RouterModule.forRoot(appRoutes);

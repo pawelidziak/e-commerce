@@ -1,0 +1,54 @@
+<mat-card style="margin: 10px">
+
+  <div *ngIf="errorMessage" class="text-center">
+    <app-alert [msg]="errorMessage" [isSuccess]="false"></app-alert>
+    <button mat-raised-button color="primary" [routerLink]="['/home']">
+      <mat-icon>arrow_back</mat-icon>
+      <span>Go back</span>
+    </button>
+  </div>
+
+  <div *ngIf="order?.list.length > 0 && !errorMessage">
+    <app-checkout-order *ngIf="order?.list.length > 0"
+                        [list]="order?.list"
+                        [totalPrice]="order?.totalPrice"
+                        [editable]="false">
+    </app-checkout-order>
+
+    <div class="order-info">
+      <p class="text-center">Your order has been placed</p>
+      <p>Please make a transfer to the following data: </p>
+      <div class="account-transfer">
+        <span><strong>Name: </strong>ShopOnline</span>
+        <span><strong>Account number: </strong> 74 1140 2004 0000 3802 7477 8008</span>
+        <span><strong>Title: </strong> {{orderKey}}</span>
+        <span><strong>Amount:</strong> {{order?.totalPrice | currency: 'USD': true}}</span>
+      </div>
+      <p class="text-right" style="margin-top: 0;">*make sure the title is the same</p>
+      <p>Your order will be sent immediately after the payment has been posted.</p> <br>
+
+      <p>If You have any question please contact us.
+        <button mat-raised-button color="primary">
+          <mat-icon>phone</mat-icon>
+          <span>Contact</span>
+        </button>
+      </p><br>
+
+      <p class="text-right">Thank you for using our services, <br> <strong>ShopOnline team</strong></p> <br>
+
+      <div class="text-center">
+        <button mat-raised-button color="primary" [routerLink]="['/home']">
+          <mat-icon>arrow_back</mat-icon>
+          <span>Go back</span>
+        </button>
+        <button mat-raised-button color="primary" [routerLink]="['/orders']">
+          <mat-icon>list</mat-icon>
+          <span>See my orders</span>
+        </button>
+      </div>
+
+    </div>
+
+  </div>
+
+</mat-card>

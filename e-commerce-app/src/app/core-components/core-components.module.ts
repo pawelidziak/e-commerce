@@ -13,6 +13,7 @@ import {AdminPanelComponent} from './admin-panel/admin-panel.component';
 import {UserProfileComponent} from './user-profile/user-profile.component';
 import {PipesModule} from '../_helpers/pipes/pipes.module';
 import { OrderComponent } from './order/order.component';
+import { UserOrdersComponent } from './user-orders/user-orders.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { OrderComponent } from './order/order.component';
     CardItemComponent,
     AdminPanelComponent,
     UserProfileComponent,
-    OrderComponent
+    OrderComponent,
+    UserOrdersComponent
   ],
   imports: [
     CommonModule,

@@ -8,7 +8,7 @@
   <mat-horizontal-stepper [linear]="true" #stepper>
     <mat-step [stepControl]="_authService.authAbstractControl">
       <span fxHide.xs *matStepLabel>Check Your order</span>
-      <app-checkout-order [editable]="true"></app-checkout-order>
+      <app-checkout-order [list]="_cartService.orders" [totalPrice]="_cartService.totalPrice" [editable]="true"></app-checkout-order>
       <div class="action-end">
         <span class="no-auth" *ngIf="_authService.authAbstractControl.invalid">Sign up first</span>
         <button mat-raised-button color="primary" matStepperNext [disabled]="_authService.authAbstractControl.invalid || _cartService.orders.length === 0" (click)="getUser()">Next</button>
@@ -38,7 +38,7 @@
             <mat-expansion-panel-header>
               <mat-panel-title>Your order</mat-panel-title>
             </mat-expansion-panel-header>
-            <app-checkout-order [editable]="false"></app-checkout-order>
+            <app-checkout-order [list]="_cartService.orders" [totalPrice]="_cartService.totalPrice" [editable]="false"></app-checkout-order>
           </mat-expansion-panel>
         </div>
 

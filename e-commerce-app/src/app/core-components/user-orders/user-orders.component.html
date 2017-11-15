@@ -1,0 +1,64 @@
+<div *ngIf="loading" class="my-spinner">
+  <mat-spinner></mat-spinner>
+</div>
+
+
+<div class="" *ngIf="_authService.authenticated && !loading && user">
+
+
+  asdsa
+
+</div>
+<div *ngIf="!_authService.authenticated && !loading" class="no-auth">Sign up first!</div>
+
+<mat-card class="user-orders-container" *ngIf="_authService.authenticated">
+
+  <div *ngIf="loading" class="my-spinner">
+    <mat-spinner></mat-spinner>
+  </div>
+
+  <app-alert [msg]="success? success : error" [isSuccess]="!!success"></app-alert>
+
+  <div *ngIf="orders?.length === 0" class="text-center">
+    <p>You have not any order yet :(</p>
+    <button mat-raised-button color="primary" [routerLink]="['/home']">
+      <mat-icon>arrow_back</mat-icon>
+      <span>Go back</span>
+    </button>
+  </div>
+
+  <div *ngIf="orders">
+
+    <div *ngFor="let order of orders | OrderBy; let i=index" class="one-order">
+
+      <mat-expansion-panel class="panel" [expanded]="i === 0">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            <span>{{order.totalPrice | currency: 'USD': true}}</span>
+            <span style="padding-left: 50px;">{{order.orderDate | date: 'shortDate'}}</span>
+          </mat-panel-title>
+          <mat-panel-description>
+            {{order.status}}
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+
+          <div class="panel-content">
+            <app-checkout-order [list]="order.list" [totalPrice]="order.totalPrice" [editable]="false"></app-checkout-order>
+
+            <div class="order-info">
+              <span><strong>Order ID: </strong> {{order.key}}</span>
+              <span><strong>Date of post: </strong> {{order.postDate | date: 'short'}}</span>
+              <span><strong>Date of delivery: </strong> {{order.deliveryDate | date: 'short'}}</span>
+            </div>
+
+            <div class="actions">
+              <button mat-raised-button class="cancel-button" (click)="cancelOrder(order.key)" [disabled]="order.status !== 'waiting for payment'">Cancel</button>
+            </div>
+
+          </div>
+
+      </mat-expansion-panel>
+    </div>
+
+  </div>
+</mat-card>
