@@ -1,6 +1,7 @@
-import {Component, HostListener, OnInit, ViewEncapsulation} from '@angular/core';
+import {Component, HostListener, OnInit, ViewChild, ViewEncapsulation} from '@angular/core';
 import {CategoryService} from '../../_services/category.service';
 import {ICategory} from '../../_models/ICategory';
+import {MatSidenav} from '@angular/material';
 
 @Component({
   selector: 'app-sidebar',
@@ -11,6 +12,7 @@ import {ICategory} from '../../_models/ICategory';
 export class SidebarComponent implements OnInit {
 
   public hideSidenav = false;
+  @ViewChild('sideNav') sideNav: MatSidenav;
 
   _categories: Array<ICategory>;
   loading = false;
@@ -44,4 +46,8 @@ export class SidebarComponent implements OnInit {
     this.hideSidenav = event.target.innerWidth <= 959;
   }
 
+  closeSidebar() {
+    // this.sideNav.close();
+    console.log('fb');
+  }
 }

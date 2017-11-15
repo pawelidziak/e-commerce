@@ -9,7 +9,7 @@ import 'rxjs/add/observable/of';
 })
 export class ShoppingCartComponent implements OnInit {
 
-  @Input('cardNav') cardNav: any;
+  @Input('cartNav') cartNav: any;
 
   constructor(public _cartService: ShoppingCartService) {
   }

@@ -1,20 +1,18 @@
 import {NgModule} from '@angular/core';
 import {RouterModule} from '@angular/router';
 import {CommonModule} from '@angular/common';
-import {AuthDialogComponent} from '../shared-components/auth-dialog/auth-dialog.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MaterialModule} from '../material.module';
-import {LoginComponent} from '../shared-components/auth-dialog/login/login.component';
-import {RegisterComponent} from '../shared-components/auth-dialog/register/register.component';
 import {FlexLayoutModule} from '@angular/flex-layout';
-import {SearchFilterPipe} from '../_helpers/SearchFilterPipe';
 import {SidebarComponent} from './sidebar/sidebar.component';
 import {HeaderComponent} from './header/header.component';
 import {ShoppingCartComponent} from './shopping-cart/shopping-cart.component';
 import {CardItemComponent} from './shopping-cart/card-item/card-item.component';
 import {SharedComponentsModule} from '../shared-components/shared-components.module';
 import {AdminPanelComponent} from './admin-panel/admin-panel.component';
-import { UserProfileComponent } from './user-profile/user-profile.component';
+import {UserProfileComponent} from './user-profile/user-profile.component';
+import {PipesModule} from '../_helpers/pipes/pipes.module';
+import { OrderComponent } from './order/order.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +21,8 @@ import { UserProfileComponent } from './user-profile/user-profile.component';
     ShoppingCartComponent,
     CardItemComponent,
     AdminPanelComponent,
-    UserProfileComponent
+    UserProfileComponent,
+    OrderComponent
   ],
   imports: [
     CommonModule,
@@ -32,14 +31,12 @@ import { UserProfileComponent } from './user-profile/user-profile.component';
     ReactiveFormsModule,
     MaterialModule,
     FlexLayoutModule,
-    SharedComponentsModule
+    SharedComponentsModule,
+    PipesModule
   ],
   exports: [
     SidebarComponent,
     CardItemComponent,
-  ],
-  providers: [
-    SearchFilterPipe
   ]
 
 })

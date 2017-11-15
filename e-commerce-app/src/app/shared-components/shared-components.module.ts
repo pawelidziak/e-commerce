@@ -4,7 +4,6 @@ import {ProductMiniaturesItemComponent} from './products-display/product-minatur
 import {MaterialModule} from '../material.module';
 import {RouterModule} from '@angular/router';
 import {CommonModule} from '@angular/common';
-import {SearchFilterPipe} from '../_helpers/SearchFilterPipe';
 import {ProductDetailComponent} from './products-display/product-detail/product-detail.component';
 import {ProductListItemComponent} from './products-display/product-list-item/product-list-item.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
@@ -15,14 +14,13 @@ import {AuthDialogComponent} from './auth-dialog/auth-dialog.component';
 import {RegisterComponent} from './auth-dialog/register/register.component';
 import {CheckoutOrderComponent} from './checkout/checkout-order/checkout-order.component';
 import {UserDataComponent} from './user-data/user-data.component';
-import {LimitCharPipe} from '../_helpers/LimitCharPipe';
-import { AlertComponent } from './alert/alert.component';
+import {PipesModule} from '../_helpers/pipes/pipes.module';
+import {AlertComponent} from './alert/alert.component';
 
 @NgModule({
   declarations: [
     ProductsDisplayComponent,
     ProductMiniaturesItemComponent,
-    SearchFilterPipe,
     ProductDetailComponent,
     ProductListItemComponent,
     CheckoutComponent,
@@ -31,7 +29,6 @@ import { AlertComponent } from './alert/alert.component';
     LoginComponent,
     CheckoutOrderComponent,
     UserDataComponent,
-    LimitCharPipe,
     AlertComponent
   ],
   imports: [
@@ -40,7 +37,8 @@ import { AlertComponent } from './alert/alert.component';
     MaterialModule,
     FormsModule,
     ReactiveFormsModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    PipesModule
   ],
   exports: [
     ProductsDisplayComponent,

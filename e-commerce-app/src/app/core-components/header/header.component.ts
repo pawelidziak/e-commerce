@@ -19,7 +19,7 @@ import {Router} from '@angular/router';
 export class HeaderComponent implements OnInit {
 
   @Input('sideNav') sideNav: any;
-  @Input('cardNav') cardNav: any;
+  @Input('cartNav') cartNav: any;
   user: any;
   public hideSidenav = false;
 

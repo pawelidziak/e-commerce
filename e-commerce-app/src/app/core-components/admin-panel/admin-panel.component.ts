@@ -1,11 +1,9 @@
-import {Component, OnInit, ViewEncapsulation} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {AngularFireDatabase} from 'angularfire2/database';
 import {Observable} from 'rxjs/Observable';
 import {ICategory} from '../../_models/ICategory';
 import {Product} from '../../_models/Product';
-import {SearchFilterPipe} from '../../_helpers/SearchFilterPipe';
 import {BookService} from '../../_services/book.service';
-import {IAddBook, IBook} from '../../_models/IBook';
 
 @Component({
   // selector: 'app-admin-panel',
@@ -27,7 +25,7 @@ export class AdminPanelComponent implements OnInit {
   ];
 
 
-  constructor(private db: AngularFireDatabase, _searchService: SearchFilterPipe, private _bookService: BookService) {
+  constructor(private db: AngularFireDatabase, private _bookService: BookService) {
     this.items = db.list('items', ref => ref.orderByChild('categories/horror').equalTo(true)).valueChanges();
 
 

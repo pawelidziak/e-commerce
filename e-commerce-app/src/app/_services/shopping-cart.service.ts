@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {IOrder} from '../_models/IOrder';
 import {IBook} from '../_models/IBook';
 import {AngularFireDatabase} from 'angularfire2/database';
+import {MatSnackBar} from '@angular/material';
 
 @Injectable()
 export class ShoppingCartService {
@@ -9,7 +10,7 @@ export class ShoppingCartService {
   private _orders: Array<IOrder> = [];
   private _totalPrice = 0;
 
-  constructor(private _db: AngularFireDatabase) {
+  constructor(private _db: AngularFireDatabase, private _snackBar: MatSnackBar) {
     this._orders = [];
     if (localStorage.getItem('orders')) {
       this.parseOrdersFromLocalStorage(JSON.parse(localStorage.getItem('orders')));
@@ -64,8 +65,17 @@ export class ShoppingCartService {
       this.orders.push(order);
       this.saveOrderListInLocalStorage();
       this.calculateTotalPrice();
+      this.openSnackBar('Book added!');
+    } else {
+      this.openSnackBar('Book is already in shopping cart!');
     }
     this.checksOrders();
+  }
+
+  private openSnackBar(msg: string) {
+    this._snackBar.open(msg, '', {
+      duration: 3000,
+    });
   }
 
   public setNewQuantity(order: IOrder, quantity: number) {

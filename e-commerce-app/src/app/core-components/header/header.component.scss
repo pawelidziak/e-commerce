@@ -32,16 +32,16 @@
   position: fixed;
   left: 0;
   top: 0;
-  width: calc(100% - 20px);
+  width: calc(100% - 40px);
   .full-width {
     width: 100%;
   }
   z-index: 9999;
 
   // position for large devices
-  @media #{$gt-xs_size} {
+  @media #{$gt-sm_size} {
     position: relative;
-    width: 300px;
+    //width: 100%;
     margin: 0;
   }
   mat-icon {

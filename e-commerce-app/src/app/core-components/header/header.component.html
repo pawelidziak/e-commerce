@@ -21,9 +21,11 @@
         <input placeholder="Search" matInput [formControl]="myControl" [matAutocomplete]="auto" autofocus>
       </form>
       <mat-autocomplete #auto [displayWith]="displayFn">
-        <div *ngFor="let option of filteredOptions | async; let i=index">
-          <mat-option *ngIf="i<10" [value]="option" [routerLink]="['/book', option.key]">
-            {{ option.title }}
+        <div *ngFor="let option of filteredOptions | async; let i=index" style="padding: 10px">
+          <mat-option *ngIf="i<10" [value]="option" [routerLink]="['/book', option.key]" style="padding: 10px">
+            <img style="vertical-align:middle;" aria-hidden [src]="option.image" height="64" />
+            <span>{{ option.title | limitChar: '55'}}</span> |
+            <small>Price: {{option.price | currency: 'USD': true}}</small>
           </mat-option>
         </div>
       </mat-autocomplete>
@@ -34,7 +36,7 @@
   </form>
 
 
-  <button mat-button (click)="cardNav.toggle()">
+  <button mat-button (click)="cartNav.toggle()">
     <mat-icon>shopping_cart</mat-icon>
     <span fxHide.xs="true">Cart</span>
     <span *ngIf="_cartService.orders.length > 0">({{_cartService.orders.length}} items)</span>

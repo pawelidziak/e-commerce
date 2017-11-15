@@ -1,8 +1,8 @@
-<mat-sidenav-container>
+<mat-sidenav-container (backdropClick)="hideSidenav ? sideNav.close() : null" >
 
-  <mat-sidenav #sideNav [disableClose]="true" [mode]="hideSidenav ? 'over' : 'side'" [opened]="!hideSidenav">
+  <mat-sidenav [disableClose]="true" #sideNav [mode]="hideSidenav ? 'over' : 'side'" [opened]="!hideSidenav">
 
-    <div class="sidenav-header" [routerLink]="['/books', '']" (click)="hideSidenav? sideNav.close() : null">
+    <div class="sidenav-header" [routerLink]="['/books', '']" (click)="hideSidenav? closeSidebar() : null">
       <span>Sidenav</span>
     </div>
 
@@ -36,21 +36,22 @@
 
   </mat-sidenav>
 
-  <app-header [sideNav]="sideNav" [cardNav]="cardNav"></app-header>
+  <app-header [sideNav]="sideNav" [cartNav]="cartNav"></app-header>
 
   <div class="content">
     <router-outlet></router-outlet>
   </div>
 
-  <mat-sidenav #cardNav position="end" class="cart-nav">
-    <div class="cart-nav-header">
-      <mat-icon (click)="cardNav.close()">clear</mat-icon>
-      <span>Shopping Cart</span>
-    </div>
-    <div class="card-nav-content">
-      <app-shopping-cart [cardNav]="cardNav"></app-shopping-cart>
-    </div>
-  </mat-sidenav>
+
+    <mat-sidenav #cartNav position="end" class="cart-nav">
+      <div class="cart-nav-header">
+        <mat-icon (click)="cartNav.close()">clear</mat-icon>
+        <span>Shopping Cart</span>
+      </div>
+      <div class="card-nav-content">
+        <app-shopping-cart [cartNav]="cartNav"></app-shopping-cart>
+      </div>
+    </mat-sidenav>
 
 </mat-sidenav-container>
 
