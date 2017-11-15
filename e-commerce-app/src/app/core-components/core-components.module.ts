@@ -14,6 +14,8 @@ import {UserProfileComponent} from './user-profile/user-profile.component';
 import {PipesModule} from '../_helpers/pipes/pipes.module';
 import { OrderComponent } from './order/order.component';
 import { UserOrdersComponent } from './user-orders/user-orders.component';
+import { ContactComponent } from './contact/contact.component';
+import { InfoComponent } from './info/info.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,9 @@ import { UserOrdersComponent } from './user-orders/user-orders.component';
     AdminPanelComponent,
     UserProfileComponent,
     OrderComponent,
-    UserOrdersComponent
+    UserOrdersComponent,
+    ContactComponent,
+    InfoComponent
   ],
   imports: [
     CommonModule,

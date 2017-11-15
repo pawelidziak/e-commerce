@@ -8,10 +8,14 @@
   <mat-horizontal-stepper [linear]="true" #stepper>
     <mat-step [stepControl]="_authService.authAbstractControl">
       <span fxHide.xs *matStepLabel>Check Your order</span>
-      <app-checkout-order [list]="_cartService.orders" [totalPrice]="_cartService.totalPrice" [editable]="true"></app-checkout-order>
+      <app-checkout-order [list]="_cartService.orders" [totalPrice]="_cartService.totalPrice"
+                          [editable]="true"></app-checkout-order>
       <div class="action-end">
         <span class="no-auth" *ngIf="_authService.authAbstractControl.invalid">Sign up first</span>
-        <button mat-raised-button color="primary" matStepperNext [disabled]="_authService.authAbstractControl.invalid || _cartService.orders.length === 0" (click)="getUser()">Next</button>
+        <button mat-raised-button color="primary" matStepperNext
+                [disabled]="_authService.authAbstractControl.invalid || _cartService.orders.length === 0 || !_authService.authenticated"
+                (click)="getUser()">Next
+        </button>
       </div>
     </mat-step>
 
@@ -38,12 +42,14 @@
             <mat-expansion-panel-header>
               <mat-panel-title>Your order</mat-panel-title>
             </mat-expansion-panel-header>
-            <app-checkout-order [list]="_cartService.orders" [totalPrice]="_cartService.totalPrice" [editable]="false"></app-checkout-order>
+            <app-checkout-order [list]="_cartService.orders" [totalPrice]="_cartService.totalPrice"
+                                [editable]="false"></app-checkout-order>
           </mat-expansion-panel>
         </div>
 
         <div class="panel">
-          <mat-expansion-panel expanded="true" *ngIf="_authService.authenticated && dataForm && stepper.selectedIndex === 2">
+          <mat-expansion-panel expanded="true"
+                               *ngIf="_authService.authenticated && dataForm && stepper.selectedIndex === 2">
             <mat-expansion-panel-header>
               <mat-panel-title>Shipping information</mat-panel-title>
             </mat-expansion-panel-header>
@@ -54,7 +60,9 @@
       </div>
       <div class="actions-between">
         <button mat-raised-button color="primary" matStepperPrevious>Back</button>
-        <button mat-raised-button class="order" [disabled]="_authService.authAbstractControl.invalid" (click)="makeOrder()">order</button>
+        <button mat-raised-button class="order" [disabled]="_authService.authAbstractControl.invalid"
+                (click)="makeOrder()">order
+        </button>
       </div>
     </mat-step>
 

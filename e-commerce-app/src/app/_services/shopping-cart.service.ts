@@ -7,6 +7,8 @@ import {AuthService} from './auth.service';
 import {Router} from '@angular/router';
 import {IOrderDTO} from '../_models/IOrderDTO';
 import {Observable} from 'rxjs/Observable';
+import * as firebase from 'firebase/app';
+import 'firebase/storage';
 
 @Injectable()
 export class ShoppingCartService {
@@ -49,7 +51,9 @@ export class ShoppingCartService {
                 isbn: order.book.isbn,
                 price: order.book.price,
                 quantity: order.book.quantity,
-                image: order.book.image
+                image: order.book.image,
+                categories: order.book.categories,
+                releaseDate: order.book.releaseDate
               },
               quantity: order.quantity
             };
@@ -119,7 +123,7 @@ export class ShoppingCartService {
     this.removeOrderListFromLocalStorage();
   }
 
-  makeOrder() {
+  makeOrder2() {
     const orderDTO: IOrderDTO = {
       key: null,
       userId: this._authService.currentUser.uid,
@@ -135,6 +139,34 @@ export class ShoppingCartService {
         this._router.navigate(['/order', order.key]);
         this.clearOrders();
       });
+  }
+
+
+  makeOrderTransaction() {
+
+
+    const dbRef = firebase.database().ref();
+
+    this.orders.forEach((order) => {
+      const bookRef = dbRef.child('books').child(order.book.key).child('quantity');
+
+      bookRef.transaction((currentQuantity) => {
+          return currentQuantity - order.quantity;
+        },
+        (error, committed, snapshot) => {
+          if (error) {
+            console.log('Transaction failed abnormally!', error);
+          } else if (!committed) {
+            console.log('Transaction aborted');
+          } else {
+            // ;
+            console.log('User ada added!');
+          }
+          // console.log('Ada\'s data: ', snapshot.val());
+        }).then(_ => {
+          this.makeOrder2();
+      });
+    });
   }
 
   getUserOrders(key: string): Observable<IOrderDTO[]> {
@@ -165,10 +197,6 @@ export class ShoppingCartService {
     return this._db.object('orders/' + key).valueChanges();
   }
 
-
-  changeBookQuantity(key: string, quantity: number) {
-    return this._db.object('books/' + key).update({quantity: quantity});
-  }
 
   // getters & setters
   get orders(): Array<IOrder> {

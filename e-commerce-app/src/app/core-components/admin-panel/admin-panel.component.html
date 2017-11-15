@@ -5,7 +5,8 @@
 
       <!--<app-arrayBooks-list></app-arrayBooks-list>-->
 
-      <app-products-display></app-products-display>
+      <button mat-raised-button (click)="addBooks()">Add Books</button>
+
     </div>
   </mat-tab>
 
@@ -13,9 +14,8 @@
 
     <div class="categories-container">
 
-        <mat-form-field style="width: 100%">
-          <input matInput placeholder="Search category">
-        </mat-form-field>
+
+      <button mat-raised-button (click)="addCategories()">Add Categories</button>
 
     </div>
 

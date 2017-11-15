@@ -7,12 +7,12 @@
     </div>
 
     <div class="sidenav-info">
-      <button mat-button>
+      <button mat-button [routerLink]="['/contact']">
         <mat-icon>phone</mat-icon>
         <span>Contact</span>
       </button>
 
-      <button mat-button>
+      <button mat-button [routerLink]="['/info']">
         <mat-icon>info</mat-icon>
         <span>Info</span>
       </button>
@@ -41,7 +41,6 @@
   <div class="content">
     <router-outlet></router-outlet>
   </div>
-
 
     <mat-sidenav #cartNav position="end" class="cart-nav">
       <div class="cart-nav-header">

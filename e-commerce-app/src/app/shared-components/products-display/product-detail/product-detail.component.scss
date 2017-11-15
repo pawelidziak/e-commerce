@@ -47,6 +47,12 @@
         font-size: 1.1rem;
         letter-spacing: 1.1px;
       }
+
+      .desc {
+        display: flex;
+        flex-direction: column;
+        padding: 20px;
+      }
     }
   }
 

@@ -65,8 +65,6 @@ export class AuthService {
   emailSignUp(email: string, password: string, newUser: IUser) {
     return this._afAuth.auth.createUserWithEmailAndPassword(email, password)
       .then((user) => {
-        // this.user = user;
-
         user.sendEmailVerification()
           .catch(
             (error: any) => {
@@ -85,12 +83,10 @@ export class AuthService {
     this.loading = true;
     return this._afAuth.auth.signInWithEmailAndPassword(email, password)
       .then((user) => {
-        // this.router.navigate(['/home']);
         if (user.emailVerified === false) {
-          throw new Error('Email not verified.');
+          throw new Error('Email is not verified.');
         } else {
           this.user = user;
-          // location.reload();
         }
       })
       .catch((error: any) => {

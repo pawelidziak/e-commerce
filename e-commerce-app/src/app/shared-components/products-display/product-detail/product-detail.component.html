@@ -2,7 +2,6 @@
 
   <div class="book-detail">
 
-
     <mat-card class="book-info">
       <!-- AVATAR-->
         <div class="book-image">
@@ -13,7 +12,14 @@
       <div class="info no-border">
         <p class="title">{{book.title}}</p>
         <!--<span class="my-hr" fxHide.xs="true"></span>-->
-        <span class="author">{{book.author}}</span>
+        <span class="author"><strong>Author: </strong>{{book.author}}</span>
+
+        <div class="desc">
+          <span><strong>Release date: </strong>{{book.releaseDate | date: 'shortDate'}} (M/D/Y)</span>
+          <p><strong>Description:</strong></p>
+          <span>{{book.desc}}</span>
+        </div>
+
       </div>
     </mat-card>
 

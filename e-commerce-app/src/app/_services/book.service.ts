@@ -60,8 +60,8 @@ export class BookService {
     return this._db.object('books/' + key).valueChanges();
   }
 
-  addItem(newName: string) {
-    this.booksRef.push({text: newName});
+  addBook(book: IBook) {
+    this.booksRef.push(book);
   }
 
   updateItem(key: string, newText: string) {
