@@ -37,10 +37,6 @@ export class UserOrdersComponent implements OnInit {
   }
 
   cancelOrder(key: string) {
-    this._cartService.cancelOrder(key)
-      .then(_ => {
-        this.success = 'Order <strong>' + key + '</strong> has been canceled' ;
-      })
-      .catch((error) => this.error = error);
+    this._cartService.cancelOrder(key);
   }
 }

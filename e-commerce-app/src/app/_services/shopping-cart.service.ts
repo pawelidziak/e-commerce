@@ -9,6 +9,7 @@ import {IOrderDTO} from '../_models/IOrderDTO';
 import {Observable} from 'rxjs/Observable';
 import * as firebase from 'firebase/app';
 import 'firebase/storage';
+import {BookService} from './book.service';
 
 @Injectable()
 export class ShoppingCartService {
@@ -17,7 +18,7 @@ export class ShoppingCartService {
   private _totalPrice = 0;
 
   constructor(private _db: AngularFireDatabase, private _snackBar: MatSnackBar, private _authService: AuthService,
-              private _router: Router) {
+              private _router: Router, private _bookService: BookService) {
     this._orders = [];
     if (localStorage.getItem('orders')) {
       this.parseOrdersFromLocalStorage(JSON.parse(localStorage.getItem('orders')));
@@ -125,14 +126,11 @@ export class ShoppingCartService {
 
   makeOrder2() {
     const orderDTO: IOrderDTO = {
-      key: null,
       userId: this._authService.currentUser.uid,
       list: this.orders,
       totalPrice: this.totalPrice,
       status: 'waiting for payment',
-      orderDate: Date.now(),
-      postDate: null,
-      deliveryDate: null
+      orderDate: Date.now()
     };
     this._db.list('orders').push(orderDTO)
       .then((order) => {
@@ -164,7 +162,7 @@ export class ShoppingCartService {
           }
           // console.log('Ada\'s data: ', snapshot.val());
         }).then(_ => {
-          this.makeOrder2();
+        this.makeOrder2();
       });
     });
   }
@@ -178,6 +176,7 @@ export class ShoppingCartService {
   cancelOrder(key: string) {
     return this._db.object('orders/' + key).remove();
   }
+
 
   checkBookAvailable(key: string, quantity: number) {
     console.log(key);

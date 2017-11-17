@@ -1,12 +1,12 @@
 import {IOrder} from './IOrder';
 
 export interface IOrderDTO {
-  key: string;
+  key?: string;
   userId: string;
   list: IOrder[];
   totalPrice: number;
   status: string;
   orderDate: number;
-  postDate: number;
-  deliveryDate: number;
+  postDate?: number;
+  deliveryDate?: number;
 }
