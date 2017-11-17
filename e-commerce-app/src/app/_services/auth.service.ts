@@ -66,31 +66,29 @@ export class AuthService {
     return this._afAuth.auth.createUserWithEmailAndPassword(email, password)
       .then((user) => {
         user.sendEmailVerification()
-          .catch(
-            (error: any) => {
-              throw new Error((error.message));
+          .catch((error: any) => {
+              throw new Error(error.message);
             }
           );
         this.updateUserData(newUser, user.uid, email);
       })
       .catch((error: any) => {
-        throw new Error((error.message));
+        throw new Error(error.message);
       });
   }
 
 
   emailLogin(email: string, password: string) {
-    this.loading = true;
     return this._afAuth.auth.signInWithEmailAndPassword(email, password)
       .then((user) => {
         if (user.emailVerified === false) {
-          throw new Error('Email is not verified.');
+          throw new Error('Email not verified.');
         } else {
           this.user = user;
         }
       })
       .catch((error: any) => {
-        throw new Error((error.message));
+        throw new Error(error.message);
       });
   }
 

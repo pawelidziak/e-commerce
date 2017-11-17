@@ -1,13 +1,11 @@
 @import '../../../_helpers/variables';
 
 .product-list-container {
-  min-width: 300px;
   @include box_shadow;
 }
 
 .mat-table {
   overflow: auto;
-  max-height: 500px;
 }
 
 mat-header-cell {
