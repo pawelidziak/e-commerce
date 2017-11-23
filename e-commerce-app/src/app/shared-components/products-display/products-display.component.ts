@@ -4,9 +4,6 @@ import {BookService} from '../../_services/book.service';
 import {IBook} from '../../_models/IBook';
 import {Subscription} from 'rxjs/Subscription';
 import {ActivatedRoute} from '@angular/router';
-import {AngularFirestore, AngularFirestoreDocument} from 'angularfire2/firestore';
-import {Observable} from 'rxjs/Observable';
-import * as firebase from 'firebase/app';
 import 'firebase/storage';
 
 @Component({
@@ -19,10 +16,6 @@ export class ProductsDisplayComponent implements OnInit {
   displayList = false;
   _arrayBooks: Array<IBook>;
   private sub: Subscription;
-  storage = firebase.storage().ref();
-
-  // private itemDoc: AngularFirestoreDocument<any>;
-  // item: Observable<any>;
 
   error: string;
   loading = false;
@@ -33,9 +26,11 @@ export class ProductsDisplayComponent implements OnInit {
     {value: 'price-highest', viewValue: 'Price (highest first)'},
     {value: 'title-a-z', viewValue: 'Title (A - Z)'},
     {value: 'title-z-a', viewValue: 'Title (Z - A)'},
+    {value: 'quantity-lowest', viewValue: 'Quantity (lowest first)'},
+    {value: 'quantity-highest', viewValue: 'Quantity (highest first)'},
   ];
 
-  constructor(private _route: ActivatedRoute, public _bookService: BookService, private _fs: AngularFirestore) {
+  constructor(private _route: ActivatedRoute, public _bookService: BookService) {
     this.sub = this._route.params.subscribe(
       params => {
         const category = params['category'];
@@ -44,21 +39,8 @@ export class ProductsDisplayComponent implements OnInit {
   }
 
   ngOnInit() {
-    // this.getBookAvatar('-KxckpbsmNXBi7U_dDOO.jpg');
   }
 
-  getBookAvatar(uid: string) {
-    const storage = firebase.storage().ref();
-    storage.child('books/' + uid).getDownloadURL()
-      .then(
-        (url) => {
-          console.log(url);
-        })
-      .catch((error) => {
-        console.log(error);
-      });
-
-  }
 
   getBooks(category: string) {
     this.loading = true;

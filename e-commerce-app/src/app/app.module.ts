@@ -16,7 +16,7 @@ import {CoreComponentsModule} from './core-components/core-components.module';
 import {routing} from './app.routing';
 import {BookService} from './_services/book.service';
 import {CategoryService} from './_services/category.service';
-import {AngularFirestoreModule} from 'angularfire2/firestore';
+import {DateAdapter} from '@angular/material';
 
 export const firebaseConfig = {
   apiKey: 'AIzaSyCxYvJHE-K5jZd5A5l2fy5olS9HA1tMq-I',
@@ -37,7 +37,7 @@ export const firebaseConfig = {
     routing,
     MaterialModule,
     BrowserAnimationsModule,
-    AngularFirestoreModule,
+    // AngularFirestoreModule,
     AngularFireModule.initializeApp(firebaseConfig),
     // SharedComponentsModule,
     FormsModule,

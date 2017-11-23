@@ -1,7 +1,7 @@
 import {ICategory} from './ICategory';
 
 export interface IBook {
-  key: string;
+  key?: string;
   title: string;
   desc: string;
   author: string;

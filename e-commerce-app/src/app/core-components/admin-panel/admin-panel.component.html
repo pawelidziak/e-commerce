@@ -1,11 +1,63 @@
 <mat-tab-group #myTabGroup>
   <mat-tab label="Books">
 
-    <div class="book-container">
+    <div class="admin-book-container">
 
-      <!--<app-arrayBooks-list></app-arrayBooks-list>-->
+      <button mat-raised-button (click)="addBooks()">Add Books (script)</button>
 
-      <button mat-raised-button (click)="addBooks()">Add Books</button>
+      <!--<form [formGroup]="addBookForm" (ngSubmit)="addBook()">-->
+      <!--<div class="fields-inline">-->
+      <!--<mat-form-field>-->
+      <!--<input matInput placeholder="Title" [formControl]="title" required>-->
+      <!--</mat-form-field>-->
+      <!--<mat-form-field>-->
+      <!--<input matInput placeholder="Author" [formControl]="author" required>-->
+      <!--</mat-form-field>-->
+      <!--</div>-->
+
+      <!--<div class="fields-inline">-->
+      <!--<mat-form-field>-->
+      <!--<textarea matInput placeholder="Description" matTextareaAutosize matAutosizeMinRows="4"-->
+      <!--[formControl]="desc" required></textarea>-->
+      <!--</mat-form-field>-->
+      <!--</div>-->
+
+      <!--<div class="fields-inline">-->
+      <!--<mat-form-field>-->
+      <!--<input matInput placeholder="ISBN" [formControl]="isbn" required>-->
+      <!--</mat-form-field>-->
+      <!--<mat-form-field>-->
+      <!--<span matPrefix>$ &nbsp;</span>-->
+      <!--<input matInput placeholder="Price" [formControl]="price" required>-->
+      <!--</mat-form-field>-->
+      <!--<mat-form-field>-->
+      <!--<input matInput placeholder="Quantity" [formControl]="quantity" required>-->
+      <!--</mat-form-field>-->
+      <!--</div>-->
+
+      <!--<div class="fields-inline">-->
+      <!--<mat-form-field >-->
+      <!--<mat-select placeholder="Category">-->
+      <!--<mat-option *ngFor="let category of categoriesToSelect" [(value)]="selectedCategory">-->
+      <!--{{ category.name }}-->
+      <!--</mat-option>-->
+      <!--</mat-select>-->
+      <!--</mat-form-field>-->
+      <!--<mat-form-field>-->
+      <!--<input matInput [matDatepicker]="picker" placeholder="Choose a date" [formControl]="releaseDate">-->
+      <!--<mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>-->
+      <!--<mat-datepicker #picker></mat-datepicker>-->
+      <!--</mat-form-field>-->
+      <!--</div>-->
+
+      <!--<input type="file" required (change)="onChangeFile($event)">-->
+
+      <!--<div class="actions" style="margin-top: 30px;">-->
+      <!--<button mat-raised-button color="primary" type="submit">Add book</button>-->
+      <!--</div>-->
+      <!--</form>-->
+      <!--</div>-->
+
 
     </div>
   </mat-tab>

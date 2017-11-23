@@ -37,6 +37,11 @@ export class HeaderComponent implements OnInit {
     }
   }
 
+  ngOnInit() {
+    this.user = this._authService.currentUser;
+    this.getBooks();
+  }
+
   getBooks() {
     this._bookService.allBooks.subscribe(
       books => {
@@ -50,11 +55,6 @@ export class HeaderComponent implements OnInit {
       error => {
         this.error = <any>error;
       });
-  }
-
-  ngOnInit() {
-    this.user = this._authService.currentUser;
-    this.getBooks();
   }
 
   filter(name: string): IBook[] {

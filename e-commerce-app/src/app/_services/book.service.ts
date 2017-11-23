@@ -103,6 +103,18 @@ export class BookService {
           return a.title > b.title ? -1 : 1;
         });
         break;
+      case 'quantity-lowest':
+        array.sort((a, b) => {
+          // return a.title > b.title ? -1 : a.title < b.title ? 1 : 0;
+          return a.quantity < b.quantity ? -1 : 1;
+        });
+        break;
+      case 'quantity-highest':
+        array.sort((a, b) => {
+          // return a.title > b.title ? -1 : a.title < b.title ? 1 : 0;
+          return a.quantity > b.quantity ? -1 : 1;
+        });
+        break;
     }
     return array;
   }

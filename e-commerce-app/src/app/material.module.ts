@@ -16,7 +16,8 @@ import {
   MatDialogModule,
   MatFormFieldModule, MatGridListModule, MatTableModule, MatSelectModule,
   MatProgressSpinnerModule, MatSortModule, MatPaginatorModule, MatTooltipModule, MatStepperModule,
-  MatSnackBarModule
+  MatSnackBarModule,
+  MatDatepickerModule, MatNativeDateModule
 } from '@angular/material';
 
 @NgModule({
@@ -43,7 +44,9 @@ import {
     MatPaginatorModule,
     MatTooltipModule,
     MatStepperModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatDatepickerModule,
+    MatNativeDateModule
   ],
   exports: [
     MatButtonModule,
@@ -68,7 +71,9 @@ import {
     MatPaginatorModule,
     MatTooltipModule,
     MatStepperModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatDatepickerModule,
+    MatNativeDateModule
   ]
 })
 export class MaterialModule {

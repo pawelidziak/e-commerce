@@ -1,5 +1,13 @@
 @import '../../_helpers/variables';
-
+.admin-book-container{
+  //display: flex;
+  //justify-content: center;
+  margin: 0 auto;
+  width: 50%;
+  mat-form-field{
+    width: 100%;
+  }
+}
 .categories-container {
   display: flex;
   flex-direction: column;

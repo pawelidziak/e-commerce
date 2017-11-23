@@ -65,8 +65,7 @@ export class AuthService {
   emailSignUp(email: string, password: string, newUser: IUser) {
     return this._afAuth.auth.createUserWithEmailAndPassword(email, password)
       .then((user) => {
-        user.sendEmailVerification()
-          .catch((error: any) => {
+        user.sendEmailVerification().catch((error: any) => {
               throw new Error(error.message);
             }
           );

@@ -20,6 +20,7 @@
       <form (ngSubmit)="searchBook()">
         <input placeholder="Search" matInput [formControl]="myControl" [matAutocomplete]="auto" autofocus>
       </form>
+
       <mat-autocomplete #auto [displayWith]="displayFn">
         <div *ngFor="let option of filteredOptions | async; let i=index" style="padding: 10px">
           <mat-option *ngIf="i<10" [value]="option" [routerLink]="['/book', option.key]" style="padding: 10px">
@@ -29,6 +30,7 @@
           </mat-option>
         </div>
       </mat-autocomplete>
+
     </mat-form-field>
     <button mat-button (click)="searchInputFocused = false" class="close-button">
       <mat-icon>close</mat-icon>

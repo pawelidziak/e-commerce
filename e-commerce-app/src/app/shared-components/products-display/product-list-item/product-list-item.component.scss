@@ -1,6 +1,7 @@
 @import '../../../_helpers/variables';
 
 .product-list-container {
+  overflow-y:hidden;
   @include box_shadow;
 }
 
