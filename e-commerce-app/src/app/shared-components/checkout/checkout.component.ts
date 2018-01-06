@@ -52,7 +52,7 @@ export class CheckoutComponent implements OnInit, OnChanges {
   }
 
   makeOrder() {
-    this._cartService.makeOrder2();
+    this._cartService.makeOrder();
   }
 
 

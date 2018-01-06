@@ -43,7 +43,7 @@ export class HeaderComponent implements OnInit {
   }
 
   getBooks() {
-    this._bookService.allBooks.subscribe(
+    this._bookService.getAllBooks().subscribe(
       books => {
         this.options = books;
 

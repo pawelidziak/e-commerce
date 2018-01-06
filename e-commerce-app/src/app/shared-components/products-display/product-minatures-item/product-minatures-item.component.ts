@@ -1,7 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {ShoppingCartService} from '../../../_services/shopping-cart.service';
 import {IBook} from '../../../_models/IBook';
-import {MatSnackBar} from '@angular/material';
 
 @Component({
   selector: 'app-product-miniatures',

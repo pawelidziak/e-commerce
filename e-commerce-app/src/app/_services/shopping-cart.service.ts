@@ -124,7 +124,7 @@ export class ShoppingCartService {
     this.removeOrderListFromLocalStorage();
   }
 
-  makeOrder2() {
+  makeOrder() {
     const orderDTO: IOrderDTO = {
       userId: this._authService.currentUser.uid,
       list: this.orders,
@@ -162,7 +162,7 @@ export class ShoppingCartService {
           }
           // console.log('Ada\'s data: ', snapshot.val());
         }).then(_ => {
-        this.makeOrder2();
+        this.makeOrder();
       });
     });
   }

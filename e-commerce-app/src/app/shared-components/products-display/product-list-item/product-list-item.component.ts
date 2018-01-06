@@ -65,7 +65,6 @@ export class ProductListItemComponent implements OnInit {
 
 }
 
-
 export class ExampleDataSource extends DataSource<any> {
 
   constructor(private _books, private _sort: MatSort, private _paginator: MatPaginator) {
