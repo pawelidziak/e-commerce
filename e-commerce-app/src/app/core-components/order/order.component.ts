@@ -13,8 +13,8 @@ export class OrderComponent implements OnInit {
 
   private sub: Subscription;
   private orderKey: string;
-  private order: any;
-  private errorMessage: string;
+  order: any;
+  errorMessage: string;
 
   constructor(private _route: ActivatedRoute, private _cartService: ShoppingCartService, private _location: Location) {
   }

@@ -15,7 +15,7 @@ export class UserOrdersComponent implements OnInit {
   error: string;
   success: string;
 
-  constructor(private _cartService: ShoppingCartService, private _authService: AuthService) {
+  constructor(private _cartService: ShoppingCartService, public _authService: AuthService) {
   }
 
   ngOnInit() {

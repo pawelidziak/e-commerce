@@ -30,7 +30,7 @@ export class BookService {
       });
   }
 
-  getBookByKey(key: string): Observable<IBook> {
+  getBookByKey(key: string): any {
     return this._db.object('books/' + key).valueChanges();
   }
 

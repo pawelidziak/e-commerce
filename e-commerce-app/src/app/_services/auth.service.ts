@@ -56,7 +56,7 @@ export class AuthService {
     this.user.displayName = name;
   }
 
-  getUserFormDB(uid: string): Observable<IUser> {
+  getUserFormDB(uid: string): any {
     return this._db.object('users/' + uid).valueChanges();
   }
 
